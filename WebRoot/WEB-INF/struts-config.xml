@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+  <form-beans >
+    <form-bean name="applyFieldForm" type="fieldsystem.com.sjtu.struts.form.ApplyFieldForm" />
+    <form-bean name="deleteFieldForm" type="fieldsystem.com.sjtu.struts.form.DeleteFieldForm"></form-bean>
+    <form-bean name="updateFieldForm" type="fieldsystem.com.sjtu.struts.form.UpdateFieldForm" />
+  </form-beans>  
+
+
+  <global-exceptions />
+  <global-forwards >
+    
+
+  </global-forwards>
+
+  <action-mappings >
+    <action
+      attribute="applyFieldForm"
+      input="/fieldsystem/applyField.jsp"
+      name="applyFieldForm"
+      path="/applyField"
+      scope="request"
+      type="fieldsystem.com.sjtu.struts.action.ApplyFieldAction" >
+      <forward name="error" path="/fieldsystem/error.jsp" />
+      <forward name="apply_succ" path="/fieldsystem/apply_succ.jsp" />
+    </action>
+    <action 
+      attribute="deleteFieldForm"
+      input="/fieldsystem/deleteField.jsp"
+      name="deleteFieldForm"
+      path="/deleteField"
+      scope="request"
+      type="fieldsystem.com.sjtu.struts.action.ApplyFieldAction">
+      <forward name="error" path="/fieldsystem/error.jsp"></forward>
+      <forward name="delete_succ" path="/fieldsystem/delete_succ.jsp" />
+      </action>
+    <action
+      attribute="updateFieldForm"
+      input="/fieldsystem/updateField.jsp"
+      name="updateFieldForm"
+      path="/updateField"
+      scope="request"
+      type="fieldsystem.com.sjtu.struts.action.applyFieldAction" >
+      <forward name="error" path="/fieldsystem/error.jsp" />
+      <forward name="update_succ" path="/fieldsystem/update_succ.jsp" />
+    </action>
+    <action path="/apply" type="fieldsystem.com.sjtu.struts.action.ApplyAction" />
+
+
+  </action-mappings>
+
+  <message-resources parameter="fieldsystem.com.sjtu.struts.ApplicationResources" />
+</struts-config>
+
