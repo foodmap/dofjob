@@ -32,4 +32,30 @@ public class Job extends AbstractJob implements java.io.Serializable {
 				workYears, otherRequirements, description, studentjobs);
 	}
 
+	public String toString(){
+		String info;
+		info = "";
+		info += "行业: ";
+		info += this.getIndustry().getName()+"   ";
+		info += "职能: ";
+		info += this.getFunction().getName()+"   ";
+		info += "<br/>";
+		info += this.getCompany().getName()+"   ";
+		info += this.getCompany().getCity()+"   ";
+		info += "<br/>";
+		info += "学历要求: "+this.getGrade()+"   ";
+		info += "经验要求: "+this.getWorkYears()+"年"+"   ";
+		info += "性别要求: "+this.getSex()+"   ";
+		info += "招收人数: "+this.getNumber()+"   ";
+		info += "发布日期: "+this.getSubscribeDate().toGMTString()+"   ";
+		info += "<br/>";
+		info += "其他要求: "+this.getOtherRequirements()+"  ";
+		info += "<br/>";
+		info += "职位描述: "+this.getDescription()+"  ";
+		info += "<br/>";
+		return info;
+	}
+	
+	
+	
 }
