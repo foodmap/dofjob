@@ -46,8 +46,8 @@ public class JobManager implements iApplyJob, iManageJob {
 		session = factory.openSession();
 		String sqlcmd=null;
 		sqlApp = " and student.id="+studentid;
-		sqlcmd = "select job.* from job,studentjob";
-		sqlcmd += "where job.id=studentjob.job_id ";
+		sqlcmd = "select job.* from job,studentjob,student ";
+		sqlcmd += "where job.id=studentjob.job_id and studentjob.student_id=student.id ";
 		sqlcmd +=sqlApp;
 		List<Job> jobs  =  session.createSQLQuery(sqlcmd).addEntity( "Job" , Job.class ).list(); 
 		List<String> jobinfo = new ArrayList<String>();
@@ -155,7 +155,7 @@ public class JobManager implements iApplyJob, iManageJob {
 		String sqlcmd=null;
 		sqlcmd = "select job.* from job ,industry , function ,company where";
 		sqlcmd +=" job.function_id = function.id and job.industry_id=industry.id and " +
-				 " job.company_id = company.id";
+				 " job.company_id = company.id ";
 		sqlcmd += sqlGra+sqlInd+sqlFun+sqlWor+sqlSex+sqlSub;
 		
 		System.out.println(sqlcmd);
@@ -173,29 +173,120 @@ public class JobManager implements iApplyJob, iManageJob {
 		return jobinfo;
 	}
 
-	public void addJob() {
-		// TODO Auto-generated method stub
-
+	public boolean addJob(String sex, String grade, int number, String subdate,
+			int workyears, String other_requirements, String description,
+			long companyid, String function, String industry) {
+		String sqlInd="";
+		Configuration conf = new Configuration().configure();
+		SessionFactory factory = conf.buildSessionFactory();
+		Session session = null;
+		Transaction tran = null;
+		int insertEntities = -1;
+		session = factory.openSession();
+		tran = session.beginTransaction();
+		Function f = (Function)(session.createSQLQuery("select function.* from function where name= '"+function+"'")
+		             .addEntity( "Function" , Function.class ).list().get(0));
+		Industry d = (Industry)(session.createSQLQuery("select Industry.* from Industry where name= '"+industry+"'")
+	             .addEntity( "Industry" , Industry.class ).list().get(0));
+		long fid = f.getId();
+		long did = d.getId();
+		String sqlcmd="insert into studentjob(sex,grade,number,subscribe_date,work_years,other_requirements,"
+		        +"description,company_id,function_id,industry_id"+" ) " +
+				"values ("+"'"+sex+"'"+","+"'"+grade+"'"+","+number+","+"'"+subdate+"'"+","
+		        +workyears+","+"'"+other_requirements+"'"+","+"'"+description+"'"+","+companyid+","+fid
+		        +","+did+")"; 
+		String oldvalue="";
+		insertEntities = session.createQuery( sqlcmd ).executeUpdate() ;
+		tran.commit();
+		
+		session.close();
+		factory.close();
+		if(insertEntities==-1){
+			return false;
+		}
+		else return true;
 	}
 
-	public void delJob() {
-		// TODO Auto-generated method stub
-
+	public List getJob(long companyid) {
+		String sqlCom="";
+		sqlCom += " and company.id = "+companyid;
+		Configuration conf = new Configuration().configure();
+		SessionFactory factory = conf.buildSessionFactory();
+		Session session = null;
+		Transaction tran = null;
+		session = factory.openSession();
+		String sqlcmd=null;
+		sqlcmd = "select job.* from job ,company where";
+		sqlcmd +=" job.company_id = company.id ";
+		sqlcmd += sqlCom;
+		
+		System.out.println(sqlcmd);
+		List<Job> jobs  =  session.createSQLQuery(sqlcmd).addEntity( "Job" , Job.class ).list(); 
+		List<String> jobinfo = new ArrayList<String>();
+		Iterator it = jobs.iterator();
+		while(it.hasNext()){
+			Job job = (Job)it.next();
+			long id = job.getId();
+			jobinfo.add(""+id);
+			jobinfo.add(job.toString());
+		}
+		session.close();
+		factory.close();
+		return jobinfo;
 	}
 
-	public void getStuApplyment() {
-		// TODO Auto-generated method stub
-
+	public List getStuApplyment(long companyid) {
+		String sqlApp="";
+		Configuration conf = new Configuration().configure();
+		SessionFactory factory = conf.buildSessionFactory();
+		Session session = null;
+		Transaction tran = null;
+		session = factory.openSession();
+		String sqlcmd=null;
+		sqlApp = " and student.id="+companyid;
+		sqlcmd = "select job.* from job,studentjob,student ";
+		sqlcmd += "where job.id=studentjob.job_id and studentjob.student_id=student.id ";
+		sqlcmd +=sqlApp;
+		List<Job> jobs  =  session.createSQLQuery(sqlcmd).addEntity( "Job" , Job.class ).list(); 
+		List<String> jobinfo = new ArrayList<String>();
+		Iterator it = jobs.iterator();
+		while(it.hasNext()){
+			Job job = (Job)it.next();
+			long jobid = job.getId();
+			jobinfo.add(""+jobid);
+			jobinfo.add(job.toString());
+		}
+		session.close();
+		factory.close();
+		return jobinfo;
 	}
 
-	public void getJob() {
-		// TODO Auto-generated method stub
-
+	public boolean updJob(String sex, String grade, int number, String subdate,
+			int workyears, String other_requirements, String description,
+			long jobid) {
+		String sqlInd="";
+		Configuration conf = new Configuration().configure();
+		SessionFactory factory = conf.buildSessionFactory();
+		Session session = null;
+		Transaction tran = null;
+		int insertEntities = -1;
+		session = factory.openSession();
+		tran = session.beginTransaction();
+		String sqlcmd="update studentjob " +"set "+"sex="+"'"+sex+"'"+","+"grade="+"'"+grade+"'"+","+"number="+number+","+"subscribe_date="+"'"+subdate+"'"+","
+		              +"workyears="+workyears+","+"other_requirements="+"'"+other_requirements+"'"+","+"description="+"'"+description+"'"; 
+		sqlcmd += " where job_id ="+jobid;
+		String oldvalue="";
+		insertEntities = session.createQuery( sqlcmd ).executeUpdate() ;
+		tran.commit();
+		
+		session.close();
+		factory.close();
+		if(insertEntities==-1){
+			return false;
+		}
+		else return true;
 	}
 
-	public void updJob() {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 }
