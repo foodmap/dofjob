@@ -3,20 +3,53 @@
 
 <struts-config>
   <form-beans >
-    <form-bean name="huntJobForm" type="com.dreamflyer.struts.form.HuntJobForm" />
+    <form-bean name="applyFieldForm" type="com.dreamflyer.struts.form.field.ApplyFieldForm" />
+    <form-bean name="deleteFieldForm" type="com.dreamflyer.struts.form.field.DeleteFieldForm"></form-bean>
+    <form-bean name="updateFieldForm" type="com.dreamflyer.struts.form.field.UpdateFieldForm" />
+  </form-beans>  
 
-  </form-beans>
 
   <global-exceptions />
-  <global-forwards />
+  <global-forwards >
+     <forward name="error" path="/fieldsystem/error.jsp" />
+
+  </global-forwards>
+
   <action-mappings >
     <action
-      attribute="huntJobForm"
-      input="/form/huntJob.jsp"
-      name="huntJobForm"
-      path="/huntJob"
+      attribute="applyFieldForm"
+      input="/fieldsystem/applyField.jsp"
+      name="applyFieldForm"
+      path="/applyField"
       scope="request"
-      type="com.dreamflyer.struts.action.HuntJobAction" />
+      type="com.dreamflyer.struts.action.field.ApplyFieldAction" >      
+      <forward name="apply_succ" path="/fieldsystem/apply_succ.jsp" />
+    </action>
+    <action 
+      attribute="deleteFieldForm"
+      input="/fieldsystem/deleteField.jsp"
+      name="deleteFieldForm"
+      path="/deleteField"
+      scope="request"
+      type="com.dreamflyer.struts.action.field.ApplyFieldAction">      
+      <forward name="delete_succ" path="/fieldsystem/delete_succ.jsp" />
+      </action>
+    <action
+      attribute="updateFieldForm"
+      input="/fieldsystem/updateField.jsp"
+      name="updateFieldForm"
+      path="/updateField"
+      scope="request"
+      type="com.dreamflyer.struts.action.field.ApplyFieldAction">
+      <forward name="update_succ" path="/fieldsystem/update_succ.jsp" />
+    </action>
+    <action path="/apply" type="com.dreamflyer.struts.action.field.ApplyAction" >
+      <forward name="applyF" path="/fieldsystem/applyField.jsp" />
+      <forward name="deleteF" path="/fieldsystem/deleteField.jsp" />
+      <forward name="updateF" path="/fieldsystem/updateField.jsp" />
+    </action>
+
+
 
   </action-mappings>
 
