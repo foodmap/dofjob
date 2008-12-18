@@ -1,11 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowViewLayout Version="1.2">
-  <StrutsActivity path="/huntJob.do" location="50,50" dimension="293,104" />
+  <StrutsActivity path="/applyField.do" location="950,50" dimension="330,104" />
+  <StrutsActivity path="/deleteField.do" location="50,250" dimension="330,104" />
+  <StrutsActivity path="/updateField.do" location="650,250" dimension="330,104" />
+  <StrutsActivity path="/apply.do" location="50,450" dimension="303,104" />
+  <StrutsActivity path="error;6" location="650,450" dimension="168,87" />
+  <StrutsActivity path="/fieldsystem/apply_succ.jsp" location="950,450" dimension="189,53" />
+  <StrutsActivity path="/fieldsystem/applyField.jsp" location="50,650" dimension="186,53" />
+  <StrutsActivity path="/fieldsystem/delete_succ.jsp" location="350,650" dimension="193,53" />
+  <StrutsActivity path="/fieldsystem/deleteField.jsp" location="650,650" dimension="190,53" />
+  <StrutsActivity path="/fieldsystem/update_succ.jsp" location="950,650" dimension="198,53" />
+  <StrutsActivity path="/fieldsystem/updateField.jsp" location="50,850" dimension="195,53" />
+  <StrutsActivity path="/fieldsystem/error.jsp" location="350,850" dimension="157,53" />
   <StrutsActivity path="/form/huntJob.jsp" location="650,50" dimension="136,53" />
-  <StrutsTransition id="/form/huntJob.jsp,null,/huntJob.do,2" routingType="0">
+  <StrutsTransition id="/apply.do,applyF,/fieldsystem/applyField.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="650,76" />
-      <AbsolutePoint location="343,76" />
+      <AbsolutePoint location="201,554" />
+      <AbsolutePoint location="201,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/fieldsystem/updateField.jsp,null,/updateField.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="147,850" />
+      <AbsolutePoint location="147,778" />
+      <AbsolutePoint location="855,778" />
+      <AbsolutePoint location="855,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/applyField.do,apply_succ,/fieldsystem/apply_succ.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1115,154" />
+      <AbsolutePoint location="1115,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/fieldsystem/deleteField.jsp,null,/deleteField.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,676" />
+      <AbsolutePoint location="588,676" />
+      <AbsolutePoint location="588,302" />
+      <AbsolutePoint location="380,302" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/deleteField.do,delete_succ,/fieldsystem/delete_succ.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="368,354" />
+      <AbsolutePoint location="368,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/updateField.do,update_succ,/fieldsystem/update_succ.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="885,354" />
+      <AbsolutePoint location="885,676" />
+      <AbsolutePoint location="950,676" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/apply.do,deleteF,/fieldsystem/deleteField.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="353,552" />
+      <AbsolutePoint location="745,552" />
+      <AbsolutePoint location="745,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="error;6,null,/fieldsystem/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="818,488" />
+      <AbsolutePoint location="915,488" />
+      <AbsolutePoint location="915,876" />
+      <AbsolutePoint location="507,876" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/apply.do,updateF,/fieldsystem/updateField.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="260,554" />
+      <AbsolutePoint location="260,876" />
+      <AbsolutePoint location="245,876" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/fieldsystem/applyField.jsp,null,/applyField.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="143,650" />
+      <AbsolutePoint location="143,612" />
+      <AbsolutePoint location="1163,612" />
+      <AbsolutePoint location="1163,154" />
     </AutomaticBendpoints>
   </StrutsTransition>
 </FlowViewLayout>
