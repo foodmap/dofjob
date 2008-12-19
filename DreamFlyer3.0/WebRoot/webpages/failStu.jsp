@@ -9,7 +9,8 @@
 <head>
 <!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<meta http-equiv="refresh" content="2";url=register.jsp">
+<meta http-equiv="refresh" content="2;url=register.jsp" />
+
 
 <title>SJTU JOB HUNTING HOMEPAGE</title>
 <link rel="stylesheet" href="index.css" type="text/css" />
