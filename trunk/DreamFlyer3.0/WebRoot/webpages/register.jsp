@@ -104,11 +104,9 @@
 				<p class="date"><label>姓名:</label>
 				  <input type="text"  width="85" name="textfield2" />
 				</p>
-				<p class="date"><label>原始密码:</label>
-				  <input type="text"  width="85" name="textfield2" />
-				</p>
-				<p class="date"><label>新密码:</label>
-				  <input type="text" width="85" name="textfield2" />
+				
+				<p class="date"><label>密码:</label>
+				  <input type="password" width="85" name="textfield2" />
 				</p>
               	<p class="date"><label>专业:</label>
 				  <input type="text"  width="85" name="textfield2" />
@@ -157,13 +155,10 @@
 				   <label>名称:</label>
 				   <input type="text" width="85" name="textfield2" />
 				</p>
+				
 				<p class="date">
-				<label>原始密码:</label>
-				  <input type="text" width="85" name="textfield2" />
-				</p>
-				<p class="date">
-				  <label>新密码:</label>
-				  <input type="text" width="85" name="textfield2" />
+				  <label>密码:</label>
+				  <input type="password" width="85" name="textfield2" />
 				</p>
               	<p class="date">
 				<label>省份:</label>
