@@ -1,0 +1,23 @@
+#jobsearch{
+	float:left;
+	margin:20px 0px 0px 0px;
+	width:470px;
+	padding:0px 0px 0px 2px;
+}
+#jobsearch h3{
+	font-size:15px;
+	background:#e0e7ec;
+	padding:5px;
+	padding-left:25px;
+}
+
+
+jobselect   label{
+float:left;
+ font-size:10px;
+ width:70px;
+ text-align:right;
+ padding:4px;
+ margin:1px;
+ 
+}
