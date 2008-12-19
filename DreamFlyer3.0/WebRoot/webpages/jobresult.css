@@ -1,0 +1,17 @@
+#jobresult ui{
+list-style-type:none;
+list-style:none;}
+#jobresult ui li{
+list-style-type:none;
+list-style:none;}
+
+
+.jobdescript{
+font-size:15px;
+font-weight:500;
+ color:#1E7ACE;
+}
+
+.jobdetail{
+padding-left:10px;
+}

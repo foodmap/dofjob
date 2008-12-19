@@ -1,0 +1,192 @@
+/***********************************************/
+/* index.css                            */
+/* Use with template index.html          */
+/***********************************************/
+
+/***********************************************/
+/* HTML tag styles                             */
+/***********************************************/ 
+
+body{
+	font-family: Arial,sans-serif;
+	color: #333333;
+	line-height: 1.166;	
+	text-align:center;
+	margin: 0px;
+	padding: 0px;
+}
+li{
+font-size:12px;
+}
+#container{
+	position:relative;
+	margin:0px auto 0px auto;
+	width:900px;
+	text-align:left;
+}
+#masthead{
+	margin: 0px;
+	padding: 0px;
+	width: 900px;
+}
+
+#logo{
+	margin: 0px;
+	padding: 0px;
+	background:url(logo.png) no-repeat;
+}
+#leftbar{
+float:left;
+width:450px;
+height:39px;
+}
+#rightbar{
+height:39px;
+background:#336CA1;
+}
+#rightbar *{
+float:right;
+margin-top:10px;
+
+}
+#rightbar input{
+margin-top:13px;}
+/************************#内容布局********************************/
+#content{
+    width:900px;
+}
+#left{
+    width:200px;
+	float:left;
+	margin: 0px;
+	padding: 0px;
+	
+}
+#middle{
+  float:left;
+	width: 480px;
+	margin-left:10px;
+	padding: 0px;
+}
+#right{
+    float:left;
+	width: 200px;
+	margin-left:10px;
+	padding: 0px;
+}
+/************* #脚注条 ***************/
+
+#siteInfo{
+	clear: both;
+	text-align:center;
+	border: 1px solid #cccccc;
+	font-size: 75%;
+	color: #cccccc;
+	padding: 10px 10px 10px 10px;
+	margin-top: 0px;
+}
+/* negative top margin pulls siteinfo up so its top border overlaps (and thus lines up with)
+	the bottom border of the navBar in cases where they "touch" */
+
+#siteInfo img{
+	padding: 4px 4px 4px 0px;
+	vertical-align: middle;
+}
+
+
+/**************中部内容1：广告 ***************/
+
+#ads{
+width:450px;
+border-bottom: 1px solid #ccc;
+height:200px;
+padding: 20px 0px 20px 20px;
+font-size: 80%;
+
+}
+
+/****************中部内容2：链接*****************************/
+#list{
+	float:left;
+	margin:20px 0px 0px 0px;
+	width:470px;
+	padding:0px 0px 0px 2px;
+}
+#list h3{
+	font-size:15px;
+	background:#e0e7ec url(icon4.gif) no-repeat 7px 8px;
+	padding:5px;
+	padding-left:25px;
+}
+
+ p.date{
+    font-size:12px;
+	margin:0px;
+	padding:5px 0px 5px 2px;
+	font-weight:bold;
+	color:#014e68;
+}
+#list ul{
+	margin:0px 0px 6px 40px;
+	padding:0px;
+	list-style-type:disc;
+	font-size:12px;
+}
+#list ul li a:link, #list ul li a:visited, #list .more a:link, #list .more a:visited{
+	color:#333333;
+	text-decoration:none;
+}
+#list ul li a:hover, #list .more a:hover{
+	color:#00a9e7;
+	text-decoration:underline;
+}
+#list .more{
+    font-size:12px;
+	margin:0px; padding:5px 0px 20px 10px;
+	background:url(icon5.gif) no-repeat 0px 10px;
+}
+
+/********************两侧的链接集*********************/
+#leftlinks{
+border: 1px solid #000000;
+}
+
+#rightlinks{
+margin-top:5px;
+border: 1px solid #000000;
+}
+
+.relatedLinks h3{
+    font-size:15px;
+	padding:5px;
+	padding-left:25px;
+	background:#e0e7ec url(icon4.gif) no-repeat 7px 8px;
+	
+}
+.relatedLinks li{
+padding-left:8px;
+}
+
+
+/****************************右侧找工作快速通道***************************************/
+
+#datebar{
+margin-top:5px;
+	background-color:#000000;
+	padding: 5px 5px 5px 10px;
+	border: 1px solid #000000;
+	font-size: 90%;
+}
+#datebar h3{
+color:#FFFFFF;
+}
+#datebar select{
+width:100px;
+}
+#datebar form{
+ margin: 0px;
+ padding: 0px;
+}
+
+
+
