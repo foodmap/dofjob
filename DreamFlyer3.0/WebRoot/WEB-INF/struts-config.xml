@@ -6,12 +6,16 @@
     <form-bean name="applyFieldForm" type="com.dreamflyer.struts.form.field.ApplyFieldForm" />
     <form-bean name="deleteFieldForm" type="com.dreamflyer.struts.form.field.DeleteFieldForm"></form-bean>
     <form-bean name="updateFieldForm" type="com.dreamflyer.struts.form.field.UpdateFieldForm" />
+    <form-bean name="loginForm" type="com.dreamflyer.struts.form.users.LoginForm" />
+    <form-bean name="helloForm" type="com.dreamflyer.struts.form.HelloForm" />
   </form-beans>  
 
 
   <global-exceptions />
   <global-forwards >
      <forward name="error" path="/fieldsystem/error.jsp" />
+    <forward name="login_success" path="/webpages/login_success.jsp" />
+    <forward name="login_fail" path="/webpages/login_fail.jsp" />
 
   </global-forwards>
 
@@ -48,6 +52,14 @@
       <forward name="deleteF" path="/fieldsystem/deleteField.jsp" />
       <forward name="updateF" path="/fieldsystem/updateField.jsp" />
     </action>
+    <action
+      attribute="loginForm"
+      input="/webpages/login.jsp"
+      name="loginForm"
+      path="/login"
+      scope="request"
+      type="com.dreamflyer.struts.action.users.LoginAction" />
+    
 
 
 
