@@ -7,15 +7,16 @@
     <form-bean name="deleteFieldForm" type="com.dreamflyer.struts.form.field.DeleteFieldForm"></form-bean>
     <form-bean name="updateFieldForm" type="com.dreamflyer.struts.form.field.UpdateFieldForm" />
     <form-bean name="loginForm" type="com.dreamflyer.struts.form.users.LoginForm" />
-    <form-bean name="helloForm" type="com.dreamflyer.struts.form.HelloForm" />
-  </form-beans>  
+    <form-bean name="reloginForm" type="com.dreamflyer.struts.form.users.ReloginForm" />
+ </form-beans>  
 
 
   <global-exceptions />
   <global-forwards >
      <forward name="error" path="/fieldsystem/error.jsp" />
-    <forward name="login_success" path="/webpages/login_success.jsp" />
-    <forward name="login_fail" path="/webpages/login_fail.jsp" />
+    <forward name="login_success" path="/searchjob.jsp" />
+    <forward name="login_fail" path="/login_fail.jsp" />
+    <forward name="login" path="/login.jsp" />
 
   </global-forwards>
 
@@ -54,12 +55,21 @@
     </action>
     <action
       attribute="loginForm"
-      input="/webpages/login.jsp"
+      input="/login.jsp"
       name="loginForm"
       path="/login"
       scope="request"
       type="com.dreamflyer.struts.action.users.LoginAction" />
-    
+    <action path="/logout" 
+    	type="com.dreamflyer.struts.action.users.LogoutAction" />
+    <action
+      attribute="reloginForm"
+      input="/registryCheck.jsp"
+      name="reloginForm"
+      path="/relogin"
+      scope="request"
+      type="com.dreamflyer.struts.action.users.ReloginAction" />
+        
 
 
 
