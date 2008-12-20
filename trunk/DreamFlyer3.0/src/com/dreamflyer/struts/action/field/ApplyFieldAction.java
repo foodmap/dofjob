@@ -100,7 +100,7 @@ public class ApplyFieldAction extends Action {
 		boolean exception = Singleton.getInstance()
 		                    .getManager()
 		                    .updApplyment(uff.getField_id(), _company_id, start, end);
-	    if(exception)	    	
+	    if(!exception)	    	
 	    	return mapping.findForward("error");	    
 		return mapping.findForward("update_succ");		
 	}
