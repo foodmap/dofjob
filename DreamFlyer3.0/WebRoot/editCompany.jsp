@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage="" %>
-<%@   taglib   prefix= "html "   uri= "http://struts.apache.org/tags-html"   %> 
-<%@   taglib   prefix= "bean "   uri= "http://struts.apache.org/tags-bean"   %> 
-<%@   taglib   prefix= "logic "   uri= "http://struts.apache.org/tags-logic"%> 
+<%@   taglib   prefix= "html "   uri= "http://struts.apache.org/tags-html "   %> 
+<%@   taglib   prefix= "bean "   uri= "http://struts.apache.org/tags-bean "   %> 
+<%@   taglib   prefix= "logic "   uri= "http://struts.apache.org/tags-logic "%> 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="menu.css" type="text/css" />
 <link rel="stylesheet" href="login.css" type="text/css" />
 <link rel="stylesheet" href="ad.css"  type="text/css"/>
-
+<link rel="stylesheet" href="info.css"  type="text/css"/>
 </head>
 <!-- The structure of this file is exactly the same as 2col_rightNav.html;
      the only difference between the two is the stylesheet they use -->
@@ -62,7 +62,6 @@
 		<li><a href="about.htm">添加职位</a></li> 
 		<li><a href="products.htm">编辑职位</a></li> 
 		<li><a href="services.htm">申请场地</a></li> 
-		<li><a href="contact.htm">场地记录</a></li> 
 		<li><a href="contact.htm">学生列表</a></li> 
 		<li><a href="contact.htm">邮箱</a></li>
 		</ul> 
@@ -97,69 +96,53 @@
 	  
 	  
 	<div id="list">
-	             <div id="jobadd">
-			    <h3><span>增加职位</span></h3>
-				<p class="date">选择行业:
-				  <select name="select">
-				    <option>请选择----------------------</option>
-				    <option>计算机软件</option>
-				    <option>计算机硬件</option>
-				    <option>媒体/出版/图书</option>
-				    <option>教育/培训</option>
-				    <option>机械/器材/重工业</option>
-				    <option>化工</option>
-				    <option>能源/开采/冶炼</option>
-			      </select>
+	             <div id="editCinfo">
+			    <h3>更改公司信息</h3>
+				<p class="date">
+				   <label>名称:</label>
+				   <input type="text"  value="思科"width="85" name="textfield2" />
 				</p>
-				<p class="date">选择职能:
-				  <select name="select2">
-				    <option>请选择----------------------</option>
-				    <option>软件工程师</option>
-				    <option>测试师</option>
-				    <option>系统分析师</option>
-				    <option>系统架构师</option>
-				    <option>项目经理</option>
-				    <option>技术顾问</option>
-				    <option>总经理</option>
-				    <option>首席技术总监</option>
-			      </select>
+				<p class="date">
+				<label>原始密码:</label>
+				  <input type="text"  value="1212"width="85" name="textfield2" />
 				</p>
-				<p class="date">所需学历:
-				  <input type="text" name="textfield2" />
+				<p class="date">
+				  <label>新密码:</label>
+				  <input type="text"  value="1122"width="85" name="textfield2" />
 				</p>
-				<p class="date">所需经验:
-				  <input type="text" name="textfield3" />
-				年</p>
-				<p class="date">所需性别:
-				  <label>男
-				  <input name="radiobutton" type="radio" value="radiobutton" />
-				  </label>
-				  <label>女
-				  <input name="radiobutton" type="radio" value="radiobutton" />
-				  </label>
+              	<p class="date">
+				<label>省份:</label>
+				  <input type="text"  value="上海"width="85" name="textfield2" />
 				</p>
-				<p class="date">其他要求:
+				<p class="date"><label>城市:</label>
+				  <input type="text"  value="上海"width="85" name="textfield2" />
+				</p>
+				<p class="date"><label>具体地址:</label>
+				  <input type="text"  value="XXX路XXX广场西门3号楼"width="185" name="textfield22" />
+</p>
+				<p class="date"><label>电话:</label>
+				  <input type="text"  value="54745474"width="185" name="textfield2" />
+				</p>
+				<p class="date"><label>email:</label>
+				  <input type="text"  value="cisco@sjtu.edu.cn"width="185" name="textfield2" />
+				</p>
+				<p class="date"><label>主页:</label>
+				  <input type="text"  value="cisco.sjtu.edu.cn"width="185" name="textfield2" />
+				</p>
+				<p class="date"><label>传真:</label>
+				  <input type="text"  value=""width="185" name="textfield2" />
+				</p>
+				<p id="textarea" class="date"><label>公司描述:</label>
 				  <label>
-				  <textarea name="textarea">请输入</textarea>
-				  </label>
-				</p>
-				<p class="date">职位描述:
-				  <label>
-				  <textarea name="textarea2">请输入</textarea>
+				  <textarea name="textarea" rows="10">无</textarea>
 				  </label>
 				</p>
 				<p class="date"> 
-				  <input type="submit" name="Submit2" value="确认添加" />
+				  <input type="submit" name="Submit2" value="确认修改" />
 				</p>
-				
 			 </div>
-		    	 <div id="job_added">
-		        <h3><span>已添加的职位</span></h3>
-				 <added_list>无</added_list>
-			    </div>
-		      
-    </div>
-</div>
+   	  </div>
+ </div>
 
 
  <div id="right">
