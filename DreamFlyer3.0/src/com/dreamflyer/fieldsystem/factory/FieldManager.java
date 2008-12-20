@@ -123,9 +123,10 @@ public class FieldManager extends AbstractManagers {
 		try{	    	
 	    	session = HibernateSessionFactory.getSession();
 	    	tx = session.beginTransaction();	    	
-	    	String hqlUpdate="UPDATE Companyfields set startTime = :start where id.company.id = :cid and id.fields.id = :fid";
+	    	String hqlUpdate="UPDATE Companyfields set startTime = :start,endTime = :end where id.company.id = :cid and id.fields.id = :fid";
 	    	int temp = session.createQuery(hqlUpdate)
-	    	                  .setTimestamp("start", start)	    	                  
+	    	                  .setTimestamp("start", start)	 
+	    	                  .setTimestamp("end", end)
 	    	                  .setString("cid", _company_id)
 	    	                  .setString("fid", fid)
 	    	                  .executeUpdate();	    	
