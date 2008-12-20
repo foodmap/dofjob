@@ -4,22 +4,42 @@
   <StrutsActivity path="/deleteField.do" location="50,250" dimension="330,104" />
   <StrutsActivity path="/updateField.do" location="650,250" dimension="330,104" />
   <StrutsActivity path="/apply.do" location="50,450" dimension="303,104" />
+  <StrutsActivity path="/login.do" location="650,850" dimension="268,88" />
+  <StrutsActivity path="/logout.do" location="350,1250" dimension="271,88" />
+  <StrutsActivity path="/relogin.do" location="1250,650" dimension="278,88" />
   <StrutsActivity path="error;6" location="650,450" dimension="168,87" />
+  <StrutsActivity path="login_success;6" location="650,1050" dimension="179,75" />
+  <StrutsActivity path="login_fail;6" location="50,1150" dimension="156,75" />
+  <StrutsActivity path="login;6" location="1250,450" dimension="136,75" />
   <StrutsActivity path="/fieldsystem/apply_succ.jsp" location="950,450" dimension="189,53" />
   <StrutsActivity path="/fieldsystem/applyField.jsp" location="50,650" dimension="186,53" />
   <StrutsActivity path="/fieldsystem/delete_succ.jsp" location="350,650" dimension="193,53" />
   <StrutsActivity path="/fieldsystem/deleteField.jsp" location="650,650" dimension="190,53" />
   <StrutsActivity path="/fieldsystem/update_succ.jsp" location="950,650" dimension="198,53" />
   <StrutsActivity path="/fieldsystem/updateField.jsp" location="50,850" dimension="195,53" />
-  <StrutsActivity path="/fieldsystem/error.jsp" location="350,850" dimension="157,53" />
-  <StrutsActivity path="/form/huntJob.jsp" location="650,50" dimension="136,53" />
-  <StrutsActivity path="/login.do" location="650,850" dimension="268,88" />
-  <StrutsActivity path="/form/login.jsp" location="50,1050" dimension="99,49" />
   <StrutsActivity path="/webpages/login.jsp" location="350,1050" dimension="126,49" />
-  <StrutsActivity path="login_success;6" location="650,1050" dimension="179,75" />
-  <StrutsActivity path="/webpages/login_success.jsp" location="950,1050" dimension="169,49" />
-  <StrutsActivity path="login_fail;6" location="50,1150" dimension="156,75" />
+  <StrutsActivity path="/form/hello.jsp" location="350,1150" dimension="99,49" />
+  <StrutsActivity path="/webpages/registryCheck.jsp" location="1250,950" dimension="170,49" />
+  <StrutsActivity path="/fieldsystem/error.jsp" location="350,850" dimension="157,53" />
+  <StrutsActivity path="/webpages/searchjob.jsp" location="950,1150" dimension="151,49" />
   <StrutsActivity path="/webpages/login_fail.jsp" location="350,1150" dimension="146,49" />
+  <StrutsActivity path="/form/huntJob.jsp" location="650,50" dimension="136,53" />
+  <StrutsActivity path="/form/login.jsp" location="50,1050" dimension="99,49" />
+  <StrutsActivity path="/webpages/login_success.jsp" location="950,1050" dimension="169,49" />
+  <StrutsActivity path="/form/relogin.jsp" location="1250,850" dimension="109,49" />
+  <StrutsActivity path="/login.jsp" location="1250,1050" dimension="73,49" />
+  <StrutsActivity path="/registryCheck.jsp" location="1250,1150" dimension="117,49" />
+  <StrutsActivity path="/searchjob.jsp" />
+  <StrutsActivity path="/login_fail.jsp" />
+  <StrutsTransition id="login;6,null,/webpages/login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1250,487" />
+      <AbsolutePoint location="1223,487" />
+      <AbsolutePoint location="1223,983" />
+      <AbsolutePoint location="413,983" />
+      <AbsolutePoint location="413,1050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/applyField.do,apply_succ,/fieldsystem/apply_succ.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="1115,154" />
@@ -47,6 +67,21 @@
       <AbsolutePoint location="950,676" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/login.jsp,null,/login.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1286,1050" />
+      <AbsolutePoint location="1286,1014" />
+      <AbsolutePoint location="784,1014" />
+      <AbsolutePoint location="784,938" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="login_success;6,null,/webpages/searchjob.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="739,1125" />
+      <AbsolutePoint location="739,1174" />
+      <AbsolutePoint location="950,1174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/apply.do,deleteF,/fieldsystem/deleteField.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="353,552" />
@@ -62,16 +97,29 @@
       <AbsolutePoint location="1163,154" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/webpages/registryCheck.jsp,null,/relogin.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1374,950" />
+      <AbsolutePoint location="1374,738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/registryCheck.jsp,null,/relogin.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1367,1174" />
+      <AbsolutePoint location="1435,1174" />
+      <AbsolutePoint location="1435,738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/apply.do,applyF,/fieldsystem/applyField.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="201,554" />
       <AbsolutePoint location="201,650" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/form/hello.jsp,null,/hello.do,2" routingType="0">
+  <StrutsTransition id="login;6,null,/login.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="350,1174" />
-      <AbsolutePoint location="286,1174" />
+      <AbsolutePoint location="1318,487" />
+      <AbsolutePoint location="1286,1074" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/fieldsystem/updateField.jsp,null,/updateField.do,2" routingType="0">
@@ -82,30 +130,25 @@
       <AbsolutePoint location="855,354" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/form/hello.jsp,null,/hello.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="350,1174" />
+      <AbsolutePoint location="286,1174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/webpages/login.jsp,null,/login.do,2" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="413,1050" />
-      <AbsolutePoint location="413,918" />
+      <AbsolutePoint location="383,1050" />
+      <AbsolutePoint location="383,918" />
       <AbsolutePoint location="650,918" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="login_fail;6,null,/webpages/login_fail.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="206,1184" />
-      <AbsolutePoint location="350,1184" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/form/login.jsp,null,/login.do,2" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="149,1074" />
-      <AbsolutePoint location="784,1074" />
-      <AbsolutePoint location="784,938" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="login_success;6,null,/webpages/login_success.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="829,1084" />
-      <AbsolutePoint location="950,1084" />
+      <AbsolutePoint location="128,1150" />
+      <AbsolutePoint location="128,1114" />
+      <AbsolutePoint location="423,1114" />
+      <AbsolutePoint location="423,1150" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="error;6,null,/fieldsystem/error.jsp,1" routingType="0">
@@ -116,11 +159,23 @@
       <AbsolutePoint location="507,876" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="login_fail;6,null,/login_fail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="128,1187" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/apply.do,updateF,/fieldsystem/updateField.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="260,554" />
       <AbsolutePoint location="260,876" />
       <AbsolutePoint location="245,876" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="login_success;6,null,/searchjob.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="739,1087" />
+      <AbsolutePoint location="0,0" />
     </AutomaticBendpoints>
   </StrutsTransition>
 </FlowViewLayout>

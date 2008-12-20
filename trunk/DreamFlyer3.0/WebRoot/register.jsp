@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage="" %>
-<%@   taglib   prefix= "html "   uri= "http://struts.apache.org/tags-html"   %> 
-<%@   taglib   prefix= "bean "   uri= "http://struts.apache.org/tags-bean"   %> 
-<%@   taglib   prefix= "logic "   uri= "http://struts.apache.org/tags-logic"%> 
+<%@   taglib   prefix= "html "   uri= "http://struts.apache.org/tags-html "   %> 
+<%@   taglib   prefix= "bean "   uri= "http://struts.apache.org/tags-bean "   %> 
+<%@   taglib   prefix= "logic "   uri= "http://struts.apache.org/tags-logic "%> 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,7 +9,6 @@
 <head>
 <!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<meta http-equiv="refresh" content="2;url=register.jsp" />
 <title>SJTU JOB HUNTING HOMEPAGE</title>
 <link rel="stylesheet" href="index.css" type="text/css" />
 <link rel="stylesheet" href="menu.css" type="text/css" />
@@ -105,11 +104,9 @@
 				<p class="date"><label>姓名:</label>
 				  <input type="text"  width="85" name="textfield2" />
 				</p>
-				<p class="date"><label>原始密码:</label>
-				  <input type="text"  width="85" name="textfield2" />
-				</p>
-				<p class="date"><label>新密码:</label>
-				  <input type="text" width="85" name="textfield2" />
+				
+				<p class="date"><label>密码:</label>
+				  <input type="password" width="85" name="textfield2" />
 				</p>
               	<p class="date"><label>专业:</label>
 				  <input type="text"  width="85" name="textfield2" />
@@ -154,7 +151,45 @@
     	    </div>
 			 <div id="editCinfo">
 			    <h3>公司注册</h3>
-				对不起，您的注册失败了！
+				<p class="date">
+				   <label>名称:</label>
+				   <input type="text" width="85" name="textfield2" />
+				</p>
+				
+				<p class="date">
+				  <label>密码:</label>
+				  <input type="password" width="85" name="textfield2" />
+				</p>
+              	<p class="date">
+				<label>省份:</label>
+				  <input type="text" width="85" name="textfield2" />
+				</p>
+				<p class="date"><label>城市:</label>
+				  <input type="text"  width="85" name="textfield2" />
+				</p>
+				<p class="date"><label>具体地址:</label>
+				  <input type="text" width="185" name="textfield22" />
+</p>
+				<p class="date"><label>电话:</label>
+				  <input type="text" width="185" name="textfield2" />
+				</p>
+				<p class="date"><label>email:</label>
+				  <input type="text" width="185" name="textfield2" />
+				</p>
+				<p class="date"><label>主页:</label>
+				  <input type="text" width="185" name="textfield2" />
+				</p>
+			   <p class="date"><label>传真:</label>
+				 <input type="text"  value=""width="185" name="textfield23" />
+			   </p>
+				<p id="textarea" class="date"><label>公司描述:</label>
+				  <label>
+				  <textarea name="textarea" rows="10">无</textarea>
+				  </label>
+				</p>
+				<p class="date"> 
+				  <input type="submit" name="Submit2" value="确认提交" />
+				</p>
 			 </div>
       </div>
  </div>

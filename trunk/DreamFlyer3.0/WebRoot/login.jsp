@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage="" %>
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -79,7 +81,7 @@
      <input type="checkbox" name="CookieYN" id="CookieYN" value="1" /> 
 	 <a href="#" title="选择是否记录您的信息">记住我</a></label>
      <input name="lbtn" type="submit" class="button" value="登录" />
-     <input name="rbtn" type="submit" class="button" value="注册" />
+     <a href="registryCheck.jsp">[注册]</a>
   </div> 
   <div class="forgotpass"><a href="#">您忘记密码?</a></div> 
  </fieldset>

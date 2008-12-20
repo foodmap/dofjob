@@ -7,17 +7,15 @@
 <hibernate-configuration>
 
 	<session-factory>
-		<property name="connection.username">hujingfei</property>
-		<property name="connection.url">
-			jdbc:mysql://59.78.37.28:3307/dreamflyer
-		</property>
+		<property name="connection.username">root</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/dreamflyer</property>
 		<property name="dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
 		<property name="myeclipse.connection.profile">
 			mysql
 		</property>
-		<property name="connection.password">1</property>
+		<property name="connection.password">2877026</property>
 		<property name="connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property>

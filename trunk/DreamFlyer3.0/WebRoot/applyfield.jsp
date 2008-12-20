@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage="" %>
-<%@   taglib   prefix= "html "   uri= "http://struts.apache.org/tags-html"   %> 
-<%@   taglib   prefix= "bean "   uri= "http://struts.apache.org/tags-bean"   %> 
-<%@   taglib   prefix= "logic "   uri= "http://struts.apache.org/tags-logic"%> 
+<%@   taglib   prefix= "html "   uri= "http://struts.apache.org/tags-html "   %> 
+<%@   taglib   prefix= "bean "   uri= "http://struts.apache.org/tags-bean "   %> 
+<%@   taglib   prefix= "logic "   uri= "http://struts.apache.org/tags-logic "%> 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -96,53 +96,52 @@
 	  
 	  
 	<div id="list">
-	             <div id="editCinfo">
-			    <h3>更改公司信息</h3>
-				<p class="date">
-				   <label>名称:</label>
-				   <input type="text"  value="思科"width="85" name="textfield2" />
+	             <div id="apply_job">
+			    <h3>申请场地</h3>
+			
+				<p class="date"><label>地点:</label>
+				  <select name="select2">
+				    <option>请选择----------------------</option>
+				    <option>D楼100</option>
+				    <option>光彪楼多功能厅</option>
+				    <option>软件学院演讲厅</option>
+				    <option>闵行校区图书馆主馆</option>
+			      </select>
 				</p>
-				<p class="date">
-				<label>原始密码:</label>
-				  <input type="text"  value="1212"width="85" name="textfield2" />
+				<p class="date"><label>日期:</label>
+				  <input type="text"  width="30" name="textfield2" />年
+				  <input type="text"  width="25" name="textfield2" />月
+				  <input type="text"  width="25" name="textfield2" />日
 				</p>
-				<p class="date">
-				  <label>新密码:</label>
-				  <input type="text"  value="1122"width="85" name="textfield2" />
-				</p>
-              	<p class="date">
-				<label>省份:</label>
-				  <input type="text"  value="上海"width="85" name="textfield2" />
-				</p>
-				<p class="date"><label>城市:</label>
-				  <input type="text"  value="上海"width="85" name="textfield2" />
-				</p>
-				<p class="date"><label>具体地址:</label>
-				  <input type="text"  value="XXX路XXX广场西门3号楼"width="185" name="textfield22" />
-</p>
-				<p class="date"><label>电话:</label>
-				  <input type="text"  value="54745474"width="185" name="textfield2" />
-				</p>
-				<p class="date"><label>email:</label>
-				  <input type="text"  value="cisco@sjtu.edu.cn"width="185" name="textfield2" />
-				</p>
-				<p class="date"><label>主页:</label>
-				  <input type="text"  value="cisco.sjtu.edu.cn"width="185" name="textfield2" />
-				</p>
-				<p class="date"><label>传真:</label>
-				  <input type="text"  value=""width="185" name="textfield2" />
-				</p>
-				<p id="textarea" class="date"><label>公司描述:</label>
+				<p class="date"><label>开始时间:</label>
+				  <input type="text"  width="25" name="textfield2" />时
+				  <input type="text"  width="25" name="textfield2" />分
+			    </p>
+				<p class="date"><label>结束时间:</label>
+				  <input type="text"  width="25" name="textfield2" />时
+				  <input type="text"  width="25" name="textfield2" />分
+			    </p>
+				<p id="textarea" class="date"><label>其他要求:</label>
 				  <label>
-				  <textarea name="textarea" rows="10">无</textarea>
+				  <textarea name="textarea" rows="10">请输入</textarea>
 				  </label>
 				</p>
 				<p class="date"> 
-				  <input type="submit" name="Submit2" value="确认修改" />
+				  <input type="submit" name="Submit2" value="提交申请" />
 				</p>
+				
 			 </div>
-   	  </div>
- </div>
+		    	 <div id="filed_applied">
+		        <h3>已经提交的申请</h3>
+				 <applied_list>暂且未提交任何申请</applied_list>
+			    </div>
+				 <div id="field_replied">
+		        <h3>已经确认的申请</h3>
+				 <replied_list>暂且未提交任何申请</replied_list>
+			    </div>
+		      
+    </div>
+</div>
 
 
  <div id="right">

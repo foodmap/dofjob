@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage="" %>
-<%@   taglib   prefix= "html "   uri= "http://struts.apache.org/tags-html"   %> 
-<%@   taglib   prefix= "bean "   uri= "http://struts.apache.org/tags-bean"   %> 
-<%@   taglib   prefix= "logic "   uri= "http://struts.apache.org/tags-logic"%> 
+<%@   taglib   prefix= "html "   uri= "http://struts.apache.org/tags-html "   %> 
+<%@   taglib   prefix= "bean "   uri= "http://struts.apache.org/tags-bean "   %> 
+<%@   taglib   prefix= "logic "   uri= "http://struts.apache.org/tags-logic "%> 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,9 +13,7 @@
 <link rel="stylesheet" href="index.css" type="text/css" />
 <link rel="stylesheet" href="menu.css" type="text/css" />
 <link rel="stylesheet" href="login.css" type="text/css" />
-<link rel="stylesheet" href="jobresult.css" type="text/css" />
-<link rel="stylesheet" href="jobsearch.css" type="text/css" />
-<link rel="stylesheet" href="info.css" type="text/css" />
+<link rel="stylesheet" href="ad.css"  type="text/css"/>
 
 </head>
 <!-- The structure of this file is exactly the same as 2col_rightNav.html;
@@ -39,8 +37,8 @@
 		<li><a href="#"><span>找工作</span></a></li>
 		<li><a href="#"><span>公告新闻</span></a></li>
 		<li><a href="#"><span>就业指导</span></a></li>
-		<li id="current"><a href="#"><span>学生服务</span></a></li>
-		<li><a href="#"><span>公司服务</span></a></li>
+		<li><a href="#"><span>学生服务</span></a></li>
+		<li id="current"><a href="#"><span>公司服务</span></a></li>
 		<li><a href="#"><span>资源下载</span></a></li>
 		<li><a href="#"><span>关于我们</span></a></li>
     </ul>
@@ -51,19 +49,22 @@
 <div id="content">
  <div id="left">
   <div id="login">
+ 
  <fieldset>
 
-  <p><strong>欢迎您,Robert同学 </strong></p>
+  <p><strong>欢迎您,思科公司 </strong></p>
   <p>       
     <input type="submit" name="Submit" value="注销登陆" />
   </p>
   <div> 
 		<ul id="cmenu"> 
-		<li><a href="home.htm">更改个人信息</a></li> 
-		<li><a href="about.htm">找工作</a></li> 
-		<li><a href="products.htm">工作收藏夹</a></li> 
-		<li><a href="contact.htm">文章检索</a></li> 
-		<li><a href="contact.htm">我的邮箱</a></li>
+		<li><a href="home.htm">更改公司信息</a></li> 
+		<li><a href="about.htm">添加职位</a></li> 
+		<li><a href="products.htm">编辑职位</a></li> 
+		<li><a href="services.htm">申请场地</a></li> 
+		<li><a href="contact.htm">场地记录</a></li> 
+		<li><a href="contact.htm">学生列表</a></li> 
+		<li><a href="contact.htm">邮箱</a></li>
 		</ul> 
 </div> 
 
@@ -85,85 +86,89 @@
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
-   </fieldset>
+  </fieldset>
   </div>
+  
 </div>
 
 
  <div id="middle">
-   <div id="jobsearch">
-	            <div id="jobselect">
-			    <h3><span>找工作</span></h3>
-				<p class="date"><label>选择行业:</label>
+   
+	  
+	  
+	<div id="list">
+	             <div id="jobadd">
+			    <h3><span>增加职位</span></h3>
+				<p class="date">选择行业:
 				  <select name="select">
 				    <option>请选择----------------------</option>
-				    <option>IT</option>
+				    <option>计算机软件</option>
+				    <option>计算机硬件</option>
+				    <option>媒体/出版/图书</option>
+				    <option>教育/培训</option>
+				    <option>机械/器材/重工业</option>
 				    <option>化工</option>
+				    <option>能源/开采/冶炼</option>
 			      </select>
 				</p>
-              	<p class="date"><label>选择职能:</label>
-				  <select name="select">
+				<p class="date">选择职能:
+				  <select name="select2">
 				    <option>请选择----------------------</option>
+				    <option>软件工程师</option>
+				    <option>测试师</option>
+				    <option>系统分析师</option>
+				    <option>系统架构师</option>
 				    <option>项目经理</option>
-				    <option>会计师</option>
+				    <option>技术顾问</option>
+				    <option>总经理</option>
+				    <option>首席技术总监</option>
 			      </select>
 				</p>
-				<p class="date"><label>选择学历:</label>
-				  <select name="select">
-				    <option>请选择----------------------</option>
-				    <option>硕士</option>
-				    <option>博士</option>
-			      </select>
+				<p class="date">所需学历:
+				  <input type="text" name="textfield2" />
 				</p>
-				<p class="date"><label>工作年限:</label>
-				  <select name="select">
-				    <option>请选择----------------------</option>
-				    <option>1</option>
-				    <option>2</option>
-			      </select>
+				<p class="date">所需经验:
+				  <input type="text" name="textfield3" />
+				年</p>
+				<p class="date">所需性别:
+				  <label>男
+				  <input name="radiobutton" type="radio" value="radiobutton" />
+				  </label>
+				  <label>女
+				  <input name="radiobutton" type="radio" value="radiobutton" />
+				  </label>
 				</p>
-				<p class="date"><label>工作地点:</label>
-				  <select name="select">
-				    <option>请选择----------------------</option>
-				    <option>上海</option>
-				    <option>北京</option>
-			      </select>
+				<p class="date">其他要求:
+				  <label>
+				  <textarea name="textarea">请输入</textarea>
+				  </label>
 				</p>
-                  
+				<p class="date">职位描述:
+				  <label>
+				  <textarea name="textarea2">请输入</textarea>
+				  </label>
+				</p>
+				<p class="date"> 
+				  <input type="submit" name="Submit2" value="确认添加" />
+				</p>
 				
+			 </div>
+		    	 <div id="job_added">
+		        <h3><span>已添加的职位</span></h3>
+				 <added_list>无</added_list>
 			    </div>
-   	    <div id="jobresult">
-		        <h3><span>搜索结果</span></h3>
-		     <ui>   
-         	<li class="jobdescript"> 职位描述 </li>
-			<li class="jobdetail"> 行业: 计算机 职能: 软件工程师 思科 上海 学历要求: 大四 经验要求: 0年 性别要求: null 发布日期: 30 Dec 2008 16:00:00 GMT 其他要求: null</li>
-
-			<li class="jobdescript"> 职位描述 </li>
-			<li class="jobdetail"> 行业: 计算机 职能: 软件工程师 思科 上海 学历要求: 大四 经验要求: 0年 性别要求: null 发布日期: 30 Dec 2008 16:00:00 GMT 其他要求: null</li>
-			<li class="jobdescript"> 职位描述 </li>
-			<li class="jobdetail"> 行业: 计算机 职能: 软件工程师 思科 上海 学历要求: 大四 经验要求: 0年 性别要求: null 发布日期: 30 Dec 2008 16:00:00 GMT 其他要求: null</li>
-			<li class="jobdescript"> 职位描述 </li>
-			<li class="jobdetail"> 行业: 计算机 职能: 软件工程师 思科 上海 学历要求: 大四 经验要求: 0年 性别要求: null 发布日期: 30 Dec 2008 16:00:00 GMT 其他要求: null</li>
-			<li class="jobdescript"> 职位描述 </li>
-			<li class="jobdetail"> 行业: 计算机 职能: 软件工程师 思科 上海 学历要求: 大四 经验要求: 0年 性别要求: null 发布日期: 30 Dec 2008 16:00:00 GMT 其他要求: null</li>
-			<li class="jobdescript"> 职位描述 </li>
-			<li class="jobdetail"> 行业: 计算机 职能: 软件工程师 思科 上海 学历要求: 大四 经验要求: 0年 性别要求: null 发布日期: 30 Dec 2008 16:00:00 GMT 其他要求: null</li>
-			<li class="jobdescript"> 职位描述 </li>
-			<li class="jobdetail"> 行业: 计算机 职能: 软件工程师 思科 上海 学历要求: 大四 经验要求: 0年 性别要求: null 发布日期: 30 Dec 2008 16:00:00 GMT 其他要求: null</li>
-		  </ui>
-    	  </div>
-		 
+		      
     </div>
 </div>
 
 
  <div id="right">
-   <div id="datebar">
-     <form>
-       <h3>今天是2009年1月12号</h3>
-     </form>
-   </div>
-   <div id="rightlinks">
+    <div id="datebar">
+	<form>
+	<h3>今天是2009年1月12号</h3>
+	</form>
+  </div>
+  <div id="rightlinks">
   <div class="relatedLinks">
     <h3>项目推荐</h3>
     <ul>
