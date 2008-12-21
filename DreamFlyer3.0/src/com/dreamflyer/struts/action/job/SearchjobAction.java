@@ -46,8 +46,8 @@ public class SearchjobAction extends Action {
 		String grade = myform.getGrade();
 		String city = myform.getCity();
 		int workyears = Integer.parseInt(myform.getWorkyears());
-		long industryid = Long.parseLong(myform.getIndustryid());
-		long functionid = Long.parseLong(myform.getFunctionid());
+		int industryid = Integer.parseInt(myform.getIndustryid());
+		int functionid = Integer.parseInt(myform.getFunctionid());
 		List result = applyer.getJob(grade, industryid, functionid, workyears, sex, city);
 		request.setAttribute("jobresult", result);
 		return null;

@@ -8,13 +8,13 @@
 
 	<session-factory>
 		<property name="connection.username">dreamflyer</property>
-		<property name="connection.url">jdbc:mysql://59.78.37.168:3306/dreamflyer</property>
+		<property name="connection.url">
+			jdbc:mysql://192.168.0.69:3307/dreamflyer
+		</property>
 		<property name="dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
-		<property name="myeclipse.connection.profile">
-			mysql
-		</property>
+		<property name="myeclipse.connection.profile">mysql</property>
 		<property name="connection.password">dreamflyer</property>
 		<property name="connection.driver_class">
 			com.mysql.jdbc.Driver
@@ -29,6 +29,8 @@
 		<mapping resource="com/dreamflyer/user/Manager.hbm.xml" />
 		<mapping resource="com/dreamflyer/user/Student.hbm.xml" />
 		<mapping resource="com/dreamflyer/jobsystem/Studentjob.hbm.xml" />
+		<mapping
+			resource="com/dreamflyer/jobsystem/Industryfunc.hbm.xml" />
 
 	</session-factory>
 

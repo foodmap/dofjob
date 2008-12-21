@@ -6,14 +6,12 @@ import com.dreamflyer.jobsystem.interfaces.iManageJob;
 
 public class JobManagerFactory implements iJobManagerFactory{
 
-	private JobManagerFactory(){
-		
-	}
+	
 	
 	public iManageJob getManager() {
 		iManageJob manager = null;
 		try {
-			manager = (iManageJob)(Class.forName("JobManager").newInstance());
+			manager = (iManageJob)(Class.forName("com.dreamflyer.jobsystem.factory.JobManager").newInstance());
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

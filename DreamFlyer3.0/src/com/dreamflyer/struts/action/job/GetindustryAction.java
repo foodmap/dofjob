@@ -42,11 +42,13 @@ public class GetindustryAction extends Action {
 	 */
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
-		response.setContentType("text/xml");
+		response.setContentType("text/xml;charset=utf-8");
 		SearchjobForm myform = (SearchjobForm) form;
 		iJobApplyerFactory f = JobSystemFactory.getApplyer();
 		iApplyJob applyer = f.getApplyer();
+		//System.out.println("haha1");
 		List result = applyer.getIndustry();
+		//System.out.println("haha2");
 		try {
 			StringBuffer buffer = new StringBuffer();
 			buffer.append("<industries>");
@@ -60,8 +62,8 @@ public class GetindustryAction extends Action {
 			}
 			buffer.append("</industries>");
 			
-			pw.print(buffer);
-			
+			pw.print(buffer.toString());
+			//System.out.println(buffer.toString());
 			pw.flush();
 			pw.close();
 		} catch (IOException e) {

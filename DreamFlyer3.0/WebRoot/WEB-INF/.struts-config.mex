@@ -8,6 +8,9 @@
   <StrutsActivity path="/logout.do" location="350,1250" dimension="296,146" />
   <StrutsActivity path="/relogin.do" location="1250,650" dimension="278,88" />
   <StrutsActivity path="/studentRegister.do" location="1550,850" dimension="321,88" />
+  <StrutsActivity path="/searchjob.do" location="650,1450" dimension="303,104" />
+  <StrutsActivity path="/getindustry.do" location="1550,1450" dimension="333,104" />
+  <StrutsActivity path="/getfunction.do" location="350,1650" dimension="311,104" />
   <StrutsActivity path="error;6" location="650,450" dimension="168,87" />
   <StrutsActivity path="login_success;6" location="650,1050" dimension="179,75" />
   <StrutsActivity path="login_fail;6" location="50,1150" dimension="156,75" />
@@ -24,8 +27,10 @@
   <StrutsActivity path="/login.jsp" location="1250,1050" dimension="73,49" />
   <StrutsActivity path="/registryCheck.jsp" location="1250,1150" dimension="117,49" />
   <StrutsActivity path="/student_registry.jsp" location="950,1350" dimension="131,49" />
-  <StrutsActivity path="/fieldsystem/error.jsp" location="350,850" dimension="157,53" />
+  <StrutsActivity path="/jobsystem/jobresult.jsp" location="1250,1450" dimension="172,53" />
   <StrutsActivity path="/searchjob.jsp" location="950,1250" dimension="146,86" />
+  <StrutsActivity path="/jobsystem/functionresult.jsp" location="950,1650" dimension="199,53" />
+  <StrutsActivity path="/fieldsystem/error.jsp" location="350,850" dimension="157,53" />
   <StrutsActivity path="/login_fail.jsp" location="1250,1250" dimension="93,49" />
   <StrutsActivity path="/studentreg_success.jsp" location="1250,1350" dimension="147,49" />
   <StrutsActivity path="/studentreg_fail.jsp" location="350,1450" dimension="146,81" />
@@ -38,12 +43,8 @@
   <StrutsActivity path="/form/login.jsp" location="50,1050" dimension="99,49" />
   <StrutsActivity path="/webpages/login_success.jsp" location="950,1050" dimension="169,49" />
   <StrutsActivity path="/form/relogin.jsp" location="1250,850" dimension="109,49" />
-  <StrutsActivity path="/searchjob.do" location="650,1450" dimension="303,104" />
-  <StrutsActivity path="/jobsystem/jobresult.jsp" location="1250,1450" dimension="172,53" />
-  <StrutsActivity path="/getindustry.do" location="1550,1450" dimension="333,104" />
   <StrutsActivity path="/jobsystem/industryresult.jsp" location="50,1550" dimension="199,53" />
-  <StrutsActivity path="/getfunction.do" location="350,1650" dimension="311,104" />
-  <StrutsActivity path="/jobsystem/functionresult.jsp" location="950,1650" dimension="199,53" />
+  <StrutsActivity path="/getfunctions.do" location="1250,1650" dimension="339,104" />
   <StrutsTransition id="student_registry;6,null,/student_registry.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="226,1418" />
@@ -78,13 +79,6 @@
     <AutomaticBendpoints>
       <AbsolutePoint location="953,1488" />
       <AbsolutePoint location="1250,1488" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/getindustry.do,industryresult,/jobsystem/industryresult.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="1716,1554" />
-      <AbsolutePoint location="1716,1576" />
-      <AbsolutePoint location="249,1576" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/deleteField.do,delete_succ,/fieldsystem/delete_succ.jsp,1" routingType="0">
@@ -171,18 +165,19 @@
       <AbsolutePoint location="855,354" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/searchjob.do,getjob,/searchjob.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="771,1450" />
-      <AbsolutePoint location="771,1274" />
-      <AbsolutePoint location="974,1293" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
   <StrutsTransition id="/searchjob.jsp,null,/searchjob.do,2" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="950,1323" />
       <AbsolutePoint location="801,1323" />
       <AbsolutePoint location="801,1450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/searchjob.jsp,null,/getfunctions.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1096,1284" />
+      <AbsolutePoint location="1193,1284" />
+      <AbsolutePoint location="1193,1688" />
+      <AbsolutePoint location="1250,1688" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="error;6,null,/fieldsystem/error.jsp,1" routingType="0">

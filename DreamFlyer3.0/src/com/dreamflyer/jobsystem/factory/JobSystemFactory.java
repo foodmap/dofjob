@@ -7,14 +7,12 @@ public class JobSystemFactory {
 	private static iJobApplyerFactory applyer = null;
 	private static iJobManagerFactory manager = null;
 	
-	private JobSystemFactory(){
-		
-	}
+	
 	
 	public static iJobApplyerFactory getApplyer(){
 		if(applyer==null){
 			try {
-				applyer=(iJobApplyerFactory)(Class.forName("JobApplyerFactory").newInstance());
+				applyer=(iJobApplyerFactory)(Class.forName("com.dreamflyer.jobsystem.factory.JobApplyerFactory").newInstance());
 			} catch (InstantiationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
