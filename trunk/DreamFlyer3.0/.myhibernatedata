@@ -1,5 +1,5 @@
 #
-#Mon Dec 15 22:40:32 CST 2008
+#Sun Dec 21 21:46:31 CST 2008
 genBasicCompId=false
 sessionFactoryName=com.dreamflyer.hibernate.HibernateSessionFactory
 profile=

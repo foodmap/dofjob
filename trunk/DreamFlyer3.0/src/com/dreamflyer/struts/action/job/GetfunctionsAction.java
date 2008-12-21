@@ -19,17 +19,16 @@ import com.dreamflyer.jobsystem.factory.JobSystemFactory;
 import com.dreamflyer.jobsystem.interfaces.iApplyJob;
 import com.dreamflyer.jobsystem.interfaces.iJobApplyerFactory;
 import com.dreamflyer.struts.form.job.GetfunctionForm;
-import com.dreamflyer.struts.form.job.SearchjobForm;
+import com.dreamflyer.struts.form.job.GetfunctionsForm;
 
 /** 
  * MyEclipse Struts
  * Creation date: 12-21-2008
  * 
  * XDoclet definition:
- * @struts.action validate="true"
- * @struts.action-forward name="functionresult" path="/jobsystem/functionresult.jsp"
+ * @struts.action path="/getfunctions" name="getfunctionsForm" input="/searchjob.jsp" scope="request" validate="true"
  */
-public class GetfunctionAction extends Action {
+public class GetfunctionsAction extends Action {
 	/*
 	 * Generated Methods
 	 */
@@ -45,7 +44,7 @@ public class GetfunctionAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("aaa");
-		GetfunctionForm myform = (GetfunctionForm)form;
+		GetfunctionsForm myform = (GetfunctionsForm) form;// TODO Auto-generated method stub
 		response.setContentType("text/xml;charset=utf-8");
 		
 		iJobApplyerFactory f = JobSystemFactory.getApplyer();

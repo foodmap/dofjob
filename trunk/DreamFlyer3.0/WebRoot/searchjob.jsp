@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage="" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" import="java.sql.*" errorPage="" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
@@ -11,6 +11,97 @@
 <!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 <title>SJTU JOB HUNTING HOMEPAGE</title>
+<script type="text/javascript">
+ var xmlHttp;
+ function addLoadEvent(func) 
+{
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') 
+  {
+    window.onload = func;
+  } 
+  else 
+  {
+    window.onload = function() 
+    {
+      if (oldonload) 
+     {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+
+addLoadEvent(function() {
+  /* more code to run on page load */ 
+  loadIndustry();
+}
+);
+
+		function createXmlHttp(){
+		   if(window.XMLHttpRequest){
+		     xmlHttp=new XMLHttpRequest();
+		     
+		   }else {xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+		   }
+		}
+		function loadIndustry(){
+		  createXmlHttp();
+		  xmlHttp.onreadystatechange=showIndustry;
+		  xmlHttp.open("GET","getindustry.do?ts="+new Date().getTime(),true);
+		  xmlHttp.send(null);
+		
+		}
+		function showIndustry(){
+		  if(xmlHttp.readyState==4){
+		  if(xmlHttp.status==200){
+		  var industries=xmlHttp.responseXML.getElementsByTagName("industry");
+		   var selector=  document.getElementById("industry");
+        
+		   for(var i=0;i<industries.length;i++){
+		    option = document.createElement("option");
+		      var idnode=industries[i].childNodes[0];
+		      var namenode=industries[i].childNodes[1];
+		      option.setAttribute("value",idnode.firstChild.nodeValue);
+		   option.appendChild(document.createTextNode(namenode.firstChild.nodeValue)); 
+		   selector.appendChild(option);
+		   }
+		  }else{
+		    alert("Error");
+		  }
+		}
+		}
+		
+		function loadFunction(){
+		  var industryid = document.getElementById("industry").value;
+		   createXmlHttp();
+		  
+		  xmlHttp.onreadystatechange=showFunction;
+		  xmlHttp.open("GET","getfunctions.do?industryid="+industryid+"&ts="+new Date().getTime(),true);
+		  xmlHttp.send(null);
+		}
+		
+	  function showFunction(){
+		  if(xmlHttp.readyState==4){
+		  if(xmlHttp.status==200){
+		  var functions=xmlHttp.responseXML.getElementsByTagName("function");
+		   var selector=  document.getElementById("function");
+
+		   for(var i=0;i<functions.length;i++){
+		    option = document.createElement("option");
+		      var idnode=functions[i].childNodes[0];
+		      var namenode=functions[i].childNodes[1];
+		      option.setAttribute("value",idnode.firstChild.nodeValue);
+		   option.appendChild(document.createTextNode(namenode.firstChild.nodeValue)); 
+		   selector.appendChild(option);
+		   }
+		  }else{
+		    alert("Error");
+		  }
+		}
+		}
+  </script>
 <link rel="stylesheet" href="index.css" type="text/css" />
 <link rel="stylesheet" href="menu.css" type="text/css" />
 <link rel="stylesheet" href="login.css" type="text/css" />
@@ -34,14 +125,14 @@
   </div>
   <div id="navBar">
     <ul>
-		<li><a href="#"><span>Ö÷Ò³</span></a></li>
-		<li><a href="#"><span>ÕÒ¹¤×÷</span></a></li>
-		<li><a href="#"><span>¹«¸æÐÂÎÅ</span></a></li>
-		<li><a href="#"><span>¾ÍÒµÖ¸µ¼</span></a></li>
-		<li id="current"><a href="#"><span>Ñ§Éú·þÎñ</span></a></li>
-		<li><a href="#"><span>¹«Ë¾·þÎñ</span></a></li>
-		<li><a href="#"><span>×ÊÔ´ÏÂÔØ</span></a></li>
-		<li><a href="#"><span>¹ØÓÚÎÒÃÇ</span></a></li>
+		<li><a href="#"><span>ä¸»é¡µ</span></a></li>
+		<li><a href="#"><span>æ‰¾å·¥ä½œ</span></a></li>
+		<li><a href="#"><span>å…¬å‘Šæ–°é—»</span></a></li>
+		<li><a href="#"><span>å°±ä¸šæŒ‡å¯¼</span></a></li>
+		<li id="current"><a href="#"><span>å­¦ç”ŸæœåŠ¡</span></a></li>
+		<li><a href="#"><span>å…¬å¸æœåŠ¡</span></a></li>
+		<li><a href="#"><span>èµ„æºä¸‹è½½</span></a></li>
+		<li><a href="#"><span>å…³äºŽæˆ‘ä»¬</span></a></li>
     </ul>
    </div>
 
@@ -52,22 +143,13 @@
   <div id="login">
  <fieldset>
 
-  <p><strong>»¶Ó­Äú, <bean:write name="current_user" property="name" scope="session"/> Í¬Ñ§ </strong></p>
-  <table width="196" height="200" border="0">
-    <tr>
-      <td width="11">&nbsp;</td>
-      <td width="156"><img src="photo/<bean:write name="current_user" property="photo" scope="session"/>.jpg" width="150" height="200" /></td>
-      <td width="15">&nbsp;</td>
-    </tr>
-  </table>
-  <p><a href="logout.do">[×¢Ïú]</a>  </p>
   <div> 
 		<ul id="cmenu"> 
-		<li><a href="home.htm">¸ü¸Ä¸öÈËÐÅÏ¢</a></li> 
-		<li><a href="about.htm">ÕÒ¹¤×÷</a></li> 
-		<li><a href="products.htm">¹¤×÷ÊÕ²Ø¼Ð</a></li> 
-		<li><a href="contact.htm">ÎÄÕÂ¼ìË÷</a></li> 
-		<li><a href="contact.htm">ÎÒµÄÓÊÏä</a></li>
+		<li><a href="home.htm">æ›´æ”¹ä¸ªäººä¿¡æ¯</a></li> 
+		<li><a href="about.htm">æ‰¾å·¥ä½œ</a></li> 
+		<li><a href="products.htm">å·¥ä½œæ”¶è—å¤¹</a></li> 
+		<li><a href="contact.htm">æ–‡ç« æ£€ç´¢</a></li> 
+		<li><a href="contact.htm">æˆ‘çš„é‚®ç®±</a></li>
 		</ul> 
 </div> 
 
@@ -97,63 +179,67 @@
  <div id="middle">
    <div id="jobsearch">
 	            <div id="jobselect">
-			    <h3><span>ÕÒ¹¤×÷</span></h3>
-				<p class="date"><label>Ñ¡ÔñÐÐÒµ:</label>
-				  <select name="select">
-				    <option>ÇëÑ¡Ôñ----------------------</option>
-				    <option>IT</option>
-				    <option>»¯¹¤</option>
+			    <h3><span>æ‰¾å·¥ä½œ</span></h3>
+				<p class="date"><label>é€‰æ‹©è¡Œä¸š:</label>
+				  <select id="industry" name="select" onchange="loadFunction();">
+				    <option value="">è¯·é€‰æ‹©----------------------</option>
 			      </select>
 				</p>
-              	<p class="date"><label>Ñ¡ÔñÖ°ÄÜ:</label>
-				  <select name="select">
-				    <option>ÇëÑ¡Ôñ----------------------</option>
-				    <option>ÏîÄ¿¾­Àí</option>
-				    <option>»á¼ÆÊ¦</option>
+              	<p class="date"><label>é€‰æ‹©èŒèƒ½:</label>
+				  <select id="function" name="select">
+				    <option value="">è¯·é€‰æ‹©----------------------</option>
 			      </select>
 				</p>
-				<p class="date"><label>Ñ¡ÔñÑ§Àú:</label>
-				  <select name="select">
-				    <option>ÇëÑ¡Ôñ----------------------</option>
-				    <option>Ë¶Ê¿</option>
-				    <option>²©Ê¿</option>
+				<p class="date"><label>é€‰æ‹©å­¦åŽ†:</label>
+				  <select id="grade" name="select">
+				    <option value="">è¯·é€‰æ‹©----------------------</option>
+				    <option>æœ¬ç§‘</option>
+				    <option>ç¡•å£«</option>
+				    <option>åšå£«</option>
 			      </select>
 				</p>
-				<p class="date"><label>¹¤×÷ÄêÏÞ:</label>
-				  <select name="select">
-				    <option>ÇëÑ¡Ôñ----------------------</option>
+				<p class="date"><label>å·¥ä½œå¹´é™:</label>
+				  <select id="workyears" name="select">
+				    <option value="">è¯·é€‰æ‹©----------------------</option>
 				    <option>1</option>
 				    <option>2</option>
 			      </select>
 				</p>
-				<p class="date"><label>¹¤×÷µØµã:</label>
-				  <select name="select">
-				    <option>ÇëÑ¡Ôñ----------------------</option>
-				    <option>ÉÏº£</option>
-				    <option>±±¾©</option>
+				<p class="date"><label>å·¥ä½œåœ°ç‚¹:</label>
+				  <select id="city" name="select">
+				    <option value="">è¯·é€‰æ‹©----------------------</option>
+				    <option>ä¸Šæµ·</option>
+				    <option>åŒ—äº¬</option>
+			      </select>
+				</p>
+				<p class="date"><label>å·¥ä½œæ€§åˆ«:</label>
+				  <select id="sex" name="select">
+				    <option value="">è¯·é€‰æ‹©----------------------</option>
+				    <option>ç”·</option>
+				    <option>å¥³</option>
 			      </select>
 				</p>
                   
 				
 			    </div>
    	    <div id="jobresult">
-		        <h3><span>ËÑË÷½á¹û</span></h3>
+		        <h3><span>æœç´¢ç»“æžœ</span></h3>
 		     <ui>   
-         	<li class="jobdescript"> Ö°Î»ÃèÊö </li>
-			<li class="jobdetail"> ÐÐÒµ: ¼ÆËã»ú Ö°ÄÜ: Èí¼þ¹¤³ÌÊ¦ Ë¼¿Æ ÉÏº£ Ñ§ÀúÒªÇó: ´óËÄ ¾­ÑéÒªÇó: 0Äê ÐÔ±ðÒªÇó: null ·¢²¼ÈÕÆÚ: 30 Dec 2008 16:00:00 GMT ÆäËûÒªÇó: null</li>
+         	<li class="jobdescript"> èŒä½æè¿° </li>
+			<li class="jobdetail"> è¡Œä¸š: è®¡ç®—æœº èŒèƒ½: è½¯ä»¶å·¥ç¨‹å¸ˆ æ€ç§‘ ä¸Šæµ· å­¦åŽ†è¦æ±‚: å¤§å›› ç»éªŒè¦æ±‚: 0å¹´ æ€§åˆ«è¦æ±‚: null å‘å¸ƒæ—¥æœŸ: 30 Dec 2008 16:00:00 GMT å…¶ä»–è¦æ±‚: null</li>
 
-			<li class="jobdescript"> Ö°Î»ÃèÊö </li>
-			<li class="jobdetail"> ÐÐÒµ: ¼ÆËã»ú Ö°ÄÜ: Èí¼þ¹¤³ÌÊ¦ Ë¼¿Æ ÉÏº£ Ñ§ÀúÒªÇó: ´óËÄ ¾­ÑéÒªÇó: 0Äê ÐÔ±ðÒªÇó: null ·¢²¼ÈÕÆÚ: 30 Dec 2008 16:00:00 GMT ÆäËûÒªÇó: null</li>
-			<li class="jobdescript"> Ö°Î»ÃèÊö </li>
-			<li class="jobdetail"> ÐÐÒµ: ¼ÆËã»ú Ö°ÄÜ: Èí¼þ¹¤³ÌÊ¦ Ë¼¿Æ ÉÏº£ Ñ§ÀúÒªÇó: ´óËÄ ¾­ÑéÒªÇó: 0Äê ÐÔ±ðÒªÇó: null ·¢²¼ÈÕÆÚ: 30 Dec 2008 16:00:00 GMT ÆäËûÒªÇó: null</li>
-			<li class="jobdescript"> Ö°Î»ÃèÊö </li>
-			<li class="jobdetail"> ÐÐÒµ: ¼ÆËã»ú Ö°ÄÜ: Èí¼þ¹¤³ÌÊ¦ Ë¼¿Æ ÉÏº£ Ñ§ÀúÒªÇó: ´óËÄ ¾­ÑéÒªÇó: 0Äê ÐÔ±ðÒªÇó: null ·¢²¼ÈÕÆÚ: 30 Dec 2008 16:00:00 GMT ÆäËûÒªÇó: null</li>
-			<li class="jobdescript"> Ö°Î»ÃèÊö </li>
-			<li class="jobdetail"> ÐÐÒµ: ¼ÆËã»ú Ö°ÄÜ: Èí¼þ¹¤³ÌÊ¦ Ë¼¿Æ ÉÏº£ Ñ§ÀúÒªÇó: ´óËÄ ¾­ÑéÒªÇó: 0Äê ÐÔ±ðÒªÇó: null ·¢²¼ÈÕÆÚ: 30 Dec 2008 16:00:00 GMT ÆäËûÒªÇó: null</li>
-			<li class="jobdescript"> Ö°Î»ÃèÊö </li>
-			<li class="jobdetail"> ÐÐÒµ: ¼ÆËã»ú Ö°ÄÜ: Èí¼þ¹¤³ÌÊ¦ Ë¼¿Æ ÉÏº£ Ñ§ÀúÒªÇó: ´óËÄ ¾­ÑéÒªÇó: 0Äê ÐÔ±ðÒªÇó: null ·¢²¼ÈÕÆÚ: 30 Dec 2008 16:00:00 GMT ÆäËûÒªÇó: null</li>
-			<li class="jobdescript"> Ö°Î»ÃèÊö </li>
-			<li class="jobdetail"> ÐÐÒµ: ¼ÆËã»ú Ö°ÄÜ: Èí¼þ¹¤³ÌÊ¦ Ë¼¿Æ ÉÏº£ Ñ§ÀúÒªÇó: ´óËÄ ¾­ÑéÒªÇó: 0Äê ÐÔ±ðÒªÇó: null ·¢²¼ÈÕÆÚ: 30 Dec 2008 16:00:00 GMT ÆäËûÒªÇó: null</li>
+			<li class="jobdescript"> èŒä½æè¿° </li>
+			<li class="jobdetail"> è¡Œä¸š: è®¡ç®—æœº èŒèƒ½: è½¯ä»¶å·¥ç¨‹å¸ˆ æ€ç§‘ ä¸Šæµ· å­¦åŽ†è¦æ±‚: å¤§å›› ç»éªŒè¦æ±‚: 0å¹´ æ€§åˆ«è¦æ±‚: null å‘å¸ƒæ—¥æœŸ: 30 Dec 2008 16:00:00 GMT å…¶ä»–è¦æ±‚: null</li>
+			<li class="jobdescript"> èŒä½æè¿° </li>
+			<li class="jobdetail"> è¡Œä¸š: è®¡ç®—æœº èŒèƒ½: è½¯ä»¶å·¥ç¨‹å¸ˆ æ€ç§‘ ä¸Šæµ· å­¦åŽ†è¦æ±‚: å¤§å›› ç»éªŒè¦æ±‚: 0å¹´ æ€§åˆ«è¦æ±‚: null å‘å¸ƒæ—¥æœŸ: 30 Dec 2008 16:00:00 GMT å…¶ä»–è¦æ±‚: null</li>
+			<li class="jobdescript"> èŒä½æè¿° </li>
+			<li class="jobdetail"> è¡Œä¸š: è®¡ç®—æœº èŒèƒ½: è½¯ä»¶å·¥ç¨‹å¸ˆ æ€ç§‘ ä¸Šæµ· å­¦åŽ†è¦æ±‚: å¤§å›› ç»éªŒè¦æ±‚: 0å¹´ æ€§åˆ«è¦æ±‚: null å‘å¸ƒæ—¥æœŸ: 30 Dec 2008 16:00:00 GMT å…¶ä»–è¦æ±‚: null</li>
+			<li class="jobdescript"> èŒä½æè¿° </li>
+			<li class="jobdetail"> è¡Œä¸š: è®¡ç®—æœº èŒèƒ½: è½¯ä»¶å·¥ç¨‹å¸ˆ æ€ç§‘ ä¸Šæµ· å­¦åŽ†è¦æ±‚: å¤§å›› ç»éªŒè¦æ±‚: 0å¹´ æ€§åˆ«è¦æ±‚: null å‘å¸ƒæ—¥æœŸ: 30 Dec 2008 16:00:00 GMT å…¶ä»–è¦æ±‚: null</li>
+			<li class="jobdescript"> èŒä½æè¿° </li>
+			<li class="jobdetail"> è¡Œä¸š: è®¡ç®—æœº èŒèƒ½: è½¯ä»¶å·¥ç¨‹å¸ˆ æ€ç§‘ ä¸Šæµ· å­¦åŽ†è¦æ±‚: å¤§å›› ç»éªŒè¦æ±‚: 0å¹´ æ€§åˆ«è¦æ±‚: null å‘å¸ƒæ—¥æœŸ: 30 Dec 2008 16:00:00 GMT å…¶ä»–è¦æ±‚: null</li>
+			<li class="jobdescript"> èŒä½æè¿° </li>
+			<li class="jobdetail"> è¡Œä¸š: è®¡ç®—æœº èŒèƒ½: è½¯ä»¶å·¥ç¨‹å¸ˆ æ€ç§‘ ä¸Šæµ· å­¦åŽ†è¦æ±‚: å¤§å›› ç»éªŒè¦æ±‚: 0å¹´ æ€§åˆ«è¦æ±‚: null å‘å¸ƒæ—¥æœŸ: 30 Dec 2008 16:00:00 GMT å…¶ä»–è¦æ±‚: null</li>
 		  </ui>
     	  </div>
 		 
@@ -164,12 +250,12 @@
  <div id="right">
    <div id="datebar">
      <form>
-       <h3>½ñÌìÊÇ2009Äê1ÔÂ12ºÅ</h3>
+       <h3>ä»Šå¤©æ˜¯2009å¹´1æœˆ12å·</h3>
      </form>
    </div>
    <div id="rightlinks">
   <div class="relatedLinks">
-    <h3>ÏîÄ¿ÍÆ¼ö</h3>
+    <h3>é¡¹ç›®æŽ¨è</h3>
     <ul>
       <li><a href="#">Related Link</a></li>
       <li><a href="#">Related Link</a></li>
@@ -180,7 +266,7 @@
     </ul>
   </div>
   <div class="relatedLinks">
-    <h3>ÈÈÃÅÎÄÕÂ</h3>
+    <h3>çƒ­é—¨æ–‡ç« </h3>
     <ul>
       <li><a href="#">Related Link</a></li>
       <li><a href="#">Related Link</a></li>
@@ -191,7 +277,7 @@
     </ul>
   </div>
  <div class="relatedLinks">
-    <h3>ÓÑÇéÁ´½Ó</h3>
+    <h3>å‹æƒ…é“¾æŽ¥</h3>
     <ul>
       <li><a href="#">Related Link</a></li>
       <li><a href="#">Related Link</a></li>
@@ -205,11 +291,11 @@
 </div>
 </div>
 <div id="siteInfo"> 
-    <a href="#">ÍøÕ¾µ¼º½</a> 
-	<a href="#">¹ØÓÚÎÒÃÇ</a> 
-	<a href="#">ÒþË½±£»¤</a> 
-	<a href="#">Ìõ¿îÉùÃ÷</a>
-	<a href="#">ÖÃ¶¥</a> 
+    <a href="#">ç½‘ç«™å¯¼èˆª</a> 
+	<a href="#">å…³äºŽæˆ‘ä»¬</a> 
+	<a href="#">éšç§ä¿æŠ¤</a> 
+	<a href="#">æ¡æ¬¾å£°æ˜Ž</a>
+	<a href="#">ç½®é¡¶</a> 
 	&copy;2008  Dof, All rights reserved</div>
 </div>
 </body>
