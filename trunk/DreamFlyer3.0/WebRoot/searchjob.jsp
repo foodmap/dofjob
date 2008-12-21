@@ -16,9 +16,7 @@
 <link rel="stylesheet" href="login.css" type="text/css" />
 <link rel="stylesheet" href="jobresult.css" type="text/css" />
 <link rel="stylesheet" href="jobsearch.css" type="text/css" />
-<link rel="stylesheet" href="info.css" type="text/css" />
-
-</head>
+<link rel="stylesheet" href="info.css" type="text/css" /></head>
 <!-- The structure of this file is exactly the same as 2col_rightNav.html;
      the only difference between the two is the stylesheet they use -->
 	 
@@ -54,10 +52,15 @@
   <div id="login">
  <fieldset>
 
-  <p><strong>欢迎您, <bean:write name="current_user" property="username" scope="session"/> 同学 </strong></p>
-  <p>
-  <a href="logout.do">[注销]</a>      
-  </p>
+  <p><strong>欢迎您, <bean:write name="current_user" property="name" scope="session"/> 同学 </strong></p>
+  <table width="196" height="200" border="0">
+    <tr>
+      <td width="11">&nbsp;</td>
+      <td width="156"><img src="photo/<bean:write name="current_user" property="photo" scope="session"/>.jpg" width="150" height="200" /></td>
+      <td width="15">&nbsp;</td>
+    </tr>
+  </table>
+  <p><a href="logout.do">[注销]</a>  </p>
   <div> 
 		<ul id="cmenu"> 
 		<li><a href="home.htm">更改个人信息</a></li> 
