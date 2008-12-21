@@ -5,6 +5,7 @@
 package com.dreamflyer.struts.action.job;
 
 import java.io.*;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,11 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+
+import com.dreamflyer.jobsystem.factory.JobSystemFactory;
+import com.dreamflyer.jobsystem.interfaces.iApplyJob;
+import com.dreamflyer.jobsystem.interfaces.iJobApplyerFactory;
+import com.dreamflyer.struts.form.job.SearchjobForm;
 
 /** 
  * MyEclipse Struts
@@ -37,9 +43,25 @@ public class GetindustryAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		response.setContentType("text/xml");
+		SearchjobForm myform = (SearchjobForm) form;
+		iJobApplyerFactory f = JobSystemFactory.getApplyer();
+		iApplyJob applyer = f.getApplyer();
+		List result = applyer.getIndustry();
 		try {
+			StringBuffer buffer = new StringBuffer();
+			buffer.append("<industries>");
 			PrintWriter pw=response.getWriter();
-			pw.print("<industries><industry><id>??</id><name>化学</name></industry> <industry><id>??</id><name>化学</name></industry></industries>");
+			for(int i=0;i<result.size();i+=2){
+				buffer.append("<industry><id>");
+				buffer.append(result.get(i));
+				buffer.append("</id><name>");
+				buffer.append(result.get(i+1));
+				buffer.append("</name></industry>");
+			}
+			buffer.append("</industries>");
+			
+			pw.print(buffer);
+			
 			pw.flush();
 			pw.close();
 		} catch (IOException e) {
