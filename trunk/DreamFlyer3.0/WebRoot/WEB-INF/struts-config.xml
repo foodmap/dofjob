@@ -8,6 +8,7 @@
     <form-bean name="updateFieldForm" type="com.dreamflyer.struts.form.field.UpdateFieldForm" />
     <form-bean name="loginForm" type="com.dreamflyer.struts.form.users.LoginForm" />
     <form-bean name="reloginForm" type="com.dreamflyer.struts.form.users.ReloginForm" />
+     <form-bean name="studentRegisterForm" type="com.dreamflyer.struts.form.users.StudentRegisterForm" />
  </form-beans>  
 
 
@@ -17,7 +18,9 @@
     <forward name="login_success" path="/searchjob.jsp" />
     <forward name="login_fail" path="/login_fail.jsp" />
     <forward name="login" path="/login.jsp" />
-
+	<forward name="studentreg_success" path="/studentreg_success.jsp" />
+    <forward name="studentreg_fail" path="/studentreg_fail.jsp" />
+    <forward name="student_registry" path="/student_registry.jsp" />
   </global-forwards>
 
   <action-mappings >
@@ -69,7 +72,13 @@
       path="/relogin"
       scope="request"
       type="com.dreamflyer.struts.action.users.ReloginAction" />
-        
+     <action
+      attribute="studentRegisterForm"
+      input="/student_registry.jsp"
+      name="studentRegisterForm"
+      path="/studentRegister"
+      scope="request"
+      type="com.dreamflyer.struts.action.users.StudentRegisterAction" />   
 
 
 
