@@ -4,6 +4,8 @@
  */
 package com.dreamflyer.struts.action.job;
 
+import java.io.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.Action;
@@ -34,7 +36,16 @@ public class GetindustryAction extends Action {
 	 */
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		response.setContentType("text/xml");
+		try {
+			PrintWriter pw=response.getWriter();
+			pw.print("<industries><industry><id>??</id><name>化学</name></industry> <industry><id>??</id><name>化学</name></industry></industries>");
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 }
