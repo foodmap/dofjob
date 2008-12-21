@@ -49,6 +49,7 @@ public class SearchjobAction extends Action {
 		long industryid = Long.parseLong(myform.getIndustryid());
 		long functionid = Long.parseLong(myform.getFunctionid());
 		List result = applyer.getJob(grade, industryid, functionid, workyears, sex, city);
+		request.setAttribute("jobresult", result);
 		return null;
 	}
 }

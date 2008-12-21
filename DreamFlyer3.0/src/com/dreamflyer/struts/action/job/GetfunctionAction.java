@@ -4,12 +4,22 @@
  */
 package com.dreamflyer.struts.action.job;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+
+import com.dreamflyer.jobsystem.factory.JobSystemFactory;
+import com.dreamflyer.jobsystem.interfaces.iApplyJob;
+import com.dreamflyer.jobsystem.interfaces.iJobApplyerFactory;
+import com.dreamflyer.struts.form.job.GetfunctionForm;
+import com.dreamflyer.struts.form.job.SearchjobForm;
 
 /** 
  * MyEclipse Struts
@@ -34,7 +44,33 @@ public class GetfunctionAction extends Action {
 	 */
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		GetfunctionForm myform = (GetfunctionForm)form;
+		response.setContentType("text/xml");
+		
+		iJobApplyerFactory f = JobSystemFactory.getApplyer();
+		iApplyJob applyer = f.getApplyer();
+		List result = applyer.getFunction(Long.parseLong(myform.getIndustryid()));
+		try {
+			StringBuffer buffer = new StringBuffer();
+			buffer.append("<functions>");
+			PrintWriter pw=response.getWriter();
+			for(int i=0;i<result.size();i+=2){
+				buffer.append("<function><id>");
+				buffer.append(result.get(i));
+				buffer.append("</id><name>");
+				buffer.append(result.get(i+1));
+				buffer.append("</name></function>");
+			}
+			buffer.append("</functions>");
+			
+			pw.print(buffer);
+			
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 }

@@ -10,6 +10,7 @@
     <form-bean name="reloginForm" type="com.dreamflyer.struts.form.users.ReloginForm" />
      <form-bean name="studentRegisterForm" type="com.dreamflyer.struts.form.users.StudentRegisterForm" />
     <form-bean name="searchjobForm" type="com.dreamflyer.struts.form.job.SearchjobForm" />
+    <form-bean name="getfunctionForm" type="com.dreamflyer.struts.form.job.GetfunctionForm" />
  </form-beans>  
 
 
@@ -90,7 +91,7 @@
       <forward name="jobresult" path="/jobsystem/jobresult.jsp" />
     </action>
     <action path="/getindustry" type="com.dreamflyer.struts.action.job.GetindustryAction" />
-    <action path="/getfunction" type="com.dreamflyer.struts.action.GetfunctionAction">
+    <action attribute="getfunctionForm" name="getfunctionForm" path="/getfunction" type="com.dreamflyer.struts.action.GetfunctionAction">
       <forward name="functionresult" path="/jobsystem/functionresult.jsp" />
     </action>   
 
