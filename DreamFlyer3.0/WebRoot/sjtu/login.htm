@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0035)http://myhome.sjtu.edu.cn/login.htm -->
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<SCRIPT language=javascript type=text/javascript>
+	document.domain = "sjtu.edu.cn";
+    </SCRIPT>
+
+<META content="MSHTML 6.00.2900.5694" name=GENERATOR></HEAD>
+<BODY>
+<SCRIPT language=javascript type=text/javascript>
+     function SendAuth(user, pass)
+     {
+	var xmlhttp = null;
+	
+	document.domain = "sjtu.edu.cn";
+   	if(window.XMLHttpRequest){ //IE7, Mozilla ,Firefox 等浏览器内置该对象
+
+        	xmlhttp = new XMLHttpRequest();
+
+	}
+	else if(window.ActiveXObject){ //IE6、IE5
+
+        	try{
+            		xmlhttp = new ActiveXObject("MSXML2.XMLHTTP");
+        	}
+        	catch (e){ ; }
+
+        	if(xmlhttp == null) try { xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");} catch (e){; }
+
+    	}
+        
+        //var user = "its\\" + window.parent.document.getElementById("user").value;
+	   //var pass = window.parent.document.getElementById("pass").value;
+	   xmlhttp.open("post","http://myhome.sjtu.edu.cn", false, "its\\" + user, pass);
+        xmlhttp.send();
+        //if(xmlhttp.status == 200)
+	   //{
+	   //document.write("success");
+        //}
+     }
+    </SCRIPT>
+</BODY></HTML>
