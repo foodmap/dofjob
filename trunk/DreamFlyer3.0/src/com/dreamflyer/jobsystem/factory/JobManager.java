@@ -1,4 +1,4 @@
-package com.dreamflyer.jobsystem;
+package com.dreamflyer.jobsystem.factory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,6 +9,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import com.dreamflyer.jobsystem.Function;
+import com.dreamflyer.jobsystem.Industry;
+import com.dreamflyer.jobsystem.Job;
 import com.dreamflyer.jobsystem.interfaces.iApplyJob;
 import com.dreamflyer.jobsystem.interfaces.iManageJob;
 
@@ -30,7 +33,7 @@ public class JobManager implements iApplyJob, iManageJob {
 		tran.commit();
 		
 		session.close();
-		factory.close();
+		//factory.close();
 		if(insertEntities==-1){
 			return false;
 		}
@@ -59,11 +62,11 @@ public class JobManager implements iApplyJob, iManageJob {
 			jobinfo.add(job.toString());
 		}
 		session.close();
-		factory.close();
+		//factory.close();
 		return jobinfo;
 	}
 
-	public List getFunction(String industry) {
+	public List getFunction(long industry) {
 		String sqlInd="";
 		Configuration conf = new Configuration().configure();
 		SessionFactory factory = conf.buildSessionFactory();
@@ -71,17 +74,20 @@ public class JobManager implements iApplyJob, iManageJob {
 		Transaction tran = null;
 		session = factory.openSession();
 		String sqlcmd=null;
-		sqlcmd = "select fuction.* from industry";
+		sqlcmd = "select fuction.* from industryfunc,function ";
+		sqlcmd += "where industryfunc.function_id=function.id ";
+		sqlcmd += "and industryfunc.industry_id="+industry;
 		
-		List<Function> funs  =  session.createSQLQuery(sqlcmd).addEntity( "Function" , Function.class ).list(); 
-		List<String> funinfo = new ArrayList<String>();
+		List funs  =  session.createSQLQuery(sqlcmd).addEntity( "Function" , Function.class ).list(); 
+		List funinfo = new ArrayList<String>();
 		Iterator it = funs.iterator();
 		while(it.hasNext()){
 			Function fun = (Function)it.next();
+			funinfo.add(fun.getId());
 			funinfo.add(fun.getName());
 		}
 		session.close();
-		factory.close();
+		//factory.close();
 		return funinfo;
 	}
 
@@ -94,20 +100,21 @@ public class JobManager implements iApplyJob, iManageJob {
 		String sqlcmd=null;
 		sqlcmd = "select * from industry";
 		
-		List<Industry> inds  =  session.createSQLQuery(sqlcmd).addEntity( "Industry" , Industry.class ).list(); 
-		List<String> indinfo = new ArrayList<String>();
+		List inds  =  session.createSQLQuery(sqlcmd).addEntity( "Industry" , Industry.class ).list(); 
+		List indinfo = new ArrayList<String>();
 		Iterator it = inds.iterator();
 		while(it.hasNext()){
 			Industry ind = (Industry)it.next();
+			indinfo.add(ind.getId());
 			indinfo.add(ind.getName());
 		}
 		session.close();
-		factory.close();
+		//factory.close();
 		return indinfo;
 	}
 
-	public List getJob(String grade, String industry, String function,
-			          int workyears, String sex, String subdate, String city) {
+	public List getJob(String grade, long industry, long function,
+			          int workyears, String sex,  String city) {
 		String sqlGra,sqlInd,sqlFun,sqlWor,sqlSex,sqlSub,sqlCit;
 		if(grade!=null&&grade!=""){
 		    sqlGra=" and job.grade='"+grade+"'";
@@ -116,18 +123,22 @@ public class JobManager implements iApplyJob, iManageJob {
 			//sqlGra=" job.grade='*'";
 			sqlGra=" ";
 		}
-		if(industry!=null&&industry!=""){
-		    sqlInd=" and industry.name='"+industry+"'";
+		
+		if(industry!=0){
+		    sqlInd=" and industry.id="+industry;
 		}
 		else{
 			sqlInd=" ";
 		}
-		if(function!=null&&function!=""){
-		    sqlFun=" and function.name='"+function+"'";
+		
+		if(function!=0){
+		    sqlFun=" and function.id="+function;
 		}
 		else{
 			sqlFun=" ";
 		}
+		
+		
 		sqlWor=" and job.work_years>="+workyears;
 		if(sex!=null&&sex!=""){
 		    sqlSex=" and job.sex='"+sex+"'";
@@ -135,12 +146,7 @@ public class JobManager implements iApplyJob, iManageJob {
 		else{
 			sqlSex=" ";
 		}
-		if(subdate!=null&&subdate!=""){
-		    sqlSub=" and job.subscribe_date='"+subdate+"'";
-		}
-		else{
-			sqlSub=" ";
-		}
+		
 		if(city!=null&&city!=""){
 		    sqlCit=" and company.city='"+city+"'";
 		}
@@ -156,7 +162,7 @@ public class JobManager implements iApplyJob, iManageJob {
 		sqlcmd = "select job.* from job ,industry , function ,company where";
 		sqlcmd +=" job.function_id = function.id and job.industry_id=industry.id and " +
 				 " job.company_id = company.id ";
-		sqlcmd += sqlGra+sqlInd+sqlFun+sqlWor+sqlSex+sqlSub;
+		sqlcmd += sqlGra+sqlInd+sqlFun+sqlWor+sqlSex;
 		
 		System.out.println(sqlcmd);
 		List<Job> jobs  =  session.createSQLQuery(sqlcmd).addEntity( "Job" , Job.class ).list(); 
@@ -169,13 +175,13 @@ public class JobManager implements iApplyJob, iManageJob {
 			jobinfo.add(job.toString());
 		}
 		session.close();
-		factory.close();
+		//factory.close();
 		return jobinfo;
 	}
 
 	public boolean addJob(String sex, String grade, int number, String subdate,
 			int workyears, String other_requirements, String description,
-			long companyid, String function, String industry) {
+			long companyid, long function, long industry) {
 		String sqlInd="";
 		Configuration conf = new Configuration().configure();
 		SessionFactory factory = conf.buildSessionFactory();
@@ -184,12 +190,9 @@ public class JobManager implements iApplyJob, iManageJob {
 		int insertEntities = -1;
 		session = factory.openSession();
 		tran = session.beginTransaction();
-		Function f = (Function)(session.createSQLQuery("select function.* from function where name= '"+function+"'")
-		             .addEntity( "Function" , Function.class ).list().get(0));
-		Industry d = (Industry)(session.createSQLQuery("select Industry.* from Industry where name= '"+industry+"'")
-	             .addEntity( "Industry" , Industry.class ).list().get(0));
-		long fid = f.getId();
-		long did = d.getId();
+		
+		long fid = function;
+		long did = industry;
 		String sqlcmd="insert into studentjob(sex,grade,number,subscribe_date,work_years,other_requirements,"
 		        +"description,company_id,function_id,industry_id"+" ) " +
 				"values ("+"'"+sex+"'"+","+"'"+grade+"'"+","+number+","+"'"+subdate+"'"+","
@@ -200,7 +203,7 @@ public class JobManager implements iApplyJob, iManageJob {
 		tran.commit();
 		
 		session.close();
-		factory.close();
+		//factory.close();
 		if(insertEntities==-1){
 			return false;
 		}
@@ -231,7 +234,7 @@ public class JobManager implements iApplyJob, iManageJob {
 			jobinfo.add(job.toString());
 		}
 		session.close();
-		factory.close();
+		//factory.close();
 		return jobinfo;
 	}
 
@@ -257,7 +260,7 @@ public class JobManager implements iApplyJob, iManageJob {
 			jobinfo.add(job.toString());
 		}
 		session.close();
-		factory.close();
+		//factory.close();
 		return jobinfo;
 	}
 
@@ -280,7 +283,7 @@ public class JobManager implements iApplyJob, iManageJob {
 		tran.commit();
 		
 		session.close();
-		factory.close();
+		//factory.close();
 		if(insertEntities==-1){
 			return false;
 		}
