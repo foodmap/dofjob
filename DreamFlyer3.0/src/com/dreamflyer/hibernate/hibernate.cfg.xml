@@ -8,7 +8,7 @@
 
 	<session-factory>
 		<property name="connection.username">dreamflyer</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/dreamflyer</property>
+		<property name="connection.url">jdbc:mysql://59.78.37.168:3306/dreamflyer</property>
 		<property name="dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
