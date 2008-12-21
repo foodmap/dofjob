@@ -89,9 +89,7 @@
       type="com.dreamflyer.struts.action.SearchjobAction">
       <forward name="jobresult" path="/jobsystem/jobresult.jsp" />
     </action>
-    <action path="/getindustry" type="com.dreamflyer.struts.action.job.GetindustryAction">
-      <forward name="industryresult" path="/jobsystem/industryresult.jsp" />
-    </action>
+    <action path="/getindustry" type="com.dreamflyer.struts.action.job.GetindustryAction" />
     <action path="/getfunction" type="com.dreamflyer.struts.action.GetfunctionAction">
       <forward name="functionresult" path="/jobsystem/functionresult.jsp" />
     </action>   
