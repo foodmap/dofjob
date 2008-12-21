@@ -44,7 +44,7 @@
             <column name="telephone" length="20" />
         </property>
         <property name="photo" type="java.lang.String">
-            <column name="photo" />
+            <column name="photo" length="10" not-null="true" />
         </property>
         <property name="description" type="java.lang.String">
             <column name="description" length="200" />
