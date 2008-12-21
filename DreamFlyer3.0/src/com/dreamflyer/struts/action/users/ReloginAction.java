@@ -19,8 +19,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.dreamflyer.hibernate.HibernateSessionFactory;
+import com.dreamflyer.hibernate.SHibernateSessionFactory;
 import com.dreamflyer.struts.form.users.ReloginForm;
-import com.dreamflyer.user.Student;
+import com.dreamflyer.user.SjtuStudent;
 
 /** 
  * MyEclipse Struts
@@ -48,14 +49,11 @@ public class ReloginAction extends Action {
 		String username = reloginForm.getUsername();
 		String password = reloginForm.getPassword();
 		try{
-			//studentid = new String(studentid.getBytes("ISO-8859-1"),"GB2312");
-			//password = new String(password.getBytes("ISO-8859-1"),"GB2312");
-			//usertype = new String(password.getBytes("ISO-8859-1"),"GB2312");
-			
-			Session ses = HibernateSessionFactory.getSession();
+				
+			Session ses = SHibernateSessionFactory.getSession();
 			Transaction tx = ses.beginTransaction();
 				
-			String sqlquery = "from Student a where a.id = '" +
+			String sqlquery = "from SjtuStudent a where a.id = '" +
 							username +"'";
 				
 			Query  requery = ses.createQuery(sqlquery);
@@ -63,14 +61,14 @@ public class ReloginAction extends Action {
 				
 			tx.commit();
 			ses.close();
-				
-			Student student = new Student();
+			
+			SjtuStudent student = new SjtuStudent();
 						
 			if(studentlist == null || studentlist.size() == 0){
 				System.out.println("User name not exist!");
 				return mapping.findForward("login_fail");
 			}
-			student = (Student)studentlist.get(0);
+			student = (SjtuStudent)studentlist.get(0);
 					
 			if(!password.equals(student.getPassword()))
 			{
@@ -79,14 +77,14 @@ public class ReloginAction extends Action {
 			}
 					
 			HttpSession session = request.getSession();
-			Student cur_user = (Student)session.getAttribute("current_user");
+			SjtuStudent cur_user = (SjtuStudent)session.getAttribute("current_user");
 					
 			if(cur_user != null){
 				session.removeAttribute("current_user");
 			}
 			session.setAttribute("current_user", student);
 					
-			return mapping.findForward("login_success");
+			return mapping.findForward("student_registry");
 					
 			}catch(Exception e){
 				e.printStackTrace();

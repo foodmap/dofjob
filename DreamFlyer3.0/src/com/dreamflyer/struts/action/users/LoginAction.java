@@ -51,14 +51,12 @@ public class LoginAction extends Action {
 		String verifycode = loginForm.getVerifycode();
 		
 		try{
-			//studentid = new String(studentid.getBytes("ISO-8859-1"),"GB2312");
-			//password = new String(password.getBytes("ISO-8859-1"),"GB2312");
-			//usertype = new String(password.getBytes("ISO-8859-1"),"GB2312");
+			if(verifycode == null || !verifycode.equals((String)request.getSession().getAttribute("random"))){
+				System.out.println("Wrong verify code!");
+				return mapping.findForward("login_fail");
+			}
 			
-			System.out.println("usertype:"+usertype);
-			System.out.println("verifycode:"+verifycode);
-			
-				if(usertype.equals("student")){
+			if(usertype.equals("student")){
 					Session ses = HibernateSessionFactory.getSession();
 					Transaction tx = ses.beginTransaction();
 				
@@ -85,13 +83,8 @@ public class LoginAction extends Action {
 						return mapping.findForward("login_fail");
 					}
 					
-					if(verifycode == null || !verifycode.equals((String)request.getSession().getAttribute("random"))){
-						System.out.println("Wrong verify code!");
-						return mapping.findForward("login_fail");
-					}
-					
 					HttpSession session = request.getSession();
-					Student cur_user = (Student)session.getAttribute("current_user");
+					Object cur_user = (Object)session.getAttribute("current_user");
 					
 					if(cur_user != null){
 						session.removeAttribute("current_user");
