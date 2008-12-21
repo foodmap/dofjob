@@ -1,0 +1,48 @@
+BODY {
+	BACKGROUND: url(../imgs/allbg.gif); MARGIN: 0px; FONT: 12px Tahoma
+}
+A:link {
+	FONT-SIZE: 12px; COLOR: #000; TEXT-DECORATION: none
+}
+A:visited {
+	FONT-SIZE: 12px; COLOR: #000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #3399cc; TEXT-DECORATION: underline
+}
+.en {
+	FONT-SIZE: 10px; FONT-FAMILY: Verdana
+}
+A.yellowlink:link {
+	COLOR: #ff6600
+}
+A.yellowlink:visited {
+	COLOR: #ff6600
+}
+.yellow {
+	COLOR: #ff6600
+}
+A.yellowlink:hover {
+	COLOR: #3399cc; TEXT-DECORATION: underline
+}
+.input {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 0px; FONT: 12px Verdana; BORDER-LEFT: #cccccc 1px solid; PADDING-TOP: 3px; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 18px
+}
+#pagebody {
+	BACKGROUND: url(../imgs/bg.jpg) #fff no-repeat 50% top; MARGIN: 0px auto; WIDTH: 1000px; HEIGHT: 580px
+}
+#loginbox {
+	CLEAR: left; BACKGROUND: url(../imgs/login-bg.gif) repeat-y; LEFT: 100px; FLOAT: left; OVERFLOW: hidden; WIDTH: 235px; POSITION: relative; TOP: 70px
+}
+#info {
+	CLEAR: right; RIGHT: 170px; FLOAT: right; OVERFLOW: hidden; WIDTH: 260px; POSITION: relative; TOP: 275px
+}
+#info UL {
+	LIST-STYLE-IMAGE: url(../imgs/icon.gif); MARGIN: 5px 5px 10px 20px; LIST-STYLE-TYPE: disc
+}
+#info UL LI {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; FONT: 14px/22px sans-serif; PADDING-TOP: 2px
+}
+#Footer {
+	DISPLAY: block; BACKGROUND: url(../imgs/footbg.jpg) #fff no-repeat; MARGIN: 0px auto; WIDTH: 1000px; COLOR: #666; HEIGHT: 77px
+}
