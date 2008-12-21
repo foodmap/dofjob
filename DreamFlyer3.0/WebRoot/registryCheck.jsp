@@ -41,7 +41,13 @@ function MOSSlogin(u, p) {
 
 <META http-equiv=Content-Type content="text/html; charset=gb2312"><LINK 
 href="sjtu/login.css" type=text/css rel=stylesheet>
-<META content="MSHTML 6.00.2900.5694" name=GENERATOR></HEAD>
+<META content="MSHTML 6.00.2900.5694" name=GENERATOR><style type="text/css">
+<!--
+body {
+	background-image: url(sjtu/back.jpg);
+}
+-->
+</style></HEAD>
 <BODY onload=document.form1.user.focus();><IFRAME id=loginframe 
 src="sjtu/login.htm" width=0 height=0></IFRAME>
 <DIV id=pagebody><IMG height=89 src="sjtu/logo.jpg" width=470 

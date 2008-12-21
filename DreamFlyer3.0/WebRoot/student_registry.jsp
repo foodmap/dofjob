@@ -52,6 +52,7 @@
  
   <div id="login">
  <fieldset>
+  <p><strong>您好，<em><bean:write name="current_user" property="name" scope="session"/></em> 同学</strong></p>
   <p><strong>欢迎进入</strong></p>
   <p><strong>DreamFlyer系统注册页面 </strong></p>
   <p>&nbsp;</p>
@@ -101,97 +102,36 @@
    <div id="jobsearch">
 	            <div id="registerSinfo">
 			    <h3>学生注册</h3>
-				<p class="date"><label>姓名:</label>
-				  <input type="text"  width="85" name="textfield2" />
-				</p>
-				
+		<html:form action="studentRegister" enctype = "multipart/form-data">					
 				<p class="date"><label>密码:</label>
-				  <input type="password" width="85" name="textfield2" />
+				  <html:password property="password" />
 				</p>
-              	<p class="date"><label>专业:</label>
-				  <input type="text"  width="85" name="textfield2" />
+				<p class="date"><label>确认密码:</label>
+				  <html:password property="confirmpassword" />
 				</p>
-				<p class="date"><label>地址:</label>
-				  <input type="text" width="250" name="textfield2" />
-				</p>
-				<p class="date"><label>性别:</label>
-				  男
-				  <input name="radiobutton"  type="radio" value="radiobutton" />
-				  女
-				  <input name="radiobutton" type="radio" value="radiobutton" />
-				  
-				</p>
-				<p class="date"><label>年龄:</label>
-				  <input type="text"  width="85" name="textfield2" />
+			   	<p class="date"><label>地址:</label>
+				  <html:text property="address" />
 				</p>
 				<p class="date"><label>email:</label>
-				  <input type="text"  width="85" name="textfield2" />
-				</p>
-				<p class="date"><label>学历:</label>
-				  <input type="text"  width="85" name="textfield2" />
-				</p>
-				<p class="date"><label>学院:</label>
-				  <input type="text"  width="85" name="textfield2" />
+				  <html:text property="email" />
 				</p>
 				<p class="date"><label>电话:</label>
-				  <input type="text"  width="85" name="textfield2" />
+				  <html:text property="telephone" />
 				</p>
 				<p class="date"><label>头像:</label>
-				  <input type="text"  width="159" name="textfield2" />
-				  <input type="submit" name="Submit22" value="浏览" />
+				 <html:file property="photo"></html:file>
 				</p>
 				<p id="textarea" class="date"><label>个人描述:</label>
 				  <label>
-				  <textarea name="textarea" rows="10">无</textarea>
+				  <html:textarea property="description"/>
 				  </label>
 				</p>
 				<p class="date"> 
 				  <input type="submit" name="Submit2" value="确认提交" />
 				</p>
+			</html:form>
     	    </div>
-			 <div id="editCinfo">
-			    <h3>公司注册</h3>
-				<p class="date">
-				   <label>名称:</label>
-				   <input type="text" width="85" name="textfield2" />
-				</p>
-				
-				<p class="date">
-				  <label>密码:</label>
-				  <input type="password" width="85" name="textfield2" />
-				</p>
-              	<p class="date">
-				<label>省份:</label>
-				  <input type="text" width="85" name="textfield2" />
-				</p>
-				<p class="date"><label>城市:</label>
-				  <input type="text"  width="85" name="textfield2" />
-				</p>
-				<p class="date"><label>具体地址:</label>
-				  <input type="text" width="185" name="textfield22" />
-</p>
-				<p class="date"><label>电话:</label>
-				  <input type="text" width="185" name="textfield2" />
-				</p>
-				<p class="date"><label>email:</label>
-				  <input type="text" width="185" name="textfield2" />
-				</p>
-				<p class="date"><label>主页:</label>
-				  <input type="text" width="185" name="textfield2" />
-				</p>
-			   <p class="date"><label>传真:</label>
-				 <input type="text"  value=""width="185" name="textfield23" />
-			   </p>
-				<p id="textarea" class="date"><label>公司描述:</label>
-				  <label>
-				  <textarea name="textarea" rows="10">无</textarea>
-				  </label>
-				</p>
-				<p class="date"> 
-				  <input type="submit" name="Submit2" value="确认提交" />
-				</p>
-			 </div>
-      </div>
+	  </div>
  </div>
 
 
