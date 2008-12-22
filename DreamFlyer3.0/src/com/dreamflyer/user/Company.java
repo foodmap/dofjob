@@ -32,4 +32,23 @@ public class Company extends AbstractCompany implements java.io.Serializable {
 				fax, description, username, password, jobs, companyfieldses);
 	}
 
+	public String getShortInfo(){
+		String info = "";
+		info += "公司名称：  ";
+		info += this.getName();
+		info += "<br/>";
+		info += "地址：  ";
+		info += this.getDetailAddress();
+		info += "电话：  ";
+	    info += this.getTelephone();
+	    info += "Email:   ";
+	    info += this.getEmail();
+	    info += "传真：  ";
+	    info += this.getFax();
+	    info += "<br/>";
+	    info += "主页  ";
+	    info += this.getHostlink();
+		return info;
+	}
+	
 }

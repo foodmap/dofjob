@@ -194,5 +194,24 @@ public class Student implements java.io.Serializable {
 	public void setStudentjobs(Set studentjobs) {
 		this.studentjobs = studentjobs;
 	}
+	
+	public String getShortInfo(){
+		String info = "";
+		info += "姓名： ";
+		info += this.getName();
+		info += "专业： ";
+		info += this.getMajor();
+		info += "<br/>";
+		info += "出生年月： ";
+		info += this.getBirthday();
+		info += "性别： ";
+		info += this.getSex();
+		info += "<br/>";
+		info += "Email:  ";
+		info += this.getEmail();
+		info += "电话： ";
+		info += this.getPhoto();
+		return info;
+	}
 
 }
