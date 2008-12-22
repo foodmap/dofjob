@@ -141,6 +141,35 @@ addLoadEvent(function() {
 		   }
 		
 		}
+		function doSearch(){
+		 var industryid = document.getElementById("industry").value;
+		 var functionid= document.getElementById("function").value;
+		 var grade= document.getElementById("grade").value;
+		 var workyears= document.getElementById("workyears").value;
+		 var province=document.getElementById("province").value;
+		 var city=document.getElementById("city").value;
+		 var sex=document.getElementById("sex").value;
+		 if(industryid==0&&functionid==0&&grade==""&&workyears==0&&province==""&&city=="") return;
+		 
+		 /*开始查询*/	 
+		 alert("行业"+industryid+"职能"+functionid+"学历"+grade+"年限"+workyears+"城市"+city+"省份"+province+"性别"+sex);
+		   createXmlHttp();
+		  xmlHttp.onreadystatechange=showResult;
+		  xmlHttp.open("GET","searchjob.do?sex="+sex+"&industryid="+industryid+"&functionid="+functionid+"&workyears="+workyears+"&grade="+grade+"&city="+city+"&province="+province+"&ts="+new Date().getTime(),true);
+		  xmlHttp.send(null);
+		
+		}
+		function showResult(){
+		if(xmlHttp.readyState==4){
+		  if(xmlHttp.status==200){
+		  document.getElementById("jobresult").innerHTML=xmlHttp.responseText;
+		   
+		  }else{
+		    alert("Error");
+		  }
+		}
+		
+		}
   </script>
 <link rel="stylesheet" href="index.css" type="text/css" />
 <link rel="stylesheet" href="menu.css" type="text/css" />
@@ -156,8 +185,8 @@ addLoadEvent(function() {
 <body>
 <div id="container">
 <div id="masthead">
-  <div id="logo" ><img src="img/logo.png"></div>
-  <div id="leftbar"><img src="img/leftbar.gif"></div>
+  <div id="logo" ><img src="img/logo.png"/></div>
+  <div id="leftbar"><img src="img/leftbar.gif"/></div>
   <div id="rightbar">
    <img src="img/go.gif"/>
     <input name="textfield" type="text"/>
@@ -222,27 +251,27 @@ addLoadEvent(function() {
 			    <h3><span>找工作</span></h3>
 				<p class="date"><label>选择行业:</label>
 				  <select id="industry" name="select" onchange="loadFunction();">
-				    <option value="">请选择-------------------------</option>
+				    <option value=0>请选择-------------------------</option>
 			      </select>
 				</p>
               	<p class="date"><label>选择职能:</label>
 				  <select id="function" name="select">
-				    <option value="">请选择-------------------------</option>
+				    <option value=0>请选择-------------------------</option>
 			      </select>
 				</p>
 				<p class="date"><label>选择学历:</label>
 				  <select id="grade" name="select">
 				    <option value="">请选择-------------------------</option>
-				    <option>本科</option>
-				    <option>硕士</option>
-				    <option>博士</option>
+				    <option value="本科">本科</option>
+				    <option value="硕士">硕士</option>
+				    <option value="博士">博士</option>
 			      </select>
 				</p>
 				<p class="date"><label>工作年限:</label>
 				  <select id="workyears" name="select">
-				    <option value="">请选择-------------------------</option>
-				    <option>1年</option>
-				    <option>2年</option>
+				    <option value=0>请选择-------------------------</option>
+				    <option value=1>1年以上</option>
+				    <option value=2>2年以上</option>
 			      </select>
 				</p>
 				<p class="date"><label>工作省份:</label>
@@ -262,12 +291,12 @@ addLoadEvent(function() {
 				<p class="date"><label>工作性别:</label>
 				  <select id="sex" name="select">
 				    <option value="">请选择-------------------------</option>
-				    <option>男</option>
-				    <option>女</option>
+				    <option value="男">男</option>
+				    <option value="女">女</option>
 			      </select>
 				</p>
 				<p class="date"> 
-				  <input type="submit" name="Submit2" value="开始搜索" />
+				  <input type="submit" name="Submit2" value="开始搜索" onclick="doSearch();"/>
 				</p>
 			    </div>
    	    <div id="jobresult">
