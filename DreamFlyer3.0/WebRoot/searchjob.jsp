@@ -154,7 +154,7 @@ addLoadEvent(function() {
 		 alert("行业"+industryid+"职能"+functionid+"学历"+grade+"年限"+workyears+"城市"+city+"省份"+province+"性别"+sex);
 		   createXmlHttp();
 		  xmlHttp.onreadystatechange=showResult;
-		  xmlHttp.open("GET","searchjob.do?sex="+sex+"&industryid="+industryid+"&functionid="+functionid+"&workyears="+workyears+"&grade="+grade+"&city="+city+"&province="+province+"&ts="+new Date().getTime(),true);
+		  xmlHttp.open("GET","searchjobs.do?sex="+sex+"&industryid="+industryid+"&functionid="+functionid+"&workyears="+workyears+"&grade="+grade+"&city="+city+"&province="+province+"&ts="+new Date().getTime(),true);
 		  xmlHttp.send(null);
 		
 		}
