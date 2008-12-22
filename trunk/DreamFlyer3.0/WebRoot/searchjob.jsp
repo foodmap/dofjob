@@ -81,8 +81,7 @@ addLoadEvent(function() {
 		function loadFunction(){
 		  var industryid = document.getElementById("industry").value;
 		  if(industryid=="") return;
-		   createXmlHttp();
-		  
+		   createXmlHttp();		  
 		  xmlHttp.onreadystatechange=showFunction;
 		  xmlHttp.open("GET","getfunctions.do?industryid="+industryid+"&ts="+new Date().getTime(),true);
 		  xmlHttp.send(null);
