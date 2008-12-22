@@ -1,5 +1,8 @@
 package com.dreamflyer.jobsystem.factory;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,44 +14,51 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.dreamflyer.hibernate.HibernateSessionFactory;
-import com.dreamflyer.jobsystem.Function;
-import com.dreamflyer.jobsystem.Industry;
-import com.dreamflyer.jobsystem.Job;
+import com.dreamflyer.jobsystem.*;
+import com.dreamflyer.user.*;
 import com.dreamflyer.jobsystem.interfaces.iApplyJob;
 import com.dreamflyer.jobsystem.interfaces.iManageJob;
 
 public class JobManager implements iApplyJob, iManageJob {
 
-	public boolean addApplyment(String studentid,int jobid) {
+	public boolean addApplyment(String studentid,long jobid) {
 		String sqlInd="";
-		Configuration conf = new Configuration().configure();
-		SessionFactory factory = conf.buildSessionFactory();
-		Session session = null;
+		
+		Session session = null; 
 		Transaction tran = null;
 		int insertEntities = -1;
-		session = factory.openSession();
+		session = HibernateSessionFactory.getSession();
 		tran = session.beginTransaction();
-		
-		String sqlcmd="insert into studentjob values ("+studentid+","+jobid+")"; 
-		String oldvalue="";
-		insertEntities = session.createQuery( sqlcmd ).executeUpdate() ;
+		tran.begin();
+		Studentjob sj = new Studentjob();
+		StudentjobId sji = new StudentjobId();
+		Student s = new Student();
+		s.setId(studentid);
+		Job j = new Job();
+		j.setId(jobid);
+		sji.setJob(j);
+		sji.setStudent(s);
+		sj.setId(sji);
+		//sji.s
+		//sj.setId()
+		//String sqlcmd="insert into studentjob values ("+studentid+","+jobid+")"; 
+		//String oldvalue="";
+		//insertEntities = session.createQuery( sqlcmd ).executeUpdate() ;
+		session.save(sj);
 		tran.commit();
 		
 		session.close();
 		//factory.close();
-		if(insertEntities==-1){
-			return false;
-		}
-		else return true;
+		return true;
 	}
 
 	public List getMyApplyment(String studentid) {
 		String sqlApp="";
-		
+		sqlApp += "and st.id = '"+studentid+"'";
 		String sqlcmd=null;
 		sqlApp = " and Student.id='"+studentid+"'";
-		sqlcmd = "select Job.* from Job,Studentjob,Student ";
-		sqlcmd += "where Job.id=Studentjob.job_id and Studentjob.student_id=Student.id ";
+		sqlcmd = "select job from Job as job,Studentjob as sj,Student as st ";
+		sqlcmd += "where job.id=sj.id.job.id and sj.id.student.id=st.id ";
 		sqlcmd +=sqlApp;
 		Session ses = HibernateSessionFactory.getSession();
 		
@@ -128,10 +138,10 @@ public class JobManager implements iApplyJob, iManageJob {
 	}
 
 	public List getJob(String grade, int industry, int function,
-			          int workyears, String sex,  String city) {
-		String sqlGra,sqlInd,sqlFun,sqlWor,sqlSex,sqlSub,sqlCit;
+			          int workyears, String sex,  String city,String province) {
+		String sqlGra,sqlInd,sqlFun,sqlWor,sqlSex,sqlSub,sqlCit,sqlPro;
 		if(grade!=null&&grade!=""){
-		    sqlGra=" and Job.grade='"+grade+"'";
+		    sqlGra=" and job.grade='"+grade+"'";
 		}
 		else{
 			//sqlGra=" job.grade='*'";
@@ -139,47 +149,50 @@ public class JobManager implements iApplyJob, iManageJob {
 		}
 		
 		if(industry!=0){
-		    sqlInd=" and Industry.id="+industry;
+		    sqlInd=" and ind.id="+industry;
 		}
 		else{
 			sqlInd=" ";
 		}
 		
 		if(function!=0){
-		    sqlFun=" and Function.id="+function;
+		    sqlFun=" and fun.id="+function;
 		}
 		else{
 			sqlFun=" ";
 		}
 		
 		
-		sqlWor=" and Job.work_years>="+workyears;
+		sqlWor=" and job.workYears>="+workyears;
 		if(sex!=null&&sex!=""){
-		    sqlSex=" and Job.sex='"+sex+"'";
+		    sqlSex=" and job.sex='"+sex+"'";
 		}
 		else{
 			sqlSex=" ";
 		}
 		
 		if(city!=null&&city!=""){
-		    sqlCit=" and Company.city='"+city+"'";
+		    sqlCit=" and com.city='"+city+"'";
 		}
 		else{
 			sqlCit=" ";
 		}
-		Configuration conf = new Configuration().configure();
-		SessionFactory factory = conf.buildSessionFactory();
-		Session session = null;
-		Transaction tran = null;
-		session = factory.openSession();
+		
+		if(province!=null&&province!=""){
+		    sqlPro=" and com.province='"+province+"'";
+		}
+		else{
+			sqlPro=" ";
+		}
+		Session ses = HibernateSessionFactory.getSession();
 		String sqlcmd=null;
-		sqlcmd = "select job.* from job ,industry , function ,company where";
-		sqlcmd +=" job.function_id = function.id and job.industry_id=industry.id and " +
-				 " job.company_id = company.id ";
-		sqlcmd += sqlGra+sqlInd+sqlFun+sqlWor+sqlSex;
+		sqlcmd = "select job from Job as job ,Industry as ind, Function as fun,Company as com where";
+		sqlcmd +=" job.function.id = fun.id and job.industry.id=ind.id and " +
+				 " job.company.id = com.id ";
+		sqlcmd += sqlGra+sqlInd+sqlFun+sqlWor+sqlSex+sqlCit+sqlPro;
 		
 		System.out.println(sqlcmd);
-		List<Job> jobs  =  session.createSQLQuery(sqlcmd).addEntity( "Job" , Job.class ).list(); 
+		List<Job> jobs  =  ses.createSQLQuery(sqlcmd).list(); 
 		List<String> jobinfo = new ArrayList<String>();
 		Iterator it = jobs.iterator();
 		while(it.hasNext()){
@@ -188,25 +201,25 @@ public class JobManager implements iApplyJob, iManageJob {
 			jobinfo.add(""+id);
 			jobinfo.add(job.toString());
 		}
-		session.close();
+		ses.close();
 		//factory.close();
 		return jobinfo;
 	}
 
 	public boolean addJob(String sex, String grade, int number, String subdate,
 			int workyears, String other_requirements, String description,
-			long companyid, long function, long industry) {
+			int companyid, int function, int industry) {
 		String sqlInd="";
-		Configuration conf = new Configuration().configure();
-		SessionFactory factory = conf.buildSessionFactory();
+		
 		Session session = null;
 		Transaction tran = null;
 		int insertEntities = -1;
-		session = factory.openSession();
+		session = HibernateSessionFactory.getSession();
 		tran = session.beginTransaction();
-		
-		long fid = function;
-		long did = industry;
+		tran.begin();
+		int fid = function;
+		int did = industry;
+		/**
 		String sqlcmd="insert into studentjob(sex,grade,number,subscribe_date,work_years,other_requirements,"
 		        +"description,company_id,function_id,industry_id"+" ) " +
 				"values ("+"'"+sex+"'"+","+"'"+grade+"'"+","+number+","+"'"+subdate+"'"+","
@@ -214,37 +227,59 @@ public class JobManager implements iApplyJob, iManageJob {
 		        +","+did+")"; 
 		String oldvalue="";
 		insertEntities = session.createQuery( sqlcmd ).executeUpdate() ;
+		**/
+		Job job = new Job();
+		Company com = new Company();
+		com.setId(companyid);
+		Industry ind = new Industry();
+		ind.setId(industry);
+		Function fun = new Function();
+		fun.setId(function);
+		DateFormat df = DateFormat.getDateInstance();
+		Date date=new Date(2009,1,1);
+		try {
+			date = (df).parse(subdate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		job.setCompany(com);
+		job.setDescription(description);
+		job.setFunction(fun);
+		job.setGrade(grade);
+		job.setNumber(number);
+	    job.setOtherRequirements(other_requirements);
+	    job.setSex(sex);
+	    job.setSubscribeDate(date);
+	    job.setWorkYears(workyears);
+	    session.save(job);
 		tran.commit();
 		
 		session.close();
 		//factory.close();
-		if(insertEntities==-1){
-			return false;
-		}
-		else return true;
+		return true;
 	}
 
-	public List getJob(long companyid) {
+	public List getJob(int companyid) {
 		String sqlCom="";
 		sqlCom += " and company.id = "+companyid;
-		Configuration conf = new Configuration().configure();
-		SessionFactory factory = conf.buildSessionFactory();
+		
 		Session session = null;
 		Transaction tran = null;
-		session = factory.openSession();
+		session = HibernateSessionFactory.getSession();
 		String sqlcmd=null;
-		sqlcmd = "select job.* from job ,company where";
-		sqlcmd +=" job.company_id = company.id ";
+		sqlcmd = "select job from Job as job ,Company as company where";
+		sqlcmd +=" job.company.id = company.id ";
 		sqlcmd += sqlCom;
 		
 		System.out.println(sqlcmd);
-		List<Job> jobs  =  session.createSQLQuery(sqlcmd).addEntity( "Job" , Job.class ).list(); 
-		List<String> jobinfo = new ArrayList<String>();
+		List jobs  =  session.createSQLQuery(sqlcmd).list(); 
+		List jobinfo = new ArrayList<String>();
 		Iterator it = jobs.iterator();
 		while(it.hasNext()){
 			Job job = (Job)it.next();
 			long id = job.getId();
-			jobinfo.add(""+id);
+			jobinfo.add(id);
 			jobinfo.add(job.toString());
 		}
 		session.close();
@@ -252,26 +287,27 @@ public class JobManager implements iApplyJob, iManageJob {
 		return jobinfo;
 	}
 
-	public List getStuApplyment(long companyid) {
+	public List getStuApplyment(int companyid) {
 		String sqlApp="";
-		Configuration conf = new Configuration().configure();
-		SessionFactory factory = conf.buildSessionFactory();
+		
 		Session session = null;
 		Transaction tran = null;
-		session = factory.openSession();
+		session = HibernateSessionFactory.getSession();;
 		String sqlcmd=null;
 		sqlApp = " and student.id="+companyid;
-		sqlcmd = "select job.* from job,studentjob,student ";
-		sqlcmd += "where job.id=studentjob.job_id and studentjob.student_id=student.id ";
+		sqlcmd = "select sj from Job as job, Studentjob as sj";
+		sqlcmd += "where job.id=sj.job_id ";
 		sqlcmd +=sqlApp;
-		List<Job> jobs  =  session.createSQLQuery(sqlcmd).addEntity( "Job" , Job.class ).list(); 
-		List<String> jobinfo = new ArrayList<String>();
-		Iterator it = jobs.iterator();
+		List sjs  =  session.createSQLQuery(sqlcmd).list(); 
+		List jobinfo = new ArrayList<String>();
+		Iterator it = sjs.iterator();
 		while(it.hasNext()){
-			Job job = (Job)it.next();
-			long jobid = job.getId();
-			jobinfo.add(""+jobid);
-			jobinfo.add(job.toString());
+			Studentjob sj = (Studentjob)it.next();
+			Job job = sj.getId().getJob();
+			Student st = sj.getId().getStudent();
+			jobinfo.add(st.getId());
+			jobinfo.add(job.getShortInfo());
+			jobinfo.add(st.getShortInfo());
 		}
 		session.close();
 		//factory.close();
@@ -280,14 +316,13 @@ public class JobManager implements iApplyJob, iManageJob {
 
 	public boolean updJob(String sex, String grade, int number, String subdate,
 			int workyears, String other_requirements, String description,
-			long jobid) {
+			int jobid) {
 		String sqlInd="";
-		Configuration conf = new Configuration().configure();
-		SessionFactory factory = conf.buildSessionFactory();
+		
 		Session session = null;
 		Transaction tran = null;
 		int insertEntities = -1;
-		session = factory.openSession();
+		session = HibernateSessionFactory.getSession();
 		tran = session.beginTransaction();
 		String sqlcmd="update studentjob " +"set "+"sex="+"'"+sex+"'"+","+"grade="+"'"+grade+"'"+","+"number="+number+","+"subscribe_date="+"'"+subdate+"'"+","
 		              +"workyears="+workyears+","+"other_requirements="+"'"+other_requirements+"'"+","+"description="+"'"+description+"'"; 
