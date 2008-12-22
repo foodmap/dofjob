@@ -11,7 +11,7 @@
 	<body>
 	<table>
 	<tr>
-<html:form action="/applyField?mode=apply">
+<html:form action="/applyField">
 选择场地: <html:select property="field_id">
 <html:optionsCollection name="flist" label="address" value="id"/>
 </html:select><html:errors property="field_id"/><br/>日期：<br/>
