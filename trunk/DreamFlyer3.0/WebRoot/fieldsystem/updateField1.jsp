@@ -9,7 +9,7 @@
 		<title>更改场地</title>
 	</head>
 	<body>
-<html:form action="/updateField?mode=update">
+<html:form action="/updateField">
 选择场地: <html:select property="field_id" value="${param.ufid}">
 <html:option value="${param.ufid}"><%=new String((request.getParameter("address")).getBytes("ISO-8859-1"),"gb2312")%></html:option>
 </html:select><html:errors property="field_id"/><br/>日期：<br/>

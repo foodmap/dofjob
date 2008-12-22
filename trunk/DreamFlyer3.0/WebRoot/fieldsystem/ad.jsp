@@ -4,13 +4,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
-<%  String[] _mode = new String[3];
-    _mode[0] = "apply";
-    _mode[1] = "delete";
-    _mode[2] = "update";
-    pageContext.setAttribute("mode1",_mode[0]);
-    pageContext.setAttribute("mode2",_mode[1]);
-    pageContext.setAttribute("mode3",_mode[2]);
+<% 
     pageContext.getSession().setAttribute("company_id","1");
 %>
 
@@ -37,13 +31,16 @@
     <table width="276" height="88">
     <tr>
     <td>
-    <html:link action="/apply" paramId="mode1" paramName="mode1">申请场地</html:link><br/>
+    <html:link action="/apply">申请场地</html:link><br/>
     </td>
     <td>
-    <html:link action="/apply" paramId="mode1" paramName="mode2">删除场地</html:link><br/>
+    <html:link action="/delete">删除场地</html:link><br/>
     </td>
     <td>
-    <html:link action="/apply" paramId="mode1" paramName="mode3">更改场地</html:link><br/>
+    <html:link action="/update">更改场地</html:link><br/>
+    </td>
+    <td>
+    <html:link action="/lookup">查看场地</html:link>
     </td>
     </tr>
     </table>
