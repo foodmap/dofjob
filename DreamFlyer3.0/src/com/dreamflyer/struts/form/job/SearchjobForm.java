@@ -38,6 +38,9 @@ public class SearchjobForm extends ActionForm {
 
 	/** city property */
 	private String city;
+	
+	/** province property */
+	private String province;
 
 	/*
 	 * Generated Methods
@@ -158,5 +161,21 @@ public class SearchjobForm extends ActionForm {
 	 */
 	public void setCity(String city) {
 		this.city = city;
+	}
+	
+	/** 
+	 * Returns the province.
+	 * @return String
+	 */
+	public String getProvince() {
+		return province;
+	}
+
+	/** 
+	 * Set the city.
+	 * @param province The province to set
+	 */
+	public void setProvince(String province) {
+		this.province = province;
 	}
 }
