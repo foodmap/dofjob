@@ -45,10 +45,11 @@ public class SearchjobAction extends Action {
 		String sex = myform.getSex();
 		String grade = myform.getGrade();
 		String city = myform.getCity();
+		String province = myform.getProvince();
 		int workyears = Integer.parseInt(myform.getWorkyears());
 		int industryid = Integer.parseInt(myform.getIndustryid());
 		int functionid = Integer.parseInt(myform.getFunctionid());
-		List result = applyer.getJob(grade, industryid, functionid, workyears, sex, city);
+		List result = applyer.getJob(grade, industryid, functionid, workyears, sex, city,province);
 		request.setAttribute("jobresult", result);
 		return null;
 	}
