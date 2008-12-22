@@ -75,6 +75,7 @@ addLoadEvent(function() {
 		
 		function loadFunction(){
 		  var industryid = document.getElementById("industry").value;
+		  if(industryid=="") return;
 		   createXmlHttp();
 		  
 		  xmlHttp.onreadystatechange=showFunction;
@@ -85,10 +86,21 @@ addLoadEvent(function() {
 	  function showFunction(){
 		  if(xmlHttp.readyState==4){
 		  if(xmlHttp.status==200){
-		  var functions=xmlHttp.responseXML.getElementsByTagName("function");
+		 
 		   var selector=  document.getElementById("function");
-
+		   /*清除下拉框*/
+           selector.innerHTML='';
+           /*加入加拉框首行*/
+           var tip=document.createElement("option");
+           tip.setAttribute("value","");
+           tip.appendChild(document.createTextNode("请选择----------------------"));
+		   selector.appendChild(tip);
+		   
+		    var functions=xmlHttp.responseXML.getElementsByTagName("function");
+		  /*加入所有与行业对应的职能*/
+		 
 		   for(var i=0;i<functions.length;i++){
+		   
 		    option = document.createElement("option");
 		      var idnode=functions[i].childNodes[0];
 		      var namenode=functions[i].childNodes[1];
