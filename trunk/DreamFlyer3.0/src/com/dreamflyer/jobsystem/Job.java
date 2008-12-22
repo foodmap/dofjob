@@ -40,7 +40,12 @@ public class Job extends AbstractJob implements java.io.Serializable {
 		info += "职能: ";
 		info += this.getFunction().getName()+"   ";
 		info += "<br/>";
-		info += this.getCompany().getName()+"   ";
+		info += "发布公司： ";
+		info += "<br/>";
+		info += this.getCompany().getShortInfo();
+		info += "<br/>";
+		info += "工作地点：";
+		info += this.getCompany().getProvince();
 		info += this.getCompany().getCity()+"   ";
 		info += "<br/>";
 		info += "学历要求: "+this.getGrade()+"   ";
@@ -56,6 +61,16 @@ public class Job extends AbstractJob implements java.io.Serializable {
 		return info;
 	}
 	
-	
+	public String getShortInfo(){
+		String info;
+		info = "";
+		info += "行业: ";
+		info += this.getIndustry().getName()+"   ";
+		info += "职能: ";
+		info += this.getFunction().getName()+"   ";
+		info += "<br/>";
+		info += "发布日期: "+this.getSubscribeDate().toGMTString()+"   ";
+		return info;
+	}
 	
 }
