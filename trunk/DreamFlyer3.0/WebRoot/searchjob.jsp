@@ -13,6 +13,11 @@
 <title>SJTU JOB HUNTING HOMEPAGE</title>
 <script type="text/javascript">
  var xmlHttp;
+ var provinces=new Array();
+ provinces[0]=['杭州'];
+ provinces[1]=['广州','湛江']; 
+ provinces[2]=['哈尔滨','大庆市'];
+  provinces[3]=['上海市'];
  function addLoadEvent(func) 
 {
   var oldonload = window.onload;
@@ -82,7 +87,7 @@ addLoadEvent(function() {
 		  xmlHttp.open("GET","getfunctions.do?industryid="+industryid+"&ts="+new Date().getTime(),true);
 		  xmlHttp.send(null);
 		}
-		
+	   
 	  function showFunction(){
 		  if(xmlHttp.readyState==4){
 		  if(xmlHttp.status==200){
@@ -93,7 +98,7 @@ addLoadEvent(function() {
            /*加入加拉框首行*/
            var tip=document.createElement("option");
            tip.setAttribute("value","");
-           tip.appendChild(document.createTextNode("请选择----------------------"));
+           tip.appendChild(document.createTextNode("请选择-------------------------"));
 		   selector.appendChild(tip);
 		   
 		    var functions=xmlHttp.responseXML.getElementsByTagName("function");
@@ -112,6 +117,29 @@ addLoadEvent(function() {
 		    alert("Error");
 		  }
 		}
+		}
+		
+		function loadCity(){
+		var selector=  document.getElementById("province");
+		var pid=selector.options[selector.selectedIndex].name;
+		var cities=provinces[pid];
+		
+		var selector2= document.getElementById("city");
+		   /*清除下拉框*/
+           selector2.innerHTML='';
+           /*加入加拉框首行*/
+           var tip=document.createElement("option");
+           tip.setAttribute("value","");
+           tip.appendChild(document.createTextNode("请选择-------------------------"));
+		   selector2.appendChild(tip);
+		   
+		     for(var i=0;i<cities.length;i++){ 
+		      option = document.createElement("option");
+		      option.setAttribute("value",cities[i]);
+		      option.appendChild(document.createTextNode(cities[i])); 
+		      selector2.appendChild(option);
+		   }
+		
 		}
   </script>
 <link rel="stylesheet" href="index.css" type="text/css" />
@@ -194,17 +222,17 @@ addLoadEvent(function() {
 			    <h3><span>找工作</span></h3>
 				<p class="date"><label>选择行业:</label>
 				  <select id="industry" name="select" onchange="loadFunction();">
-				    <option value="">请选择----------------------</option>
+				    <option value="">请选择-------------------------</option>
 			      </select>
 				</p>
               	<p class="date"><label>选择职能:</label>
 				  <select id="function" name="select">
-				    <option value="">请选择----------------------</option>
+				    <option value="">请选择-------------------------</option>
 			      </select>
 				</p>
 				<p class="date"><label>选择学历:</label>
 				  <select id="grade" name="select">
-				    <option value="">请选择----------------------</option>
+				    <option value="">请选择-------------------------</option>
 				    <option>本科</option>
 				    <option>硕士</option>
 				    <option>博士</option>
@@ -212,27 +240,35 @@ addLoadEvent(function() {
 				</p>
 				<p class="date"><label>工作年限:</label>
 				  <select id="workyears" name="select">
-				    <option value="">请选择----------------------</option>
-				    <option>1</option>
-				    <option>2</option>
+				    <option value="">请选择-------------------------</option>
+				    <option>1年</option>
+				    <option>2年</option>
 			      </select>
 				</p>
-				<p class="date"><label>工作地点:</label>
+				<p class="date"><label>工作省份:</label>
+				  <select id="province" name="select" onchange="loadCity();">
+				    <option value="">请选择-------------------------</option>
+				    <option name=0 value="浙江">浙江</option>
+				    <option name=1 value="广东">广东</option>
+				    <option name=2 value="黑龙江">黑龙江</option>
+				    <option name=3 value="上海市">上海市(直辖市)</option>
+			      </select>
+				</p>
+				<p class="date"><label>工作城市:</label>
 				  <select id="city" name="select">
-				    <option value="">请选择----------------------</option>
-				    <option>上海</option>
-				    <option>北京</option>
+				    <option value="">请选择-------------------------</option>
 			      </select>
 				</p>
 				<p class="date"><label>工作性别:</label>
 				  <select id="sex" name="select">
-				    <option value="">请选择----------------------</option>
+				    <option value="">请选择-------------------------</option>
 				    <option>男</option>
 				    <option>女</option>
 			      </select>
 				</p>
-                  
-				
+				<p class="date"> 
+				  <input type="submit" name="Submit2" value="开始搜索" />
+				</p>
 			    </div>
    	    <div id="jobresult">
 		        <h3><span>搜索结果</span></h3>
