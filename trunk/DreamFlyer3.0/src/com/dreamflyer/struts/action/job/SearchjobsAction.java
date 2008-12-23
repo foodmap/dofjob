@@ -55,6 +55,8 @@ public class SearchjobsAction extends Action {
 		try {
 			city = URLDecoder.decode(city,"UTF-8");
 			province = URLDecoder.decode(province,"UTF-8");
+			sex = URLDecoder.decode(sex,"UTF-8");
+			grade = URLDecoder.decode(grade,"UTF-8");
 			//System.out.println("¹þ¹þ");
 			//System.out.println(province);
 		} catch (UnsupportedEncodingException e) {
