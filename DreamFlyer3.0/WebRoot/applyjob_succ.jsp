@@ -93,7 +93,7 @@
 	            <div id="applyjob_succ">
 			    <h3><span>找工作</span></h3>
 				  <p class="date">
-                 <html:link page="searchjob.jsp">
+                 <html:link page="/searchjob.jsp">
 				       <img class="fieldimg" src="img/succ.jpg"/>更新成功，点击返回找工作页面
 	             </html:link>
                 </p>
