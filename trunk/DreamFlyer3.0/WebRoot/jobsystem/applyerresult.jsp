@@ -1,16 +1,12 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ page import="java.util.*" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'applyerresult.jsp' starting page</title>
-    
+    <title>Index response page</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -19,10 +15,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	
 
   </head>
   
   <body>
-    This is my JSP page. <br>
+             <h3><span>已申请该职位的学生列表</span></h3>
+          <%
+             List result =(ArrayList) request.getAttribute("jobresult");
+           %>
+		  <ui>
+		  <%for(int i=0;i<result.size();i++){ %>   
+         	<li class="jobdescript"> 学生信息</li>
+			<li class="jobdetail"> <%=result.get(i) %></li>
+		  <%} %>
+		  </ui>
+    
   </body>
 </html>
