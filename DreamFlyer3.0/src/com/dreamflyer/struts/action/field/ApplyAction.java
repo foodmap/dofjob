@@ -12,12 +12,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import com.dreamflyer.fieldsystem.factory.Singleton;
 import com.dreamflyer.fieldsystem.interfaces.iManagerCreator;
-import com.dreamflyer.hibernate.HibernateSessionFactory;
 
 /** 
  * MyEclipse Struts
@@ -42,46 +38,6 @@ public class ApplyAction extends Action {
 	 */
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
-		//get the <html:link> parameters
-		String mode1 = (String)request.getParameter("mode1");
-		if(mode1.equalsIgnoreCase("apply"))
-			return executeApply(mapping,form,request,response);
-		else if(mode1.equalsIgnoreCase("delete"))
-			return executeDelete(mapping,form,request,response);
-		else if(mode1.equalsIgnoreCase("update"))			 
-			return executeUpdate(mapping,form,request,response);
-		else
-			return null;
-	}
-
-	private ActionForward executeUpdate(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {		
-		String _company_id = (String)request.getSession().getAttribute("company_id");
-		List list = Singleton.getInstance()
-		            .getManager()
-		            .getApplyment(_company_id);
-		if(list == null){			
-			return mapping.findForward("error");
-		}
-		request.setAttribute("updlist", list);
-		return mapping.findForward("updateF");
-	}
-
-	private ActionForward executeDelete(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {		
-		String _company_id = (String)request.getSession().getAttribute("company_id");
-		List list = Singleton.getInstance()
-		            .getManager()
-		            .getApplyment(_company_id);
-		if(list == null){			
-			return mapping.findForward("error");
-		}
-		request.setAttribute("dellist", list);
-		return mapping.findForward("deleteF");
-	}
-
-	private ActionForward executeApply(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
 		iManagerCreator factory = Singleton.getInstance();
 		List list = factory.getManager().getFields();
 		if(list == null )
@@ -89,9 +45,4 @@ public class ApplyAction extends Action {
 		request.setAttribute("flist", list);
 		return mapping.findForward("applyF");
 	}
-	
-	private boolean hasException = false;
-	
-	private Transaction tx = null;
-	private Session session = null;
 }

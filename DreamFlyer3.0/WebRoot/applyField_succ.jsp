@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </p>
                 <p class="date">您已选的场地：</p>
    <p class="field_iterator">
-     <logic:iterate id="fields" name="_flist">
+     <logic:iterate id="fields" name="list_applied">
        <bean:write name="fields" property="address"/>
      </logic:iterate>
    </p>
