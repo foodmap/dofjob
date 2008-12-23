@@ -152,13 +152,14 @@ addLoadEvent(function() {
 		 var sex=document.getElementById("sex").value;
 		 var demand=document.getElementById('demand').innerHTML;
 		 var descript=document.getElementById('descript').innerHTML;
+		 var num=document.getElementById('number').value;
 		 if(industryid==0&&functionid==0&&grade==""&&workyears==0&&province==""&&city=="") return;
 		 
 		 /*开始查询*/	 
-		 alert("行业"+industryid+"职能"+functionid+"学历"+grade+"年限"+workyears+"城市"+city+"省份"+province+"性别"+sex+"要求"+demand+"描述"+descript);
+		 alert("行业"+industryid+"职能"+functionid+"学历"+grade+"年限"+workyears+"城市"+city+"省份"+province+"性别"+sex+"要求"+demand+"描述"+descript+"人数"+num);
 		   createXmlHttp();
 		  xmlHttp.onreadystatechange=showAddedResult;
-		  xmlHttp.open("GET","addjob.do?sex="+sex+"&industryid="+industryid+"&functionid="+functionid+"&workyears="+workyears+"&grade="+grade+"&city="+city+"&province="+province+"&demand="+demand+"&description"+descript+"&ts="+new Date().getTime(),true);
+		  xmlHttp.open("GET","addjob.do?sex="+sex+"&industryid="+industryid+"&functionid="+functionid+"&workyears="+workyears+"&grade="+grade+"&city="+city+"&province="+province+"&demand="+demand+"&description="+descript+"&number="+num+"&ts="+new Date().getTime(),true);
 		  xmlHttp.send(null);
 		
 		}
@@ -316,6 +317,9 @@ addLoadEvent(function() {
 				    <option value="男">男</option>
 				    <option value="女">女</option>
 			      </select>
+				</p>
+				<p class="date"><label>招聘人数:</label>
+				  <input id="number" type="text" />
 				</p>
 				<p class="date"><label>其他要求:</label>
 				  <textarea id="demand" name="textarea">请输入</textarea>
