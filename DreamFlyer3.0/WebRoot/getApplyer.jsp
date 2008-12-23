@@ -164,7 +164,7 @@ addLoadEvent(function() {
 			    <h3>察看公司已有职位</h3>
                	<p class="date"><label class="three">选择公司职位:</label>
 				  <select id="job" name="select">
-				    <option value=0>请选择-------------------------------------------</option>
+				    <option value=0>请选择--------------------------------------------------</option>
 			      </select>
 				</p>
 	   </div>
