@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page contentType="text/html; charset=gbk" language="java" import="java.sql.*" errorPage="" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
@@ -14,10 +14,10 @@
 <script type="text/javascript">
  var xmlHttp;
  var provinces=new Array();
- provinces[0]=['æ­å·'];
- provinces[1]=['å¹¿å·','æ¹›æ±Ÿ']; 
- provinces[2]=['å“ˆå°”æ»¨','å¤§åº†å¸‚'];
-  provinces[3]=['ä¸Šæµ·å¸‚'];
+ provinces[0]=['º¼Öİ'];
+ provinces[1]=['¹ãÖİ','Õ¿½­']; 
+ provinces[2]=['¹ş¶û±õ','´óÇì'];
+  provinces[3]=['ÉÏº£'];
  function addLoadEvent(func) 
 {
   var oldonload = window.onload;
@@ -92,16 +92,16 @@ addLoadEvent(function() {
 		  if(xmlHttp.status==200){
 		 
 		   var selector=  document.getElementById("function");
-		   /*æ¸…é™¤ä¸‹æ‹‰æ¡†*/
+		   /*Çå³ıÏÂÀ­¿ò*/
            selector.innerHTML='';
-           /*åŠ å…¥åŠ æ‹‰æ¡†é¦–è¡Œ*/
+           /*¼ÓÈë¼ÓÀ­¿òÊ×ĞĞ*/
            var tip=document.createElement("option");
            tip.setAttribute("value","0");
-           tip.appendChild(document.createTextNode("è¯·é€‰æ‹©-------------------------"));
+           tip.appendChild(document.createTextNode("ÇëÑ¡Ôñ-------------------------"));
 		   selector.appendChild(tip);
 		   
 		    var functions=xmlHttp.responseXML.getElementsByTagName("function");
-		  /*åŠ å…¥æ‰€æœ‰ä¸è¡Œä¸šå¯¹åº”çš„èŒèƒ½*/
+		  /*¼ÓÈëËùÓĞÓëĞĞÒµ¶ÔÓ¦µÄÖ°ÄÜ*/
 		 
 		   for(var i=0;i<functions.length;i++){
 		   
@@ -124,12 +124,12 @@ addLoadEvent(function() {
 		var cities=provinces[pid];
 		
 		var selector2= document.getElementById("city");
-		   /*æ¸…é™¤ä¸‹æ‹‰æ¡†*/
+		   /*Çå³ıÏÂÀ­¿ò*/
            selector2.innerHTML='';
-           /*åŠ å…¥åŠ æ‹‰æ¡†é¦–è¡Œ*/
+           /*¼ÓÈë¼ÓÀ­¿òÊ×ĞĞ*/
            var tip=document.createElement("option");
            tip.setAttribute("value","");
-           tip.appendChild(document.createTextNode("è¯·é€‰æ‹©-------------------------"));
+           tip.appendChild(document.createTextNode("ÇëÑ¡Ôñ-------------------------"));
 		   selector2.appendChild(tip);
 		   
 		     for(var i=0;i<cities.length;i++){ 
@@ -140,6 +140,15 @@ addLoadEvent(function() {
 		   }
 		
 		}
+		
+		/** add by hsq **/
+		function eco(str){
+             str = encodeURI(str);
+             str = encodeURI(str);
+             return str;
+        } 
+		/** above **/
+		
 		function doSearch(){
 		 var industryid = document.getElementById("industry").value;
 		 var functionid= document.getElementById("function").value;
@@ -150,8 +159,14 @@ addLoadEvent(function() {
 		 var sex=document.getElementById("sex").value;
 		 if(industryid==0&&functionid==0&&grade==""&&workyears==0&&province==""&&city=="") return;
 		 
-		 /*å¼€å§‹æŸ¥è¯¢*/	 
-		 alert("è¡Œä¸š"+industryid+"èŒèƒ½"+functionid+"å­¦å†"+grade+"å¹´é™"+workyears+"åŸå¸‚"+city+"çœä»½"+province+"æ€§åˆ«"+sex);
+		 /*¿ªÊ¼²éÑ¯*/	 
+		 alert("ĞĞÒµ"+industryid+"Ö°ÄÜ"+functionid+"Ñ§Àú"+grade+"ÄêÏŞ"+workyears+"³ÇÊĞ"+city+"Ê¡·İ"+province+"ĞÔ±ğ"+sex);
+		 /* add by hsqfire */
+		 sex = eco(sex);
+		 grade = eco(grade);
+		 province = eco(province);
+		 city = eco(city);
+		 /* above */
 		   createXmlHttp();
 		  xmlHttp.onreadystatechange=showResult;
 		  xmlHttp.open("GET","searchjobs.do?sex="+sex+"&industryid="+industryid+"&functionid="+functionid+"&workyears="+workyears+"&grade="+grade+"&city="+city+"&province="+province+"&ts="+new Date().getTime(),true);
@@ -198,14 +213,14 @@ addLoadEvent(function() {
   </div>
   <div id="navBar">
     <ul>
-		<li><a href="#"><span>ä¸»é¡µ</span></a></li>
-		<li><a href="#"><span>æ‰¾å·¥ä½œ</span></a></li>
-		<li><a href="#"><span>å…¬å‘Šæ–°é—»</span></a></li>
-		<li><a href="#"><span>å°±ä¸šæŒ‡å¯¼</span></a></li>
-		<li id="current"><a href="#"><span>å­¦ç”ŸæœåŠ¡</span></a></li>
-		<li><a href="#"><span>å…¬å¸æœåŠ¡</span></a></li>
-		<li><a href="#"><span>èµ„æºä¸‹è½½</span></a></li>
-		<li><a href="#"><span>å…³äºæˆ‘ä»¬</span></a></li>
+		<li><a href="#"><span>Ö÷Ò³</span></a></li>
+		<li><a href="#"><span>ÕÒ¹¤×÷</span></a></li>
+		<li><a href="#"><span>¹«¸æĞÂÎÅ</span></a></li>
+		<li><a href="#"><span>¾ÍÒµÖ¸µ¼</span></a></li>
+		<li id="current"><a href="#"><span>Ñ§Éú·şÎñ</span></a></li>
+		<li><a href="#"><span>¹«Ë¾·şÎñ</span></a></li>
+		<li><a href="#"><span>×ÊÔ´ÏÂÔØ</span></a></li>
+		<li><a href="#"><span>¹ØÓÚÎÒÃÇ</span></a></li>
     </ul>
    </div>
 
@@ -218,11 +233,11 @@ addLoadEvent(function() {
 
   <div> 
 		<ul id="cmenu"> 
-		<li><a href="home.htm">æ›´æ”¹ä¸ªäººä¿¡æ¯</a></li> 
-		<li><a href="about.htm">æ‰¾å·¥ä½œ</a></li> 
-		<li><a href="products.htm">å·¥ä½œæ”¶è—å¤¹</a></li> 
-		<li><a href="contact.htm">æ–‡ç« æ£€ç´¢</a></li> 
-		<li><a href="contact.htm">æˆ‘çš„é‚®ç®±</a></li>
+		<li><a href="home.htm">¸ü¸Ä¸öÈËĞÅÏ¢</a></li> 
+		<li><a href="about.htm">ÕÒ¹¤×÷</a></li> 
+		<li><a href="products.htm">¹¤×÷ÊÕ²Ø¼Ğ</a></li> 
+		<li><a href="contact.htm">ÎÄÕÂ¼ìË÷</a></li> 
+		<li><a href="contact.htm">ÎÒµÄÓÊÏä</a></li>
 		</ul> 
 </div> 
 
@@ -252,62 +267,62 @@ addLoadEvent(function() {
  <div id="middle">
    <div id="jobsearch">
 	            <div id="jobselect">
-			    <h3><span>æ‰¾å·¥ä½œ</span></h3>
-				<p class="date"><label>é€‰æ‹©è¡Œä¸š:</label>
+			    <h3><span>ÕÒ¹¤×÷</span></h3>
+				<p class="date"><label>Ñ¡ÔñĞĞÒµ:</label>
 				  <select id="industry" name="select" onchange="loadFunction();">
-				    <option value=0>è¯·é€‰æ‹©-------------------------</option>
+				    <option value="0">ÇëÑ¡Ôñ-------------------------</option>
 			      </select>
 				</p>
-              	<p class="date"><label>é€‰æ‹©èŒèƒ½:</label>
+              	<p class="date"><label>Ñ¡ÔñÖ°ÄÜ:</label>
 				  <select id="function" name="select">
-				    <option value=0>è¯·é€‰æ‹©-------------------------</option>
+				    <option value="0">ÇëÑ¡Ôñ-------------------------</option>
 			      </select>
 				</p>
-				<p class="date"><label>é€‰æ‹©å­¦å†:</label>
+				<p class="date"><label>Ñ¡ÔñÑ§Àú:</label>
 				  <select id="grade" name="select">
-				    <option value="">è¯·é€‰æ‹©-------------------------</option>
-				    <option value="æœ¬ç§‘">æœ¬ç§‘</option>
-				    <option value="ç¡•å£«">ç¡•å£«</option>
-				    <option value="åšå£«">åšå£«</option>
+				    <option value="">ÇëÑ¡Ôñ-------------------------</option>
+				    <option value="±¾¿Æ">±¾¿Æ</option>
+				    <option value="Ë¶Ê¿">Ë¶Ê¿</option>
+				    <option value="²©Ê¿">²©Ê¿</option>
 			      </select>
 				</p>
-				<p class="date"><label>å·¥ä½œå¹´é™:</label>
+				<p class="date"><label>¹¤×÷ÄêÏŞ:</label>
 				  <select id="workyears" name="select">
-				    <option value=0>è¯·é€‰æ‹©-------------------------</option>
-				    <option value=1>1å¹´ä»¥ä¸Š</option>
-				    <option value=2>2å¹´ä»¥ä¸Š</option>
+				    <option value=0>ÇëÑ¡Ôñ-------------------------</option>
+				    <option value=1>1ÄêÒÔÉÏ</option>
+				    <option value=2>2ÄêÒÔÉÏ</option>
 			      </select>
 				</p>
-				<p class="date"><label>å·¥ä½œçœä»½:</label>
+				<p class="date"><label>¹¤×÷Ê¡·İ:</label>
 				  <select id="province" name="select" onchange="loadCity();">
-				    <option value="">è¯·é€‰æ‹©-------------------------</option>
-				    <option name=0 value="æµ™æ±Ÿ">æµ™æ±Ÿ</option>
-				    <option name=1 value="å¹¿ä¸œ">å¹¿ä¸œ</option>
-				    <option name=2 value="é»‘é¾™æ±Ÿ">é»‘é¾™æ±Ÿ</option>
-				    <option name=3 value="ä¸Šæµ·å¸‚">ä¸Šæµ·å¸‚(ç›´è¾–å¸‚)</option>
+				    <option value="">ÇëÑ¡Ôñ-------------------------</option>
+				    <option name=0 value="Õã½­">Õã½­</option>
+				    <option name=1 value="¹ã¶«">¹ã¶«</option>
+				    <option name=2 value="ºÚÁú½­">ºÚÁú½­</option>
+				    <option name=3 value="ÉÏº£">ÉÏº£ÊĞ(Ö±Ï½ÊĞ)</option>
 			      </select>
 				</p>
-				<p class="date"><label>å·¥ä½œåŸå¸‚:</label>
+				<p class="date"><label>¹¤×÷³ÇÊĞ:</label>
 				  <select id="city" name="select">
-				    <option value="">è¯·é€‰æ‹©-------------------------</option>
+				    <option value="">ÇëÑ¡Ôñ-------------------------</option>
 			      </select>
 				</p>
-				<p class="date"><label>å·¥ä½œæ€§åˆ«:</label>
+				<p class="date"><label>¹¤×÷ĞÔ±ğ:</label>
 				  <select id="sex" name="select">
-				    <option value="">è¯·é€‰æ‹©-------------------------</option>
-				    <option value="ç”·">ç”·</option>
-				    <option value="å¥³">å¥³</option>
+				    <option value="">ÇëÑ¡Ôñ-------------------------</option>
+				    <option value="ÄĞ">ÄĞ</option>
+				    <option value="Å®">Å®</option>
 			      </select>
 				</p>
 				<p class="date"> 
-				  <input type="submit" name="Submit2" value="å¼€å§‹æœç´¢" onclick="doSearch();"/>
+				  <input type="submit" name="Submit2" value="¿ªÊ¼ËÑË÷" onclick="doSearch();"/>
 				</p>
 			    </div>
    	    <div id="jobresult">
-		        <h3><span>æœç´¢ç»“æœ</span></h3>
+		        <h3><span>ËÑË÷½á¹û</span></h3>
 		     <ui>   	        
-         	<li class="jobdescript"> èŒä½æè¿° <input type="submit" value="ç”³è¯·" onclick="applyJob(1);"/></li>
-			<li class="jobdetail"> è¡Œä¸š: è®¡ç®—æœº èŒèƒ½: è½¯ä»¶å·¥ç¨‹å¸ˆ æ€ç§‘ ä¸Šæµ· å­¦å†è¦æ±‚: å¤§å›› ç»éªŒè¦æ±‚: 0å¹´ æ€§åˆ«è¦æ±‚: null å‘å¸ƒæ—¥æœŸ: 30 Dec 2008 16:00:00 GMT å…¶ä»–è¦æ±‚: null</li>
+         	<li class="jobdescript"> Ö°Î»ÃèÊö <input type="submit" value="ÉêÇë" onclick="applyJob(1);"/></li>
+			<li class="jobdetail"> ĞĞÒµ: ¼ÆËã»ú Ö°ÄÜ: Èí¼ş¹¤³ÌÊ¦ Ë¼¿Æ ÉÏº£ Ñ§ÀúÒªÇó: ´óËÄ ¾­ÑéÒªÇó: 0Äê ĞÔ±ğÒªÇó: null ·¢²¼ÈÕÆÚ: 30 Dec 2008 16:00:00 GMT ÆäËûÒªÇó: null</li>
 		  </ui>
     	  </div>
 		 
@@ -318,12 +333,12 @@ addLoadEvent(function() {
  <div id="right">
    <div id="datebar">
      <form>
-       <h3>ä»Šå¤©æ˜¯2009å¹´1æœˆ12å·</h3>
+       <h3>½ñÌìÊÇ2009Äê1ÔÂ12ºÅ</h3>
      </form>
    </div>
    <div id="rightlinks">
   <div class="relatedLinks">
-    <h3>é¡¹ç›®æ¨è</h3>
+    <h3>ÏîÄ¿ÍÆ¼ö</h3>
     <ul>
       <li><a href="#">Related Link</a></li>
       <li><a href="#">Related Link</a></li>
@@ -334,7 +349,7 @@ addLoadEvent(function() {
     </ul>
   </div>
   <div class="relatedLinks">
-    <h3>çƒ­é—¨æ–‡ç« </h3>
+    <h3>ÈÈÃÅÎÄÕÂ</h3>
     <ul>
       <li><a href="#">Related Link</a></li>
       <li><a href="#">Related Link</a></li>
@@ -345,7 +360,7 @@ addLoadEvent(function() {
     </ul>
   </div>
  <div class="relatedLinks">
-    <h3>å‹æƒ…é“¾æ¥</h3>
+    <h3>ÓÑÇéÁ´½Ó</h3>
     <ul>
       <li><a href="#">Related Link</a></li>
       <li><a href="#">Related Link</a></li>
@@ -359,11 +374,11 @@ addLoadEvent(function() {
 </div>
 </div>
 <div id="siteInfo"> 
-    <a href="#">ç½‘ç«™å¯¼èˆª</a> 
-	<a href="#">å…³äºæˆ‘ä»¬</a> 
-	<a href="#">éšç§ä¿æŠ¤</a> 
-	<a href="#">æ¡æ¬¾å£°æ˜</a>
-	<a href="#">ç½®é¡¶</a> 
+    <a href="#">ÍøÕ¾µ¼º½</a> 
+	<a href="#">¹ØÓÚÎÒÃÇ</a> 
+	<a href="#">ÒşË½±£»¤</a> 
+	<a href="#">Ìõ¿îÉùÃ÷</a>
+	<a href="#">ÖÃ¶¥</a> 
 	&copy;2008  Dof, All rights reserved</div>
 </div>
 </body>
