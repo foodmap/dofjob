@@ -174,12 +174,12 @@ function WriteYearOptions(YearsAhead)
 			    <h3>申请场地</h3>
 
 <html:form action="/applyField?mode=apply">
-<p class="date"><label class="one">选择场地:</label>
+<p class="date"><label class="two">选择场地:</label>
 		<html:select property="field_id">
         <html:optionsCollection name="flist" label="address" value="id"/>
         </html:select><html:errors property="field_id"/>		 
 </p>
-<p class="date"><label class="two">选择日期:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp年</label>
+<p class="date"><label class="two">选择日期:年</label>
     <html:select property="start_year">
     <html:option value="2008">2008</html:option>
     </html:select><html:errors property = "start_year"/>
@@ -235,13 +235,13 @@ function WriteYearOptions(YearsAhead)
 	<html:option value="31">31</html:option>
 </html:select><html:errors property="start_day"/>
 </p>
-<p class="date"><label class="two">开始时间:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp时</label>
+<p class="date"><label class="two">开始时间:时</label>
    <html:text property="start_hour"></html:text><html:errors property="start_hour"/>
 </p>
 <p class="date"><label class="two">分</label>
   <html:text property="start_minute"></html:text><html:errors property="start_minute"/><br/>
 </p>
-<p class="date"><label class="two">结束时间:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp时</label>
+<p class="date"><label class="two">结束时间:时</label>
    <html:text property="end_hour"></html:text><html:errors property="end_hour"/>
 </p>
 <p class="date"><label class="two">分</label>
