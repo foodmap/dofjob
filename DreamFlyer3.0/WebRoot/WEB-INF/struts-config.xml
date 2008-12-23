@@ -122,7 +122,11 @@
       type="com.dreamflyer.struts.action.job.ApplyjobAction">
       <forward name="success" path="/applyjob_succ.jsp" />
       <forward name="failure" path="/applyjob_fail.jsp" />
-    </action>   
+    </action>
+    <action
+      input="/getApplyer.jsp"
+      path="/getcompanyjob"
+      type="com.dreamflyer.struts.action.job.GetcompanyjobAction" />   
 
 
 
