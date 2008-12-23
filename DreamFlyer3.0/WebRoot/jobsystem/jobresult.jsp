@@ -26,7 +26,7 @@
            %>
 		  <ui>
 		  <%for(int i=0;i<result.size();i+=2){ %>   
-         	<li class="jobdescript"> 职位描述<input type="submit" value="申请" onclick="apply(<%=result.get(i) %> %>);"/></li>
+         	<li class="jobdescript"> 职位描述<input type="submit" value="申请" onclick="applyJob(<%=result.get(i) %> );"/></li>
 			<li class="jobdetail"> <%=result.get(i+1) %></li>
 		  <%} %>
 		  </ui>
