@@ -33,35 +33,44 @@
   <action-mappings >
     <action
       attribute="applyFieldForm"
-      input="/fieldsystem/applyField.jsp"
+      input="/applyField.jsp"
       name="applyFieldForm"
       path="/applyField"
       scope="request"
       type="com.dreamflyer.struts.action.field.ApplyFieldAction" >      
-      <forward name="apply_succ" path="/fieldsystem/apply_succ.jsp" />
+      <forward name="apply_succ" path="/applyField_succ.jsp" />
     </action>
     <action 
       attribute="deleteFieldForm"
-      input="/fieldsystem/deleteField.jsp"
+      input="/deleteField.jsp"
       name="deleteFieldForm"
       path="/deleteField"
       scope="request"
-      type="com.dreamflyer.struts.action.field.ApplyFieldAction">      
-      <forward name="delete_succ" path="/fieldsystem/delete_succ.jsp" />
+      type="com.dreamflyer.struts.action.field.DeleteFieldAction">      
+      <forward name="delete_succ" path="/deleteField_succ.jsp" />
       </action>
     <action
       attribute="updateFieldForm"
-      input="/fieldsystem/updateField.jsp"
+      input="/updateField1.jsp"
       name="updateFieldForm"
       path="/updateField"
       scope="request"
-      type="com.dreamflyer.struts.action.field.ApplyFieldAction">
-      <forward name="update_succ" path="/fieldsystem/update_succ.jsp" />
+      type="com.dreamflyer.struts.action.field.UpdateFieldAction">
+      <forward name="update_succ" path="/updateField_succ.jsp" />
     </action>
     <action path="/apply" type="com.dreamflyer.struts.action.field.ApplyAction" >
-      <forward name="applyF" path="/fieldsystem/applyField.jsp" />
-      <forward name="deleteF" path="/fieldsystem/deleteField.jsp" />
-      <forward name="updateF" path="/fieldsystem/updateField.jsp" />
+      <forward name="applyF" path="/applyField.jsp" />
+      
+      
+    </action>
+    <action path="/delete" type="com.dreamflyer.struts.action.field.DeleteAction" >
+      
+      <forward name="deleteF" path="/deleteField.jsp" />
+     
+    </action>
+    <action path="/update" type="com.dreamflyer.struts.action.field.UpdateAction" >
+      
+      <forward name="updateF" path="/updateField.jsp" />
     </action>
     <action
       attribute="loginForm"

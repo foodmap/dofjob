@@ -17,7 +17,6 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 import com.dreamflyer.struts.form.field.ApplyFieldForm;
-import com.dreamflyer.struts.form.field.UpdateFieldForm;
 import com.dreamflyer.fieldsystem.factory.Singleton;
 
 /** 
@@ -40,72 +39,7 @@ public class ApplyFieldAction extends Action {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		String mode = (String)request.getParameter("mode");	
-		if(mode.equalsIgnoreCase("apply")){
-			return executeApply(mapping,form,request,response);
-		} else if(mode.equalsIgnoreCase("update")){
-			return executeUpdate(mapping,form,request,response);
-		} else if(mode.equalsIgnoreCase("delete")){
-			return executeDelete(mapping,form,request,response);
-		} else{
-			return mapping.findForward("error");
-		}	
-	}
-
-	private ActionForward executeDelete(ActionMapping mapping,
-			ActionForm applyFieldForm, HttpServletRequest request,
-			HttpServletResponse response) {
-		String dfid = (String)request.getParameter("dfid");	
-		String _company_id = (String)request.getSession().getAttribute("company_id");		
-		boolean exception = Singleton.getInstance()
-		                    .getManager()
-		                    .delApplyment(dfid, _company_id);
-		  
-	    if(!exception){	    	
-	    	return mapping.findForward("error");
-	    }
-		return mapping.findForward("delete_succ");		
-	}
-
-	private ActionForward executeUpdate(ActionMapping mapping,
-			ActionForm applyFieldForm, HttpServletRequest request,
-			HttpServletResponse response) {
-		UpdateFieldForm uff = (UpdateFieldForm)applyFieldForm;
-		String _company_id = (String)request.getSession().getAttribute("company_id");		
-	    ActionMessages errors = new ActionMessages();
-		Date end = null;
-	    Date start = null;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
-	    
-		String str = uff.getStart_year()
-		        +"-"+uff.getStart_month()
-		        +"-"+uff.getStart_day()
-		        +" "+uff.getStart_hour()
-		        +":"+uff.getStart_minute()+":00";	    
-	    String _str = uff.getStart_year()
-	             +"-"+uff.getStart_month()
-	             +"-"+uff.getStart_day()
-	             +" "+uff.getEnd_hour()
-	             +":"+uff.getEnd_minute()+":00";	    
-		try{	    		    	
-	    	start = sdf.parse(str);
-	    	end = sdf.parse(_str);	    	
-		}catch(ParseException pe){
-			errors.add("start_year", new ActionMessage("dateformat"));	    	
-	    	saveErrors(request,errors);
-	    	return mapping.getInputForward();
-		}
-		boolean exception = Singleton.getInstance()
-		                    .getManager()
-		                    .updApplyment(uff.getField_id(), _company_id, start, end);
-	    if(!exception)	    	
-	    	return mapping.findForward("error");	    
-		return mapping.findForward("update_succ");		
-	}
-
-	private ActionForward executeApply(ActionMapping mapping,
+	public ActionForward execute(ActionMapping mapping,
 			ActionForm applyFieldForm, HttpServletRequest request,
 			HttpServletResponse response) {
 		ApplyFieldForm form = (ApplyFieldForm)applyFieldForm;		
@@ -152,7 +86,7 @@ public class ApplyFieldAction extends Action {
 	               .getApplyment( _company_id);
 	    if(list != null)
 	    {
-	    	request.setAttribute("_flist", list);
+	    	request.setAttribute("list_applied", list);
 			return mapping.findForward("apply_succ");
 	    }
 	    return mapping.findForward("error");	    
