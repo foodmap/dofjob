@@ -171,7 +171,7 @@ addLoadEvent(function() {
 	  function applyJob(jobid){
 	      var id=jobid;
 	      alert(id);
-          window.location='applyjob.do?jobid='+id+'&ts='+new Date().getTime(),true);
+          window.location='applyjob.do?jobid='+id+'&ts='+new Date().getTime();
 	  }
 
   </script>
