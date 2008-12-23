@@ -3,13 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
-<%  String[] _mode = new String[3];
-    _mode[0] = "apply";
-    _mode[1] = "delete";
-    _mode[2] = "update";
-    pageContext.setAttribute("mode1",_mode[0]);
-    pageContext.setAttribute("mode2",_mode[1]);
-    pageContext.setAttribute("mode3",_mode[2]);
+<%  
     pageContext.getSession().setAttribute("company_id","1");
 %>
 
@@ -114,13 +108,13 @@
 	   <div id="fieldmanager">
 			    <h3>管理场地</h3>
                 <p class="date">
-                 <html:link action="/apply" paramId="mode1" paramName="mode1"><img class="fieldimg" src="img/applyfield.jpg"/>申请场地</html:link>
+                 <html:link action="/apply"><img class="fieldimg" src="img/applyfield.jpg"/>申请场地</html:link>
                 </p>
 				<p class="date">
-                 <html:link action="/apply" paramId="mode1" paramName="mode2"><img class="fieldimg" src="img/deletefield.jpg"/>删除场地</html:link>
+                 <html:link action="/delete"><img class="fieldimg" src="img/deletefield.jpg"/>删除场地</html:link>
                 </p>
 				<p class="date">
-                 <html:link action="/apply" paramId="mode1" paramName="mode3"><img class="fieldimg" src="img/updatefield.jpg"/>更改场地</html:link>
+                 <html:link action="/update"><img class="fieldimg" src="img/updatefield.jpg"/>更改场地</html:link>
                 </p>
 	    </div>
        </div>
