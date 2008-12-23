@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage="" %>
-<%@   taglib   prefix= "html "   uri= "http://struts.apache.org/tags-html "   %> 
-<%@   taglib   prefix= "bean "   uri= "http://struts.apache.org/tags-bean "   %> 
-<%@   taglib   prefix= "logic "   uri= "http://struts.apache.org/tags-logic "%> 
-
+<%@   taglib   prefix= "html "   uri= "http://struts.apache.org/tags-html"   %> 
+<%@   taglib   prefix= "bean "   uri= "http://struts.apache.org/tags-bean"   %> 
+<%@   taglib   prefix= "logic "  uri= "http://struts.apache.org/tags-logic" %> 
+<%@   taglib   prefix="tiles"    uri="http://struts.apache.org/tags-tiles" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- DW6 -->
@@ -10,10 +10,182 @@
 <!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 <title>SJTU JOB HUNTING HOMEPAGE</title>
+
+<script type="text/javascript">
+ var xmlHttp;
+ var provinces=new Array();
+ provinces[0]=['杭州'];
+ provinces[1]=['广州','湛江']; 
+ provinces[2]=['哈尔滨','大庆市'];
+  provinces[3]=['上海市'];
+ function addLoadEvent(func) 
+{
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') 
+  {
+    window.onload = func;
+  } 
+  else 
+  {
+    window.onload = function() 
+    {
+      if (oldonload) 
+     {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+
+addLoadEvent(function() {
+  /* more code to run on page load */ 
+  loadIndustry();
+}
+);
+
+		function createXmlHttp(){
+		   if(window.XMLHttpRequest){
+		     xmlHttp=new XMLHttpRequest();
+		     
+		   }else {xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+		   }
+		}
+		function loadIndustry(){
+		  createXmlHttp();
+		  xmlHttp.onreadystatechange=showIndustry;
+		  xmlHttp.open("GET","getindustry.do?ts="+new Date().getTime(),true);
+		  xmlHttp.send(null);
+		
+		}
+		function showIndustry(){
+		  if(xmlHttp.readyState==4){
+		  if(xmlHttp.status==200){
+		  var industries=xmlHttp.responseXML.getElementsByTagName("industry");
+		   var selector=  document.getElementById("industry");
+        
+		   for(var i=0;i<industries.length;i++){
+		    option = document.createElement("option");
+		      var idnode=industries[i].childNodes[0];
+		      var namenode=industries[i].childNodes[1];
+		      option.setAttribute("value",idnode.firstChild.nodeValue);
+		   option.appendChild(document.createTextNode(namenode.firstChild.nodeValue)); 
+		   selector.appendChild(option);
+		   }
+		  }else{
+		    alert("Error");
+		  }
+		}
+		}
+		
+		function loadFunction(){
+		  var industryid = document.getElementById("industry").value;
+		  if(industryid=="") return;
+		   createXmlHttp();		  
+		  xmlHttp.onreadystatechange=showFunction;
+		  xmlHttp.open("GET","getfunctions.do?industryid="+industryid+"&ts="+new Date().getTime(),true);
+		  xmlHttp.send(null);
+		}
+	   
+	  function showFunction(){
+		  if(xmlHttp.readyState==4){
+		  if(xmlHttp.status==200){
+		 
+		   var selector=  document.getElementById("function");
+		   /*清除下拉框*/
+           selector.innerHTML='';
+           /*加入加拉框首行*/
+           var tip=document.createElement("option");
+           tip.setAttribute("value","0");
+           tip.appendChild(document.createTextNode("请选择-------------------------"));
+		   selector.appendChild(tip);
+		   
+		    var functions=xmlHttp.responseXML.getElementsByTagName("function");
+		  /*加入所有与行业对应的职能*/
+		 
+		   for(var i=0;i<functions.length;i++){
+		   
+		    option = document.createElement("option");
+		      var idnode=functions[i].childNodes[0];
+		      var namenode=functions[i].childNodes[1];
+		      option.setAttribute("value",idnode.firstChild.nodeValue);
+		   option.appendChild(document.createTextNode(namenode.firstChild.nodeValue)); 
+		   selector.appendChild(option);
+		   }
+		  }else{
+		    alert("Error");
+		  }
+		}
+		}
+		
+		function loadCity(){
+		var selector=  document.getElementById("province");
+		var pid=selector.options[selector.selectedIndex].name;
+		var cities=provinces[pid];
+		
+		var selector2= document.getElementById("city");
+		   /*清除下拉框*/
+           selector2.innerHTML='';
+           /*加入加拉框首行*/
+           var tip=document.createElement("option");
+           tip.setAttribute("value","");
+           tip.appendChild(document.createTextNode("请选择-------------------------"));
+		   selector2.appendChild(tip);
+		   
+		     for(var i=0;i<cities.length;i++){ 
+		      option = document.createElement("option");
+		      option.setAttribute("value",cities[i]);
+		      option.appendChild(document.createTextNode(cities[i])); 
+		      selector2.appendChild(option);
+		   }
+		
+		}
+		function addJob(){
+		
+		
+		 var industryid = document.getElementById("industry").value;
+		 var functionid= document.getElementById("function").value;
+		 var grade= document.getElementById("grade").value;
+		 var workyears= document.getElementById("workyears").value;
+		 var province=document.getElementById("province").value;
+		 var city=document.getElementById("city").value;
+		 var sex=document.getElementById("sex").value;
+		 var demand=document.getElementById('demand').innerHTML;
+		 var descript=document.getElementById('descript').innerHTML;
+		 if(industryid==0&&functionid==0&&grade==""&&workyears==0&&province==""&&city=="") return;
+		 
+		 /*开始查询*/	 
+		 alert("行业"+industryid+"职能"+functionid+"学历"+grade+"年限"+workyears+"城市"+city+"省份"+province+"性别"+sex+"要求"+demand+"描述"+descript);
+		   createXmlHttp();
+		  xmlHttp.onreadystatechange=showAddedResult;
+		  xmlHttp.open("GET","addjob.do?sex="+sex+"&industryid="+industryid+"&functionid="+functionid+"&workyears="+workyears+"&grade="+grade+"&city="+city+"&province="+province+"&demand="+demand+"&description"+descript+"&ts="+new Date().getTime(),true);
+		  xmlHttp.send(null);
+		
+		}
+		function showAddedResult(){
+		if(xmlHttp.readyState==4){
+		  if(xmlHttp.status==200){
+		  document.getElementById("job_added").innerHTML=xmlHttp.responseText;
+		   
+		  }else{
+		    alert("Error");
+		  }
+		}
+	  }
+	  function deleteJob(jobid){
+	     alert("not implement");
+	  }
+	  function updateJob(jobid){
+	     alert("not implement");
+	  }
+
+  </script>
 <link rel="stylesheet" href="index.css" type="text/css" />
 <link rel="stylesheet" href="menu.css" type="text/css" />
 <link rel="stylesheet" href="login.css" type="text/css" />
-<link rel="stylesheet" href="ad.css"  type="text/css"/>
+<link rel="stylesheet" href="jobresult.css" type="text/css" />
+<link rel="stylesheet" href="jobsearch.css" type="text/css" />
+<link rel="stylesheet" href="info.css" type="text/css" />
 
 </head>
 <!-- The structure of this file is exactly the same as 2col_rightNav.html;
@@ -99,64 +271,66 @@
 	<div id="list">
 	             <div id="jobadd">
 			    <h3><span>增加职位</span></h3>
-				<p class="date">选择行业:
-				  <select name="select">
-				    <option>请选择----------------------</option>
-				    <option>计算机软件</option>
-				    <option>计算机硬件</option>
-				    <option>媒体/出版/图书</option>
-				    <option>教育/培训</option>
-				    <option>机械/器材/重工业</option>
-				    <option>化工</option>
-				    <option>能源/开采/冶炼</option>
+				<p class="date"><label>选择行业:</label>
+				  <select id="industry" name="select" onchange="loadFunction();">
+				    <option value=0>请选择-------------------------</option>
 			      </select>
 				</p>
-				<p class="date">选择职能:
-				  <select name="select2">
-				    <option>请选择----------------------</option>
-				    <option>软件工程师</option>
-				    <option>测试师</option>
-				    <option>系统分析师</option>
-				    <option>系统架构师</option>
-				    <option>项目经理</option>
-				    <option>技术顾问</option>
-				    <option>总经理</option>
-				    <option>首席技术总监</option>
+              	<p class="date"><label>选择职能:</label>
+				  <select id="function" name="select">
+				    <option value=0>请选择-------------------------</option>
 			      </select>
 				</p>
-				<p class="date">所需学历:
-				  <input type="text" name="textfield2" />
+				<p class="date"><label>选择学历:</label>
+				  <select id="grade" name="select">
+				    <option value="">请选择-------------------------</option>
+				    <option value="本科">本科</option>
+				    <option value="硕士">硕士</option>
+				    <option value="博士">博士</option>
+			      </select>
 				</p>
-				<p class="date">所需经验:
-				  <input type="text" name="textfield3" />
-				年</p>
-				<p class="date">所需性别:
-				  <label>男
-				  <input name="radiobutton" type="radio" value="radiobutton" />
-				  </label>
-				  <label>女
-				  <input name="radiobutton" type="radio" value="radiobutton" />
-				  </label>
+				<p class="date"><label>工作年限:</label>
+				  <select id="workyears" name="select">
+				    <option value=0>请选择-------------------------</option>
+				    <option value=1>1年以上</option>
+				    <option value=2>2年以上</option>
+			      </select>
 				</p>
-				<p class="date">其他要求:
-				  <label>
-				  <textarea name="textarea">请输入</textarea>
-				  </label>
+				<p class="date"><label>工作省份:</label>
+				  <select id="province" name="select" onchange="loadCity();">
+				    <option value="">请选择-------------------------</option>
+				    <option name=0 value="浙江">浙江</option>
+				    <option name=1 value="广东">广东</option>
+				    <option name=2 value="黑龙江">黑龙江</option>
+				    <option name=3 value="上海市">上海市(直辖市)</option>
+			      </select>
 				</p>
-				<p class="date">职位描述:
-				  <label>
-				  <textarea name="textarea2">请输入</textarea>
-				  </label>
+				<p class="date"><label>工作城市:</label>
+				  <select id="city" name="select">
+				    <option value="">请选择-------------------------</option>
+			      </select>
+				</p>
+				<p class="date"><label>工作性别:</label>
+				  <select id="sex" name="select">
+				    <option value="">请选择-------------------------</option>
+				    <option value="男">男</option>
+				    <option value="女">女</option>
+			      </select>
+				</p>
+				<p class="date"><label>其他要求:</label>
+				  <textarea id="demand" name="textarea">请输入</textarea>
+				</p>
+				<p class="date"><label>职位描述:</label>
+				  <textarea id="descript" name="textarea2">请输入</textarea>
 				</p>
 				<p class="date"> 
-				  <input type="submit" name="Submit2" value="确认添加" />
+				  <input type="submit" name="Submit2" value="确认添加" onclick="addJob();"/>
 				</p>
 				
 			 </div>
 		    	 <div id="job_added">
 		        <h3><span>已添加的职位</span></h3>
-				 <added_list>无</added_list>
-			    </div>
+			 </div>
 		      
     </div>
 </div>
