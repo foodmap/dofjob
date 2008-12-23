@@ -93,12 +93,12 @@
 		   <%
              List result =(ArrayList) request.getAttribute("myjob");
            %>
-		  <ui>
+		  <ul class="job_ui">
 		  <%for(int i=0;i<result.size();i+=2){ %>   
          	<li class="jobdescript"> ÷∞Œª√Ë ˆ<input type="submit" value="…æ≥˝" onclick="deleteMyjob(<%=result.get(i) %> );"/></li>
 			<li class="jobdetail"> <%=result.get(i+1) %></li>
 		  <%} %>
-		  </ui>
+		  </ul>
 			    </div>
    	   
 		 
