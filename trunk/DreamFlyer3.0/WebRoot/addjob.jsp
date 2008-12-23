@@ -140,6 +140,15 @@ addLoadEvent(function() {
 		   }
 		
 		}
+		
+		/** add by hsq **/
+		function eco(str){
+             str = encodeURI(str);
+             str = encodeURI(str);
+             return str;
+        } 
+		/** above **/
+		
 		function addJob(){
 		
 		
@@ -157,6 +166,16 @@ addLoadEvent(function() {
 		 
 		 /*开始查询*/	 
 		 alert("行业"+industryid+"职能"+functionid+"学历"+grade+"年限"+workyears+"城市"+city+"省份"+province+"性别"+sex+"要求"+demand+"描述"+descript+"人数"+num);
+		   
+		 /* add by hsqfire */
+		 sex = eco(sex);
+		 grade = eco(grade);
+		 province = eco(province);
+		 city = eco(city);
+		 demand = eco(demand);
+		 descript = eco(descript);
+		 /* above */  
+		   
 		   createXmlHttp();
 		  xmlHttp.onreadystatechange=showAddedResult;
 		  xmlHttp.open("GET","addjob.do?sex="+sex+"&industryid="+industryid+"&functionid="+functionid+"&workyears="+workyears+"&grade="+grade+"&city="+city+"&province="+province+"&demand="+demand+"&description="+descript+"&number="+num+"&ts="+new Date().getTime(),true);
