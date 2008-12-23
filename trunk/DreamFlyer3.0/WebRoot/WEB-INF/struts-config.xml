@@ -12,6 +12,7 @@
     <form-bean name="searchjobForm" type="com.dreamflyer.struts.form.job.SearchjobForm" />
     <form-bean name="getfunctionForm" type="com.dreamflyer.struts.form.job.GetfunctionForm" />
     <form-bean name="getfunctionsForm" type="com.dreamflyer.struts.form.job.GetfunctionsForm" />
+    <form-bean name="searchjobsForm" type="com.dreamflyer.struts.form.job.SearchjobsForm" />
  </form-beans>  
 
 
@@ -88,7 +89,7 @@
       name="searchjobForm"
       path="/searchjob"
       scope="request"
-      type="com.dreamflyer.struts.action.SearchjobAction">
+      type="com.dreamflyer.struts.action.job.SearchjobAction">
       <forward name="jobresult" path="/jobsystem/jobresult.jsp" />
     </action>
     <action path="/getindustry" type="com.dreamflyer.struts.action.job.GetindustryAction" />
@@ -101,7 +102,16 @@
       name="getfunctionsForm"
       path="/getfunctions"
       scope="request"
-      type="com.dreamflyer.struts.action.job.GetfunctionsAction" />   
+      type="com.dreamflyer.struts.action.job.GetfunctionsAction" />
+    <action
+      attribute="searchjobsForm"
+      input="/searchjob.jsp"
+      name="searchjobsForm"
+      path="/searchjobs"
+      scope="request"
+      type="com.dreamflyer.struts.action.job.SearchjobsAction">
+      <forward name="jobresult" path="/jobsystem/jobresult.jsp" />
+    </action>   
 
 
 
