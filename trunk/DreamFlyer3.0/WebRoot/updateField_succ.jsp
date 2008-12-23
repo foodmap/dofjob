@@ -107,10 +107,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="list">
 	   <div id="updateField_succ">
 			    <h3>更新场地</h3>
-                <p class="date">
-                 <html:link page="field_ad.jsp"><img class="fieldimg" src="img/succ.jpg"/>
-                        更新成功，点击返回管理页面
-                 </html:link>
+                  <p class="date">
+                 <html:link page="/field_ad.jsp"><img class="fieldimg" src="img/succ.jpg"/>更新成功，点击返回管理页面</html:link>
                 </p>
 	    </div>
        </div>

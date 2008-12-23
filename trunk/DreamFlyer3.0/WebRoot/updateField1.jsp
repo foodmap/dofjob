@@ -99,13 +99,13 @@
 	   <div id="update_field1">
 			    <h3>更改场地</h3>
 
-<html:form action="/updateField?mode=update">
-<p class="date"><label class="one">选择场地:</label>
+<html:form action="/updateField">
+<p class="date"><label class="two">选择场地:</label>
 		<html:select property="field_id" value="${param.ufid}">
         <html:option value="${param.ufid}"><%=new String((request.getParameter("address")).getBytes("ISO-8859-1"),"gb2312")%></html:option>
         </html:select><html:errors property="field_id"/>	 
 </p>
-<p class="date"><label class="two">选择日期:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp年</label>
+<p class="date"><label class="two">选择日期:年</label>
     <html:select property="start_year">
     <html:option value="2008">2008</html:option>
     </html:select><html:errors property = "start_year"/>
@@ -161,13 +161,13 @@
 	<html:option value="31">31</html:option>
 </html:select><html:errors property="start_day"/>
 </p>
-<p class="date"><label class="two">开始时间:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp时</label>
+<p class="date"><label class="two">开始时间:时</label>
    <html:text property="start_hour"></html:text><html:errors property="start_hour"/>
 </p>
 <p class="date"><label class="two">分</label>
   <html:text property="start_minute"></html:text><html:errors property="start_minute"/><br/>
 </p>
-<p class="date"><label class="two">结束时间:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp时</label>
+<p class="date"><label class="two">结束时间:时</label>
    <html:text property="end_hour"></html:text><html:errors property="end_hour"/>
 </p>
 <p class="date"><label class="two">分</label>

@@ -103,7 +103,7 @@
                 <p class="date">所选场地：</p>
     <p class="field_iterator">
 	<logic:iterate id="fieldlist" name="updlist">
-	<bean:write name="fieldlist" property="address"/><html:link page="/fieldsystem/updateField1.jsp?address=${fieldlist.address}" paramId="ufid" paramName="fieldlist" paramProperty="id">更改</html:link>
+	<bean:write name="fieldlist" property="address"/><html:link page="/updateField1.jsp?address=${fieldlist.address}" paramId="ufid" paramName="fieldlist" paramProperty="id">更改</html:link>
 	</logic:iterate>
 	</p>	
 	    </div>
