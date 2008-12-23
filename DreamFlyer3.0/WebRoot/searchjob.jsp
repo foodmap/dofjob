@@ -235,7 +235,7 @@ addLoadEvent(function() {
 		<ul id="cmenu"> 
 		<li><a href="home.htm">更改个人信息</a></li> 
 		<li><a href="about.htm">找工作</a></li> 
-		<li><a href="products.htm">工作收藏夹</a></li> 
+		<li><html:link action="getmyapplyment.do">工作收藏夹</html:link></li> 
 		<li><a href="contact.htm">文章检索</a></li> 
 		<li><a href="contact.htm">我的邮箱</a></li>
 		</ul> 
