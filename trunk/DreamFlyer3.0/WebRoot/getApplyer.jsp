@@ -98,6 +98,7 @@ addLoadEvent(function() {
 <link rel="stylesheet" href="ad.css"  type="text/css"/>
 <link rel="stylesheet" href="info.css"  type="text/css"/>
 <link rel="stylesheet" href="field.css"  type="text/css"/>
+<link rel="stylesheet" href="jobresult.css"  type="text/css"/>
 </head>
 <!-- The structure of this file is exactly the same as 2col_rightNav.html;
      the only difference between the two is the stylesheet they use -->
