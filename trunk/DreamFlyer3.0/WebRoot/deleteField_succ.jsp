@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <div id="deleteField_succ">
 			    <h3>删除场地</h3>
                <p class="date">
-                 <html:link page="field_ad.jsp"><img class="fieldimg" src="img/succ.jpg"/>删除成功，点击返回管理页面</html:link>
+                 <html:link page="/field_ad.jsp"><img class="fieldimg" src="img/succ.jpg"/>删除成功，点击返回管理页面</html:link>
                 </p>
 	    </div>
        </div>
