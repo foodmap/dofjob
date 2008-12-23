@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <div id="applyField_succ">
 			    <h3>申请场地</h3>
 			    <p class="date">
-                 <html:link page="field_ad.jsp"><img class="fieldimg" src="img/succ.jpg"/>申请成功，点击返回管理页面</html:link>
+                 <html:link page="/field_ad.jsp"><img class="fieldimg" src="img/succ.jpg"/>申请成功，点击返回管理页面</html:link>
                 </p>
                 <p class="date">您已选的场地：</p>
    <p class="field_iterator">
