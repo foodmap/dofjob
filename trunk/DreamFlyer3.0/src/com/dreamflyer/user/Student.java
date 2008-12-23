@@ -211,7 +211,11 @@ public class Student implements java.io.Serializable {
 		info += this.getEmail();
 		info += "µç»°£º ";
 		info += this.getPhoto();
+		info += " ";
+		info += this.getTelephone();
 		return info;
 	}
+	
+	
 
 }
