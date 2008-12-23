@@ -72,8 +72,24 @@ addLoadEvent(function() {
 		  }
 		}
       }
-      
-      
+      function loadStudent(){
+         var jobid = document.getElementById("job").value;
+		  if(jobid=="") return;
+		   createXmlHttp();		  
+		  xmlHttp.onreadystatechange=showStudent;
+		  xmlHttp.open("GET","getapplyer.do?jobid="+jobid+"&ts="+new Date().getTime(),true);
+		  xmlHttp.send(null);
+      }
+      function showStudent(){
+         if(xmlHttp.readyState==4){
+		  if(xmlHttp.status==200){
+		  document.getElementById("sturesult").innerHTML=xmlHttp.responseText;
+		   
+		  }else{
+		    alert("Error");
+		  }
+		}
+      }
 //  End -->
 </script>
 <link rel="stylesheet" href="index.css" type="text/css" />
@@ -163,12 +179,12 @@ addLoadEvent(function() {
 	   <div id="check_job">
 			    <h3>察看公司已有职位</h3>
                	<p class="date"><label class="three">选择公司职位:</label>
-				  <select id="job" name="select">
+				  <select id="job" name="select" onchange="loadStudent();">
 				    <option value=0>请选择--------------------------------------------------</option>
 			      </select>
 				</p>
 	   </div>
-	   <div id="check_student">
+	   <div id="sturesult">
 			    <h3>已申请该职位的学生列表</h3>
                	 
 	   </div>
