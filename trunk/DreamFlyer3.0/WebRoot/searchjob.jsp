@@ -320,7 +320,7 @@ addLoadEvent(function() {
 			    </div>
    	    <div id="jobresult">
 		        <h3><span>搜索结果</span></h3>
-		     <ui>   	        
+		  <ui>   	        
          	<li class="jobdescript"> 职位描述 <input type="submit" value="申请" onclick="applyJob(1);"/></li>
 			<li class="jobdetail"> 行业: 计算机 职能: 软件工程师 思科 上海 学历要求: 大四 经验要求: 0年 性别要求: null 发布日期: 30 Dec 2008 16:00:00 GMT 其他要求: null</li>
 		  </ui>
