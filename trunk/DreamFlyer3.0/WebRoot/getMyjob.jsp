@@ -3,7 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %> 
-
+<%@ page import="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- DW6 -->
@@ -268,7 +268,15 @@ addLoadEvent(function() {
    <div id="jobsearch">
 	            <div id="jobselect">
 			    <h3>工作收藏夹(已申请的工作)</h3>
-				
+		   <%
+             List result =(ArrayList) request.getAttribute("myjob");
+           %>
+		  <ui>
+		  <%for(int i=0;i<result.size();i+=2){ %>   
+         	<li class="jobdescript"> 职位描述<input type="submit" value="删除" onclick="deleteMyjob(<%=result.get(i) %> );"/></li>
+			<li class="jobdetail"> <%=result.get(i+1) %></li>
+		  <%} %>
+		  </ui>
 			    </div>
    	   
 		 
