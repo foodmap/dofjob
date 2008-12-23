@@ -11,4 +11,6 @@ public interface iManageJob {
                           String other_requirements,String description,int jobid);
 	public List getStuApplyment(int companyid);
 	
+	public List getApplyers(long jobid);
+	
 }
