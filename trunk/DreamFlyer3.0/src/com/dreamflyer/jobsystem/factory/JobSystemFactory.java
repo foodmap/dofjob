@@ -30,7 +30,7 @@ public class JobSystemFactory {
     public static iJobManagerFactory getManager(){
     	if(manager==null){
 			try {
-				manager=(iJobManagerFactory)(Class.forName("JobManagerFactory").newInstance());
+				manager=(iJobManagerFactory)(Class.forName("com.dreamflyer.jobsystem.factory.JobManagerFactory").newInstance());
 			} catch (InstantiationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
