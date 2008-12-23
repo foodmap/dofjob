@@ -284,7 +284,7 @@ public class JobManager implements iApplyJob, iManageJob {
 			Job job = (Job)it.next();
 			long id = job.getId();
 			jobinfo.add(id);
-			jobinfo.add(job.toString());
+			jobinfo.add(job.getShortInfo());
 		}
 		session.close();
 		//factory.close();

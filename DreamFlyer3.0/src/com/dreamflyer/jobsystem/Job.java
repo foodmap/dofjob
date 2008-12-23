@@ -64,11 +64,10 @@ public class Job extends AbstractJob implements java.io.Serializable {
 	public String getShortInfo(){
 		String info;
 		info = "";
-		info += "行业: ";
-		info += this.getIndustry().getName()+"   ";
+		
 		info += "职能: ";
 		info += this.getFunction().getName()+"   ";
-		info += "<br/>";
+		//info += "<br/>";
 		info += "发布日期: "+this.getSubscribeDate().toGMTString()+"   ";
 		return info;
 	}

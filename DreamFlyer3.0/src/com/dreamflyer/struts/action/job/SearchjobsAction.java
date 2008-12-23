@@ -4,6 +4,8 @@
  */
 package com.dreamflyer.struts.action.job;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +52,15 @@ public class SearchjobsAction extends Action {
 		String grade = myform.getGrade();
 		String city = myform.getCity();
 		String province = myform.getProvince();
+		try {
+			city = URLDecoder.decode(city,"UTF-8");
+			province = URLDecoder.decode(province,"UTF-8");
+			//System.out.println("¹þ¹þ");
+			//System.out.println(province);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		int workyears = Integer.parseInt(myform.getWorkyears());
 		int industryid = Integer.parseInt(myform.getIndustryid());
 		//System.out.println(myform.getFunctionid());
