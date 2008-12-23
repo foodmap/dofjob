@@ -47,7 +47,8 @@ public class GetcompanyjobAction extends Action {
 			HttpServletRequest request, HttpServletResponse response) {
 		response.setContentType("text/xml;charset=utf-8");
 		HttpSession session = request.getSession();
-		int companyid = 2;
+		int companyid = 3;
+		/*
 		Company com;
 		if(session==null){
 			return null;
@@ -58,6 +59,7 @@ public class GetcompanyjobAction extends Action {
 				return null;
 			}
 		}
+		*/
 		iJobManagerFactory f = JobSystemFactory.getManager();
 		iManageJob manager = f.getManager();
 		List result = manager.getJob(companyid);
