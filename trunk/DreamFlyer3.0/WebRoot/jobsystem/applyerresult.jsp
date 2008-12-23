@@ -22,7 +22,7 @@
   <body>
              <h3><span>已申请该职位的学生列表</span></h3>
           <%
-             List result =(ArrayList) request.getAttribute("jobresult");
+             List result =(ArrayList) request.getAttribute("applyerresult");
            %>
 		  <ui>
 		  <%for(int i=0;i<result.size();i++){ %>   
