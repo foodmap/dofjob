@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -17,6 +19,7 @@ import com.dreamflyer.jobsystem.factory.JobSystemFactory;
 import com.dreamflyer.jobsystem.interfaces.iJobManagerFactory;
 import com.dreamflyer.jobsystem.interfaces.iManageJob;
 import com.dreamflyer.struts.form.job.GetapplyerForm;
+import com.dreamflyer.user.Company;
 
 /** 
  * MyEclipse Struts
@@ -42,6 +45,19 @@ public class GetapplyerAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		//System.out.println("I have reach action");
+		HttpSession session = request.getSession();
+		int companyid = 3;
+		
+		Company com;
+		if(session==null){
+			return mapping.findForward("login");
+		}
+		else{
+			com = (Company)session.getAttribute("current_user");
+			if(com==null){
+				return mapping.findForward("login");
+			}
+		}
 		GetapplyerForm myform = (GetapplyerForm) form;
 		iJobManagerFactory f = JobSystemFactory.getManager();
 		iManageJob manager = f.getManager();
