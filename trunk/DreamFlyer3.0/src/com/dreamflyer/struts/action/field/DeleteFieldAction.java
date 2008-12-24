@@ -23,7 +23,7 @@ public class DeleteFieldAction extends Action {
 		                    .getManager()
 		                    .delApplyment(dfid, _company_id);
 		  
-	    if(!exception){	    	
+	    if(exception){	    	
 	    	return mapping.findForward("error");
 	    }
 		return mapping.findForward("delete_succ");		

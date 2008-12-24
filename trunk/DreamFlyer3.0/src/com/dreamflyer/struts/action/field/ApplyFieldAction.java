@@ -81,7 +81,7 @@ public class ApplyFieldAction extends Action {
 	                        .addApplyment(_fid, _company_id, start, end);
 	    
 	     
-	    if(!exception){	    	
+	    if(exception){	    	
 	    	return mapping.findForward("error");
 	    }
 	    List list = Singleton.getInstance()
