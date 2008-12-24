@@ -81,7 +81,9 @@ public class FieldManager extends AbstractManagers {
 		try{
 			session = HibernateSessionFactory.getSession();
 			Transaction tx1 = session.beginTransaction();
-	    	String hqlS = "from Fields as f where f.id in(select cf.id.fields.id from Companyfields as cf where cf.id.company.id = :co)";	    			
+//			using view
+			String hqlS = "select cfa.id from ComFieldsAdd as cfa where cfa.id.companyId = :co";
+//	    	String hqlS = "from Fields as f where f.id in(select cf.id.fields.id from Companyfields as cf where cf.id.company.id = :co)";	    			
 	    	flist = session.createQuery(hqlS)
 	    	             .setString("co", _company_id)
 	    	             .list();
