@@ -117,7 +117,7 @@ if(request.getSession().getAttribute("current_user") == null)
    <p class="field_iterator">
     <logic:iterate id="list" name="dellist">
       <bean:write name="list" property="address"/>
-      <html:link action="/deleteField?mode=delete" paramId="dfid" paramName="list" paramProperty="id">É¾³ý</html:link>
+      <html:link action="/deleteField?mode=delete" paramId="dfid" paramName="list" paramProperty="fieldsId">É¾³ý</html:link>
     </logic:iterate>
    </p>
 	    </div>
