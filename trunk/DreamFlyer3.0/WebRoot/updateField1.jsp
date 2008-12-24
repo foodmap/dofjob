@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*,com.dreamflyer.user.Company" errorPage="" %>
+<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*,com.dreamflyer.user.Company" errorPage="" isELIgnored = "false" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
@@ -33,7 +33,7 @@ if(request.getSession().getAttribute("current_user") == null)
 <body>
 <div id="container">
 <div id="masthead">
-  <div id="logo" ><br /><img src="img/logo.png"></div>
+  <div id="logo" >g<br /><img src="img/logo.png"></div>
   <div id="leftbar"><img src="img/leftbar.gif"></div>
   <div id="rightbar">
    <img src="img/go.gif"/>
