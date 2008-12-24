@@ -42,6 +42,14 @@
                                                 provinces[25]=['天津'];
                                                   provinces[26]=['拉萨','昌都','那曲','林芝','日喀则','阿里'];
                                                      provinces[27]=['乌鲁木齐','克拉玛依','吐鲁番','哈密','昌吉','喀什','阿克苏','伊犁'];
+                                                     provinces[28]=['昆明','玉溪','红河','文山','西双广纳','大理','丽江'];
+                                                     provinces[29]=['杭州','宁波','温州','台州','金华','舟山','绍兴','嘉兴'];
+                                                     provinces[30]=['西安','铜川','宝鸡','咸阳','汉中','延安'];
+                                                     provinces[31]=['台北','高雄'];
+                                                     provinces[32]=['香港'];
+                                                     provinces[33]=['澳门'];
+                                                     
+                                                     
  function addLoadEvent(func) 
 {
   var oldonload = window.onload;
@@ -366,6 +374,12 @@ addLoadEvent(function() {
 				    <option name=25 value="天津">天津</option>
 				    <option name=26 value="西藏">西藏</option>
 				    <option name=27 value="新疆">新疆</option>
+				    <option name=28 value="云南">云南</option>
+				    <option name=29 value="浙江">浙江</option>
+				    <option name=30 value="陕西">陕西</option>
+				    <option name=31 value="台湾">台湾</option>
+				    <option name=32 value="香港">香港</option>
+				    <option name=33 value="澳门">澳门</option>
 			      </select>
 				</p>
 				<p class="date"><label>工作城市:</label>
