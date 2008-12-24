@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,com.dreamflyer.user.Company" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*,com.dreamflyer.user.Company" pageEncoding="gb2312" isELIgnored = "false"%>
 
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
