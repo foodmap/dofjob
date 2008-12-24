@@ -38,21 +38,16 @@ public class FieldManager extends AbstractManagers {
 	    	hasException = true;
 	    	if(tx!=null )
 	    		tx.rollback();
-	    	he.printStackTrace();
-	    	throw he;
+	    	throw he;	    	
 	    }finally{	    	
 	    	session.close();		   
 	    }	    
-	    if(hasException){
-	    	hasException = false;	    	
-	    	return false;
-	    }
-		return true;		
+		return hasException;		
 	}
 
 	@Override
 	public boolean delApplyment(String fid,String _company_id) {
-		boolean exception = true;
+		boolean exception = false;
 		try{	    	
 	    	session = HibernateSessionFactory.getSession();
 	    	tx = session.beginTransaction();
@@ -63,10 +58,9 @@ public class FieldManager extends AbstractManagers {
 	    	           .executeUpdate();
 	    	tx.commit();
 	    }catch(HibernateException he){
-	    	exception = false;
+	    	exception = true;
 	    	if(tx != null)
-	    		tx.rollback();
-	    	he.printStackTrace();
+	    		tx.rollback();	    	
 	    	throw he;
 	    }finally{
 	    	session.close();	    	
@@ -89,7 +83,6 @@ public class FieldManager extends AbstractManagers {
 	    	             .list();
 	    	tx1.commit();    
 		}catch(HibernateException he){
-			he.printStackTrace();
 			return null;
 		}				
     	return flist;
@@ -106,14 +99,12 @@ public class FieldManager extends AbstractManagers {
 			flist = session.createQuery(hqlS).list();
 			tx.commit();			
 		}catch(HibernateException he){
-			hasException = true;
-			System.err.println(he.getMessage());
+			hasException = true;			
 			throw he;			
 		}finally{
 			session.close();			
 		}
-		if(hasException){
-			hasException = false;
+		if(hasException){			
 			return null;
 		}
 		return flist;		
@@ -121,7 +112,7 @@ public class FieldManager extends AbstractManagers {
 
 	@Override
 	public boolean updApplyment(String fid,String _company_id,Date start,Date end) {
-		boolean exception = true;
+		boolean exception = false;
 		try{	    	
 	    	session = HibernateSessionFactory.getSession();
 	    	tx = session.beginTransaction();	    	
@@ -134,10 +125,9 @@ public class FieldManager extends AbstractManagers {
 	    	                  .executeUpdate();	    	
 	    	tx.commit();
 	    }catch(HibernateException he){
-	    	exception = false;
+	    	exception = true;
 	    	if(tx != null)
-	    		tx.rollback();
-	    	he.printStackTrace();
+	    		tx.rollback();	    	
 	    	throw he;
 	    }finally{
 	    	session.close();	    	
