@@ -35,25 +35,25 @@
             <column name="fax" length="200" not-null="true" />
         </property>
         <property name="description" type="java.lang.String">
-            <column name="description" length="65535" />
+            <column name="description" length="16777215" />
         </property>
         <property name="username" type="java.lang.String">
-            <column name="username" length="20" />
+            <column name="username" length="20" not-null="true" />
         </property>
         <property name="password" type="java.lang.String">
-            <column name="password" length="20" />
+            <column name="password" length="20" not-null="true" />
         </property>
         <set name="jobs" inverse="true">
             <key>
                 <column name="company_id" not-null="true" />
             </key>
-            <one-to-many class="com.dreamflyer.jobsystem.Job" />
+            <one-to-many class="com.dreamflyer.user.Job" />
         </set>
         <set name="companyfieldses" inverse="true">
             <key>
                 <column name="company_id" not-null="true" />
             </key>
-            <one-to-many class="com.dreamflyer.fieldsystem.Companyfields" />
+            <one-to-many class="com.dreamflyer.user.Companyfields" />
         </set>
     </class>
 </hibernate-mapping>
