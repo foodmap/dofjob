@@ -28,6 +28,7 @@
 	<forward name="studentreg_success" path="/studentreg_success.jsp" />
     <forward name="studentreg_fail" path="/studentreg_fail.jsp" />
     <forward name="student_registry" path="/student_registry.jsp" />
+    <forward name="error1" path="/error1.jsp" />
   </global-forwards>
 
   <action-mappings >

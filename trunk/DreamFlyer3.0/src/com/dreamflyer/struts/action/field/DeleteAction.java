@@ -11,11 +11,14 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.dreamflyer.fieldsystem.factory.Singleton;
+import com.dreamflyer.fieldsystem.factory.Utility;
 
 public class DeleteAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {		
-		String _company_id = (String)request.getSession().getAttribute("company_id");
+		String _company_id = Utility.isLogin(request);
+		if(_company_id == null)
+			return mapping.findForward("error1");
 		List list = Singleton.getInstance()
 		            .getManager()
 		            .getApplyment(_company_id);

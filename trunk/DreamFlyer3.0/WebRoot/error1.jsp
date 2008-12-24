@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <div id="field_error">
 			    <h3>提示信息</h3>
                 <p class="date">
-                 <html:link page="/field_ad.jsp"><img class="fieldimg" src="img/fail.jpg"/>对不起，场地管理过程出错，点击返回管理页面</html:link>
+                 <html:link page="/login.jsp"><img class="fieldimg" src="img/fail.jpg"/>对不起，您尚未登录，请先登录</html:link>
                 </p>
 	    </div>
        </div>

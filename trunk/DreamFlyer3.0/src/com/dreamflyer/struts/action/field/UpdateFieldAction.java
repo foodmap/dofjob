@@ -15,6 +15,7 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 
 import com.dreamflyer.fieldsystem.factory.Singleton;
+import com.dreamflyer.fieldsystem.factory.Utility;
 import com.dreamflyer.struts.form.field.UpdateFieldForm;
 
 public class UpdateFieldAction extends Action {
@@ -22,7 +23,9 @@ public class UpdateFieldAction extends Action {
 			ActionForm applyFieldForm, HttpServletRequest request,
 			HttpServletResponse response) {
 		UpdateFieldForm uff = (UpdateFieldForm)applyFieldForm;
-		String _company_id = (String)request.getSession().getAttribute("company_id");		
+		String _company_id = Utility.isLogin(request);	
+		if(_company_id == null)
+			return mapping.findForward("error1");
 	    ActionMessages errors = new ActionMessages();
 		Date end = null;
 	    Date start = null;
