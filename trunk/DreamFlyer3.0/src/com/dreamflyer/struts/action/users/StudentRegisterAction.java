@@ -111,7 +111,6 @@ public class StudentRegisterAction extends Action {
 			student.setId(cur_user.getStudentId());
 			student.setName(cur_user.getName());
 			student.setMajor(cur_user.getMajor());
-			student.setUsername(cur_user.getStudentId());
 			student.setSex(cur_user.getSex().toString());
 			student.setGrade(cur_user.getGrade());
 			student.setCollege(cur_user.getCollege());
