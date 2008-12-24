@@ -133,10 +133,10 @@
        <div class="pb" jpe="pb:promotion-banner">
 		<ul class="banners" id="promotion_banners">
     <li id="banners_1_body_1" class="current"><a href="http://www.ahaosky.com" target="_blank"><img src="ad/1.jpg" /></a></li>
-	<li id="banners_2_body_1"><a href="http://www.ahaosky.com" target="_blank"><img src="ad/2.jpg" /></a></li>
+	<li id="banners_2_body_1"><a href="http://www.ahaosky.com" target="_blank"><img src="ad/4.jpg" /></a></li>
 	<li id="banners_3_body_1"><a href="http://www.ahaosky.com" target="_blank"><img src="ad/3.jpg" /></a></li>
 	<li id="banners_4_body_1"><a href="http://www.ahaosky.com" target="_blank"><img src="ad/1.jpg" /></a></li>
-	<li id="banners_5_body_1"><a href="http://www.ahaosky.com" target="_blank"><img src="ad/2.jpg" /></a></li>
+	<li id="banners_5_body_1"><a href="http://www.ahaosky.com" target="_blank"><img src="ad/4.jpg" /></a></li>
 	<li id="banners_6_body_1"><a href="http://www.ahaosky.com" target="_blank"><img src="ad/3.jpg" /></a></li>
 		</ul>
 
