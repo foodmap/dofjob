@@ -31,6 +31,10 @@
 		<mapping resource="com/dreamflyer/jobsystem/Studentjob.hbm.xml" />
 		<mapping
 			resource="com/dreamflyer/jobsystem/Industryfunc.hbm.xml" />
+		<mapping
+			resource="com/dreamflyer/fieldsystem/ComFieldsAdd.hbm.xml" />
+		
+		
 
 	</session-factory>
 
