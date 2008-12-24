@@ -48,18 +48,18 @@ public class GetcompanyjobAction extends Action {
 		response.setContentType("text/xml;charset=utf-8");
 		HttpSession session = request.getSession();
 		int companyid = 3;
-		/*
+		
 		Company com;
 		if(session==null){
-			return null;
+			return mapping.findForward("login");
 		}
 		else{
-			com = (Company)session.getAttribute("currentcom");
+			com = (Company)session.getAttribute("current_user");
 			if(com==null){
-				return null;
+				return mapping.findForward("login");
 			}
 		}
-		*/
+		
 		iJobManagerFactory f = JobSystemFactory.getManager();
 		iManageJob manager = f.getManager();
 		List result = manager.getJob(companyid);

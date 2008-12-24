@@ -23,6 +23,7 @@ import com.dreamflyer.jobsystem.factory.JobSystemFactory;
 import com.dreamflyer.jobsystem.interfaces.iJobManagerFactory;
 import com.dreamflyer.jobsystem.interfaces.iManageJob;
 import com.dreamflyer.struts.form.job.AddjobForm;
+import com.dreamflyer.user.Company;
 
 /** 
  * MyEclipse Struts
@@ -50,18 +51,18 @@ public class AddjobAction extends Action {
 		AddjobForm myform = (AddjobForm) form;
 		HttpSession session = request.getSession();
 		int companyid = 3;
-		/*
+		
 		Company com;
 		if(session==null){
-			return null;
+			return mapping.findForward("login");
 		}
 		else{
 			com = (Company)session.getAttribute("current_user");
 			if(com==null){
-				return null;
+				return mapping.findForward("login");
 			}
 		}
-		*/
+		
 		iJobManagerFactory f = JobSystemFactory.getManager();
 		iManageJob manager = f.getManager();
 		String sex,grade,subdate,other_requirements,description;

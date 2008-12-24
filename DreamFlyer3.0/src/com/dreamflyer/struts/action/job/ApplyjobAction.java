@@ -50,15 +50,15 @@ public class ApplyjobAction extends Action {
 		HttpSession session = request.getSession();
 		Student stu = (Student) session.getAttribute("currentstu");
 		String studentid;
-		/**
+		
 		if(stu==null){
-			return mapping.findForward("failure");
+			return mapping.findForward("login");
 		}
 		
 		else{
 			studentid = stu.getId();
 		}
-		**/
+		
 		studentid = "5060379044";
 		boolean result = applyer.addApplyment(studentid, jobid);
 		if(result==false){
