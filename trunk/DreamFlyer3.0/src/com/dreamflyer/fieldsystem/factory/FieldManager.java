@@ -113,15 +113,15 @@ public class FieldManager extends AbstractManagers {
 	@Override
 	public boolean updApplyment(String fid,String _company_id,Date start,Date end) {
 		boolean exception = false;
-		try{	    	
+		try{			
 	    	session = HibernateSessionFactory.getSession();
 	    	tx = session.beginTransaction();	    	
-	    	String hqlUpdate="UPDATE Companyfields set startTime = :start,endTime = :end where id.company.id = :cid and id.fields.id = :fid";
+	    	String hqlUpdate="UPDATE Companyfields set endTime = :end,startTime = :start where id.company.id = :cid and id.fields.id = :fid";
 	    	int temp = session.createQuery(hqlUpdate)
-	    	                  .setTimestamp("start", start)	 
-	    	                  .setTimestamp("end", end)
-	    	                  .setString("cid", _company_id)
-	    	                  .setString("fid", fid)
+	    	                  .setTimestamp("end", end)	 
+	    	                  .setTimestamp("start", start)
+	    	                  .setString("cid",_company_id)
+	    	                  .setString("fid",fid)	    	                  
 	    	                  .executeUpdate();	    	
 	    	tx.commit();
 	    }catch(HibernateException he){
