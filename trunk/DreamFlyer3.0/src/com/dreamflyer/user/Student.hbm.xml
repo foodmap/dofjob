@@ -50,7 +50,7 @@
             <key>
                 <column name="student_id" length="10" not-null="true" />
             </key>
-            <one-to-many class="com.dreamflyer.user.Studentjob" />
+            <one-to-many class="com.dreamflyer.jobsystem.Studentjob" />
         </set>
     </class>
 </hibernate-mapping>
