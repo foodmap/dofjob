@@ -14,10 +14,40 @@
 <script type="text/javascript">
  var xmlHttp;
  var provinces=new Array();
- provinces[0]=['杭州'];
- provinces[1]=['广州','湛江']; 
- provinces[2]=['哈尔滨','大庆'];
-  provinces[3]=['上海'];
+ provinces[0]=['合肥','芜湖','淮南','马鞍山','淮北','铜陵','安庆','黄山','巢湖'];
+ provinces[1]=['北京']; 
+ provinces[2]=['重庆'];
+  provinces[3]=['福州','厦门','泉州','龙岩'];
+    provinces[4]=['兰州','嘉峪关','天水','九泉','庆阳'];
+      provinces[5]=['广州','深圳','珠海','东莞','湛江','佛山','阳江','汕头','茂名','中山','韶关'];
+        provinces[6]=['柳州','南宁','桂林','北海','梧州','百色'];
+          provinces[7]=['贵阳','六盘水','黔南','遵义','安顺'];
+            provinces[8]=['海口','三亚'];
+              provinces[9]=['秦皇岛','邯郸','保定','张家口','唐山','石家庄'];
+                provinces[10]=['哈尔滨','齐齐哈尔','鹤岗','大庆','佳木斯','大兴安岭','黑河','绥化'];
+                  provinces[11]=['郑州','开封','洛阳','平顶山','安阳','商丘','信阳','驻马店'];
+                    provinces[12]=['武汉','十堰','宜昌','孝感','荆门','黄冈'];
+                      provinces[13]=['长沙','株洲','衡阳','湘潭','邵阳','岳阳','张家界','怀化','湘西'];
+                        provinces[14]=['呼和浩特','包头','乌海','赤峰','呼伦贝尔','鄂尔多斯'];
+                          provinces[15]=['南京','苏州','常州','无锡','徐州','连云港','淮安','镇江','泰州','扬州','南通'];
+                            provinces[16]=['南昌','景德镇','九江','萍乡','鹰潭','赣州','上饶'];
+                              provinces[17]=['吉林','长春','辽源','通化','白山','延边'];
+                                provinces[18]=['沈阳','大连','鞍山','本溪','锦州','丹东','抚顺','营口','葫芦岛'];
+                                  provinces[19]=['银川','吴忠'];
+                                    provinces[20]=['西宁','海东','玉树','海西','海南'];
+                                      provinces[21]=['太原','大同','晋城','临汾'];
+                                          provinces[22]=['济南','青岛','淄博','东营','烟台','泰安','威海','日照','德州','滨州'];
+                                            provinces[23]=['上海'];
+                                              provinces[24]=['成都','攀枝花','德阳','绵阳','内江','宜宾','雅安','巴中'];
+                                                provinces[25]=['天津'];
+                                                  provinces[26]=['拉萨','昌都','那曲','林芝','日喀则','阿里'];
+                                                     provinces[27]=['乌鲁木齐','克拉玛依','吐鲁番','哈密','昌吉','喀什','阿克苏','伊犁'];
+                                                     provinces[28]=['昆明','玉溪','红河','文山','西双广纳','大理','丽江'];
+                                                     provinces[29]=['杭州','宁波','温州','台州','金华','舟山','绍兴','嘉兴'];
+                                                     provinces[30]=['西安','铜川','宝鸡','咸阳','汉中','延安'];
+                                                     provinces[31]=['台北','高雄'];
+                                                     provinces[32]=['香港'];
+                                                     provinces[33]=['澳门'];
  function addLoadEvent(func) 
 {
   var oldonload = window.onload;
@@ -232,8 +262,16 @@ addLoadEvent(function() {
  <div id="left">
   <div id="login">
  <fieldset>
-<p><strong>欢迎您,某某同学 </strong></p>
-  <p>       
+<p><strong>欢迎您, <bean:write name="current_user" property="name" scope="session"/>同学 </strong></p>
+<table width="195" height="204" border="1">
+  <tr>
+    <td width="23" height="198">&nbsp;</td>
+    <td width="128"><img src="photo/<bean:write name="current_user" property="id" scope="session"/>.jpg" width="128" height="200" /></td>
+    <td width="22">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>       
     <input type="submit" name="Submit" value="注销登陆" />
   </p>
   <div  id="leftnav"> 
@@ -296,10 +334,40 @@ addLoadEvent(function() {
 				<p class="date"><label>工作省份:</label>
 				  <select id="province" name="select" onchange="loadCity();">
 				    <option value="">请选择-------------------------</option>
-				    <option name=0 value="浙江">浙江</option>
-				    <option name=1 value="广东">广东</option>
-				    <option name=2 value="黑龙江">黑龙江</option>
-				    <option name=3 value="上海">上海市(直辖市)</option>
+				    <option name=0 value="安徽">安徽</option>
+				    <option name=1 value="北京">北京</option>
+				    <option name=2 value="重庆">重庆</option>
+				    <option name=3 value="福建">福建</option>
+				    <option name=4 value="甘肃">甘肃</option>
+				    <option name=5 value="广东">广东</option>
+				    <option name=6 value="广西">广西</option>
+				    <option name=7 value="贵州">贵州</option>
+				    <option name=8 value="海南">海南</option>
+				    <option name=9 value="河北">河北</option>
+				    <option name=10 value="黑龙江">黑龙江</option>
+				    <option name=11 value="河南">河南</option>
+				    <option name=12 value="湖北">湖北</option>
+				    <option name=13 value="湖南">湖南</option>
+				    <option name=14 value="内蒙古">内蒙古</option>
+				    <option name=15 value="江苏">江苏</option>
+				    <option name=16 value="江西">江西</option>
+				    <option name=17 value="吉林">吉林</option>
+				    <option name=18 value="辽宁">辽宁</option>
+				    <option name=19 value="宁夏">宁夏</option>
+				    <option name=20 value="青海">青海</option>
+				    <option name=21 value="山西">山西</option>
+				    <option name=22 value="山东">山东</option>
+				    <option name=23 value="上海">上海</option>
+				    <option name=24 value="四川">四川</option>
+				    <option name=25 value="天津">天津</option>
+				    <option name=26 value="西藏">西藏</option>
+				    <option name=27 value="新疆">新疆</option>
+				    <option name=28 value="云南">云南</option>
+				    <option name=29 value="浙江">浙江</option>
+				    <option name=30 value="陕西">陕西</option>
+				    <option name=31 value="台湾">台湾</option>
+				    <option name=32 value="香港">香港</option>
+				    <option name=33 value="澳门">澳门</option>
 			      </select>
 				</p>
 				<p class="date"><label>工作城市:</label>
