@@ -1,0 +1,23 @@
+#leftnav .do{
+  font-size:15px;
+  color:#FFFFFF;
+	padding:10px;
+	padding-left:25px;
+	font-family:"新宋体";
+	background:#9ec630 url(img/arrow.gif) no-repeat 7px 12px;
+}
+#leftnav .undo{
+  font-size:15px;
+	padding:10px;
+	padding-left:25px;
+	font-family:"新宋体";
+	background:#e0e7ec url(img/arrow.gif) no-repeat 7px 12px;
+}
+#leftnav .undo a:link, #leftnav .undo a:visited{
+	color:#004e8a;
+	text-decoration:none;
+}
+#leftnav .undo a:hover{
+	color:#000000;
+	text-decoration:underline;
+}
