@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*,com.dreamflyer.user.Company" pageEncoding="gb2312"%>
 
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  <fieldset>
 
-  <p><strong>欢迎您,思科公司 </strong></p>
+  <p><strong>欢迎您,<%=((Company)request.getSession().getAttribute("current_user")).getName()%> </strong></p>
   <p>       
     <input type="submit" name="Submit" value="注销登陆" />
   </p>

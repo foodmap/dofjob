@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage="" %>
+<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*,com.dreamflyer.user.Company" errorPage="" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
@@ -135,7 +135,7 @@ function WriteYearOptions(YearsAhead)
  
  <fieldset>
 
-  <p><strong>欢迎您,思科公司 </strong></p>
+  <p><strong>欢迎您,<%=((Company)request.getSession().getAttribute("current_user")).getName()%> </strong></p>
   <p>       
     <input type="submit" name="Submit" value="注销登陆" />
   </p>
