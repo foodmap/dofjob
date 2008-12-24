@@ -211,19 +211,20 @@
  <div id="right">
    <div id="datebar">
      <form>
-       <h3>今天是2009年1月12号</h3>
+       <h3>2008年12月25号</h3>
+       <h4>(晴天)</h4>
      </form>
    </div>
    <div id="rightlinks">
   <div class="relatedLinks">
     <h3>项目推荐</h3>
     <ul>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
+      <li><a href="#">基于网络设备远程检测与故障诊断系统</a></li>
+      <li><a href="#">快速成型制造系统</a></li>
+      <li><a href="#">从马克思主义看我党思想路线</a></li>
+      <li><a href="#">微小肺原通道内沸腾特性强化</a></li>
+      <li><a href="#">太阳能空调喷射制冷机</a></li>
+      <li><a href="#">面向环境感知的中间件支持服务平台</a></li>
     </ul>
   </div>
   <div class="relatedLinks">
