@@ -252,6 +252,7 @@ addLoadEvent(function() {
   <div  id="leftnav"> 
 		<div class="do">职位管理</div>
 		<div class="undo"><a href="#">场地管理</a></div>
+		<div class="undo"><a href="#">察看学生列表</a></div>
 </div> 
 
   <p>&nbsp;</p>
