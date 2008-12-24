@@ -20,6 +20,7 @@ import org.hibernate.Transaction;
 
 import com.dreamflyer.hibernate.HibernateSessionFactory;
 import com.dreamflyer.struts.form.users.LoginForm;
+import com.dreamflyer.user.Company;
 import com.dreamflyer.user.Student;
 
 /** 
@@ -45,7 +46,7 @@ public class LoginAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		LoginForm loginForm = (LoginForm) form;// TODO Auto-generated method stub
-		String studentid = loginForm.getUsername();
+		String username = loginForm.getUsername();
 		String password = loginForm.getPassword();
 		String usertype = loginForm.getUsertype();
 		String verifycode = loginForm.getVerifycode();
@@ -61,7 +62,7 @@ public class LoginAction extends Action {
 					Transaction tx = ses.beginTransaction();
 				
 					String sqlquery = "from Student a where a.id = '" +
-							studentid +"'";
+							username +"'";
 				
 					Query  requery = ses.createQuery(sqlquery);
 					ArrayList studentlist = (ArrayList)requery.list();
@@ -94,8 +95,41 @@ public class LoginAction extends Action {
 					return mapping.findForward("login_success");
 					
 				}else{
-					System.out.println("hahaahhaha!");
-					return mapping.findForward("login_fail");
+					Session ses = HibernateSessionFactory.getSession();
+					Transaction tx = ses.beginTransaction();
+				
+					String sqlquery = "from Company a where a.username = '" +
+							username +"'";
+				
+					Query  requery = ses.createQuery(sqlquery);
+					ArrayList companylist = (ArrayList)requery.list();
+				
+					tx.commit();
+					ses.close();
+				
+					Company company = new Company();
+						
+					if(companylist == null || companylist.size() == 0){
+						System.out.println("User name not exist!");
+						return mapping.findForward("login_fail");
+					}
+					company = (Company)companylist.get(0);
+					
+					if(!password.equals(company.getPassword()))
+					{
+						System.out.println("Wrong Password!");
+						return mapping.findForward("login_fail");
+					}
+					
+					HttpSession session = request.getSession();
+					Object cur_user = (Object)session.getAttribute("current_user");
+					
+					if(cur_user != null){
+						session.removeAttribute("current_user");
+					}
+					session.setAttribute("current_user", company);
+					
+					return mapping.findForward("com_login_success");
 				}
 				
 			}catch(Exception e){
