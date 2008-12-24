@@ -64,20 +64,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  <fieldset>
 
-  <p><strong>欢迎您,游客 </strong></p>
-  <p>       
-    <input type="submit" name="Submit" value="注销登陆" />
-  </p>
-  <div> 
-		<ul id="cmenu"> 
-		<li><a href="home.htm">更改公司信息</a></li> 
-		<li><a href="about.htm">添加职位</a></li> 
-		<li><a href="products.htm">编辑职位</a></li> 
-		<li><a href="services.htm">管理场地</a></li> 
-		<li><a href="contact.htm">学生列表</a></li> 
-		<li><a href="contact.htm">邮箱</a></li>
-		</ul> 
-</div> 
+  <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 欢迎您,游客 </strong></p>
+
+ 
 
   <p>&nbsp;</p>
   <p>&nbsp;</p>
@@ -118,41 +107,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <div id="right">
     <div id="datebar">
 	<form>
-	<h3>今天是2009年1月12号</h3>
-	</form>
-  </div>
-  <div id="rightlinks">
+	 <h3>2008年12月25号</h3>
+       <h4>(晴天)</h4>
+     </form>
+   </div>
+   <div id="rightlinks">
   <div class="relatedLinks">
     <h3>项目推荐</h3>
     <ul>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
+      <li><a href="#">基于网络设备远程检测与故障诊断系统</a></li>
+      <li><a href="#">快速成型制造系统</a></li>
+      <li><a href="#">从马克思主义看我党思想路线</a></li>
+      <li><a href="#">微小肺原通道内沸腾特性强化</a></li>
+      <li><a href="#">太阳能空调喷射制冷机</a></li>
+      <li><a href="#">面向环境感知的中间件支持服务平台</a></li>
     </ul>
   </div>
   <div class="relatedLinks">
     <h3>热门文章</h3>
     <ul>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
+      <li><a href="#">08年GRE内地考生增3成</a></li>
+      <li><a href="#">明年商务英语证书考试日期排定</a></li>
+      <li><a href="#">[劳动法|劳动合同]试用期结束不转正怎么办？</a></li>
+      <li><a href="#">新法新政推动九成以上企业改革</a></li>
+      <li><a href="#">岗位撤销合同期未到怎么补偿？</a></li>
+      <li><a href="#">身不由己的“职场八卦”</a></li>
     </ul>
   </div>
  <div class="relatedLinks">
     <h3>友情链接</h3>
     <ul>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
+      <li><a href="#">上海交通大学招就办</a></li>
+      <li><a href="#">前程无忧</a></li>
+      <li><a href="#">中华英才网</a></li>
+      <li><a href="#">智联招聘</a></li>
+      <li><a href="#">58同城网</a></li>
+      <li><a href="#">上海招聘网</a></li>
     </ul>
   </div>
  </div> 
