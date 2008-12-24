@@ -18,6 +18,7 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 import com.dreamflyer.struts.form.field.ApplyFieldForm;
 import com.dreamflyer.fieldsystem.factory.Singleton;
+import com.dreamflyer.fieldsystem.factory.Utility;
 
 /** 
  * MyEclipse Struts
@@ -48,7 +49,9 @@ public class ApplyFieldAction extends Action {
 	    Date start = null;
 		String _fid = form.getField_id();
 		ActionMessages errors = new ActionMessages();		
-	    String _company_id = (String)request.getSession().getAttribute("company_id");
+	    String _company_id = Utility.isLogin(request);
+	    if( _company_id == null)
+	    	return mapping.findForward("error1");
 	   
 	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
 	    
