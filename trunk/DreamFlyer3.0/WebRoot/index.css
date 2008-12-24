@@ -33,7 +33,7 @@ font-size:12px;
 #logo{
 	margin: 0px;
 	padding: 0px;
-	background:url(logo.png) no-repeat;
+	background:url(img/logo.png) no-repeat;
 }
 #leftbar{
 float:left;
@@ -114,7 +114,7 @@ font-size: 80%;
 }
 #list h3{
 	font-size:15px;
-	background:#e0e7ec url(icon4.gif) no-repeat 7px 8px;
+	background:#e0e7ec url(img/icon4.gif) no-repeat 7px 8px;
 	padding:5px;
 	padding-left:25px;
 }
@@ -143,42 +143,63 @@ font-size: 80%;
 #list .more{
     font-size:12px;
 	margin:0px; padding:5px 0px 20px 10px;
-	background:url(icon5.gif) no-repeat 0px 10px;
+	background:url(img/icon5.gif) no-repeat 0px 10px;
 }
 
 /********************两侧的链接集*********************/
 #leftlinks{
 border: 1px solid #000000;
+
 }
 
 #rightlinks{
 margin-top:5px;
 border: 1px solid #000000;
 }
-
+.relatedLinks{
+	clear:both; 
+	margin:0px;
+   padding-left:0px;
+   padding-right:0px;
+}
 .relatedLinks h3{
     font-size:15px;
 	padding:5px;
 	padding-left:25px;
-	background:#e0e7ec url(icon4.gif) no-repeat 7px 8px;
+	background:#e0e7ec url(img/icon4.gif) no-repeat 7px 8px;
 	
 }
-.relatedLinks li{
-padding-left:8px;
+.relatedLinks ul li{
+	padding:3px 10px 0px 0px;	
+    list-style:disc;
+    
 }
-
+.relatedLinks ul li a:link, .relatedLinks ul li a:visited{
+	color:#004e8a;
+	text-decoration:none;
+}
+.relatedLinks ul li a:hover{
+	color:#000000;
+	text-decoration:underline;
+}
 
 /****************************右侧找工作快速通道***************************************/
 
 #datebar{
 margin-top:5px;
-	background-color:#000000;
-	padding: 5px 5px 5px 10px;
+	background:url(img/weather.png) no-repeat;
+	padding: 5px 5px 25px 10px;
 	border: 1px solid #000000;
 	font-size: 90%;
 }
 #datebar h3{
-color:#FFFFFF;
+font-size:3;
+padding-top:0px;
+margin-left:20px;
+}
+#datebar h4{
+padding-top:0px;
+margin-left:100px;
 }
 #datebar select{
 width:100px;
