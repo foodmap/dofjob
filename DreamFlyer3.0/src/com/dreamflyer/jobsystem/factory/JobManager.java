@@ -20,6 +20,7 @@ import com.dreamflyer.jobsystem.*;
 import com.dreamflyer.user.*;
 import com.dreamflyer.jobsystem.interfaces.iApplyJob;
 import com.dreamflyer.jobsystem.interfaces.iManageJob;
+import com.dreamflyer.jobsystem.strategy.SearchMethod;
 
 public class JobManager implements iApplyJob, iManageJob {
 
@@ -41,11 +42,7 @@ public class JobManager implements iApplyJob, iManageJob {
 		sji.setJob(j);
 		sji.setStudent(s);
 		sj.setId(sji);
-		//sji.s
-		//sj.setId()
-		//String sqlcmd="insert into studentjob values ("+studentid+","+jobid+")"; 
-		//String oldvalue="";
-		//insertEntities = session.createQuery( sqlcmd ).executeUpdate() ;
+		
 		session.save(sj);
 		tran.commit();
 		
@@ -58,10 +55,20 @@ public class JobManager implements iApplyJob, iManageJob {
 		String sqlApp="";
 		sqlApp += "and st.id = '"+studentid+"'";
 		String sqlcmd=null;
-		sqlApp = " and Student.id='"+studentid+"'";
+		//sqlApp = " and Student.id='"+studentid+"'";
+		/** tmp
 		sqlcmd = "select job from Job as job,Studentjob as sj,Student as st ";
 		sqlcmd += "where job.id=sj.id.job.id and sj.id.student.id=st.id ";
-		sqlcmd +=sqlApp;
+		sqlcmd += sqlApp;
+		**/
+		sqlcmd = "select job from Job as job where job.id in ";
+		sqlcmd += "(";
+		sqlcmd += "select sj.id.job.id from Studentjob as sj where sj.id.student.id in";
+		sqlcmd += "(";
+		sqlcmd += " select st.id from Student as st where ";
+		sqlcmd += "st.id = '"+studentid+"'";
+		sqlcmd += ")";
+		sqlcmd += ")";
 		Session ses = HibernateSessionFactory.getSession();
 		
 		//System.out.println("here1");
@@ -141,72 +148,23 @@ public class JobManager implements iApplyJob, iManageJob {
 
 	public List getJob(String grade, int industry, int function,
 			          int workyears, String sex,  String city,String province) {
-		String sqlGra,sqlInd,sqlFun,sqlWor,sqlSex,sqlSub,sqlCit,sqlPro;
-		if(grade!=null&&grade!=""){
-		    sqlGra=" and job.grade='"+grade+"'";
+		try {
+			SearchMethod sm = (SearchMethod)Class.forName("com.dreamflyer.jobsystem.strategy.SMAdvan")
+			                       .newInstance();
+			return sm.getJob(grade, industry, function, workyears, sex, city, province);
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		else{
-			//sqlGra=" job.grade='*'";
-			sqlGra=" ";
-		}
-		
-		if(industry!=0){
-		    sqlInd=" and ind.id="+industry;
-		}
-		else{
-			sqlInd=" ";
-		}
-		
-		if(function!=0){
-		    sqlFun=" and fun.id="+function;
-		}
-		else{
-			sqlFun=" ";
-		}
-		
-		
-		sqlWor=" and job.workYears>="+workyears;
-		if(sex!=null&&sex!=""){
-		    sqlSex=" and job.sex='"+sex+"'";
-		}
-		else{
-			sqlSex=" ";
-		}
-		
-		if(city!=null&&city!=""){
-		    sqlCit=" and com.city='"+city+"'";
-		}
-		else{
-			sqlCit=" ";
-		}
-		
-		if(province!=null&&province!=""){
-		    sqlPro=" and com.province='"+province+"'";
-		}
-		else{
-			sqlPro=" ";
-		}
-		Session ses = HibernateSessionFactory.getSession();
-		String sqlcmd=null;
-		sqlcmd = "select job from Job as job ,Industry as ind, Function as fun,Company as com where";
-		sqlcmd +=" job.function.id = fun.id and job.industry.id=ind.id and " +
-				 " job.company.id = com.id ";
-		sqlcmd += sqlGra+sqlInd+sqlFun+sqlWor+sqlSex+sqlCit+sqlPro;
-		//sqlcmd = "select job from Job as job";
-		System.out.println(sqlcmd);
-		List jobs  =  ses.createQuery(sqlcmd).list(); 
-		System.out.println(jobs.size());
-		List jobinfo = new ArrayList<String>();
-		Iterator it = jobs.iterator();
-		while(it.hasNext()){
-			Job job = (Job)it.next();
-			long id = job.getId();
-			jobinfo.add(""+id);
-			jobinfo.add(job.toString());
-		}
-		ses.close();
-		//factory.close();
-		return jobinfo;
 	}
 
 	public boolean addJob(String sex, String grade, int number, String subdate,
@@ -222,15 +180,7 @@ public class JobManager implements iApplyJob, iManageJob {
 		tran.begin();
 		int fid = function;
 		int did = industry;
-		/**
-		String sqlcmd="insert into studentjob(sex,grade,number,subscribe_date,work_years,other_requirements,"
-		        +"description,company_id,function_id,industry_id"+" ) " +
-				"values ("+"'"+sex+"'"+","+"'"+grade+"'"+","+number+","+"'"+subdate+"'"+","
-		        +workyears+","+"'"+other_requirements+"'"+","+"'"+description+"'"+","+companyid+","+fid
-		        +","+did+")"; 
-		String oldvalue="";
-		insertEntities = session.createQuery( sqlcmd ).executeUpdate() ;
-		**/
+		
 		Job job = new Job();
 		Company com = new Company();
 		com.setId(companyid);
@@ -272,9 +222,16 @@ public class JobManager implements iApplyJob, iManageJob {
 		Transaction tran = null;
 		session = HibernateSessionFactory.getSession();
 		String sqlcmd=null;
+		/**
 		sqlcmd = "select job from Job as job ,Company as company where";
 		sqlcmd +=" job.company.id = company.id ";
 		sqlcmd += sqlCom;
+		**/
+		sqlcmd = "select job from Job as job where job.company.id in ";
+		sqlcmd += "(";
+		sqlcmd += "select company.id from Company as company where ";
+		sqlcmd += " company.id = "+companyid;
+		sqlcmd += ")";
 		
 		System.out.println(sqlcmd);
 		List jobs  =  session.createQuery(sqlcmd).list(); 
@@ -352,9 +309,15 @@ public class JobManager implements iApplyJob, iManageJob {
 		session = HibernateSessionFactory.getSession();;
 		String sqlcmd=null;
 		sqlApp = " and sj.id.job.id="+jobid;
+		/**
 		sqlcmd = "select st from Studentjob as sj,Student as st";
 		sqlcmd += " where sj.id.student.id = st.id";
 		sqlcmd += sqlApp;
+		**/
+		sqlcmd = "select st from Student as st where st.id in ";
+		sqlcmd += "(";
+		sqlcmd += "select sj.id.student.id where sj.id.job.id ="+jobid;
+		sqlcmd += ")";
 		List sjs  =  session.createQuery(sqlcmd).list(); 
 		List jobinfo = new ArrayList();
 		Iterator it = sjs.iterator();
