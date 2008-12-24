@@ -76,7 +76,6 @@ if(request.getSession().getAttribute("current_user") == null)
   <div id="leftnav"> 
 		<div class="undo"><a href="#">职位管理</a></div>
 		<div class="do">场地管理</div>
-		<div class="undo"><a href="#">察看学生列表</a></div>
 </div> 
 
 
@@ -163,17 +162,7 @@ if(request.getSession().getAttribute("current_user") == null)
       <li><a href="#">上海招聘网</a></li>
     </ul>
   </div>
- <div class="relatedLinks">
-    <h3>友情链接</h3>
-    <ul>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-      <li><a href="#">Related Link</a></li>
-    </ul>
-  </div>
+ 
  </div> 
 </div>
 </div>
