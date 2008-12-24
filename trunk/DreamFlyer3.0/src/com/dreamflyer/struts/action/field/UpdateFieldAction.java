@@ -20,9 +20,9 @@ import com.dreamflyer.struts.form.field.UpdateFieldForm;
 
 public class UpdateFieldAction extends Action {
 	public ActionForward execute(ActionMapping mapping,
-			ActionForm applyFieldForm, HttpServletRequest request,
+			ActionForm updateFieldForm, HttpServletRequest request,
 			HttpServletResponse response) {
-		UpdateFieldForm uff = (UpdateFieldForm)applyFieldForm;
+		UpdateFieldForm uff = (UpdateFieldForm)updateFieldForm;
 		String _company_id = Utility.isLogin(request);	
 		if(_company_id == null)
 			return mapping.findForward("error1");
