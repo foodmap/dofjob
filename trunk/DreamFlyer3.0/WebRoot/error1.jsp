@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  <fieldset>
 
-  <p><strong>欢迎您,思科公司 </strong></p>
+  <p><strong>欢迎您,游客 </strong></p>
   <p>       
     <input type="submit" name="Submit" value="注销登陆" />
   </p>
