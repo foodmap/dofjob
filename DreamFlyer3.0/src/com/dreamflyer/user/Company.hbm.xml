@@ -47,13 +47,13 @@
             <key>
                 <column name="company_id" not-null="true" />
             </key>
-            <one-to-many class="com.dreamflyer.user.Job" />
+            <one-to-many class="com.dreamflyer.jobsystem.Job" />
         </set>
         <set name="companyfieldses" inverse="true">
             <key>
                 <column name="company_id" not-null="true" />
             </key>
-            <one-to-many class="com.dreamflyer.user.Companyfields" />
+            <one-to-many class="com.dreamflyer.fieldsystem.Companyfields" />
         </set>
     </class>
 </hibernate-mapping>
