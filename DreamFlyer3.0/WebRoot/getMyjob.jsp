@@ -17,7 +17,9 @@
 <link rel="stylesheet" href="login.css" type="text/css" />
 <link rel="stylesheet" href="jobresult.css" type="text/css" />
 <link rel="stylesheet" href="jobsearch.css" type="text/css" />
-<link rel="stylesheet" href="info.css" type="text/css" /></head>
+<link rel="stylesheet" href="info.css" type="text/css" />
+<link rel="stylesheet" href="leftnav.css" type="text/css" />
+</head>
 <!-- The structure of this file is exactly the same as 2col_rightNav.html;
      the only difference between the two is the stylesheet they use -->
 	 
@@ -52,16 +54,15 @@
  <div id="left">
   <div id="login">
  <fieldset>
-
-  <div> 
-		<ul id="cmenu"> 
-		<li><a href="home.htm">更改个人信息</a></li> 
-		<li><a href="about.htm">找工作</a></li> 
-		<li><a href="products.htm">工作收藏夹</a></li> 
-		<li><a href="contact.htm">文章检索</a></li> 
-		<li><a href="contact.htm">我的邮箱</a></li>
-		</ul> 
+<p><strong>欢迎您,某某同学 </strong></p>
+  <p>       
+    <input type="submit" name="Submit" value="注销登陆" />
+  </p>
+   <div  id="leftnav"> 
+		<div class="do">找工作</div>
+		<div class="undo"><a href="#">工作收藏夹</a></div>
 </div> 
+
 
   <p>&nbsp;</p>
   <p>&nbsp;</p>
