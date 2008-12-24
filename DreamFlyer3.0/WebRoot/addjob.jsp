@@ -387,12 +387,12 @@ addLoadEvent(function() {
  <div class="relatedLinks">
     <h3>友情链接</h3>
     <ul>
-      <li><a href="#">08年GRE内地考生增3成</a></li>
-      <li><a href="#">明年商务英语证书考试日期排定</a></li>
-      <li><a href="#">[劳动法|劳动合同]试用期结束不转正怎么办？</a></li>
-      <li><a href="#">新法新政推动九成以上企业改革</a></li>
-      <li><a href="#">岗位撤销合同期未到怎么补偿？</a></li>
-      <li><a href="#">身不由己的“职场八卦”</a></li>
+      <li><a href="#">上海交通大学招就办</a></li>
+      <li><a href="#">前程无忧</a></li>
+      <li><a href="#">中华英才网</a></li>
+      <li><a href="#">智联招聘</a></li>
+      <li><a href="#">58同城网</a></li>
+      <li><a href="#">上海招聘网</a></li>
     </ul>
   </div>
  </div> 
