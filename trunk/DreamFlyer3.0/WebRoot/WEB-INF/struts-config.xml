@@ -29,7 +29,7 @@
     <forward name="studentreg_fail" path="/studentreg_fail.jsp" />
     <forward name="student_registry" path="/student_registry.jsp" />
     <forward name="error1" path="/error1.jsp" />
-    <forward name="com_login_success" path="/applyField.jsp" />
+    <forward name="com_login_success" path="/field_ad.jsp" />
   </global-forwards>
 
   <action-mappings >
