@@ -2,6 +2,11 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+if(request.getSession().getAttribute("current_user") == null)
+{
+      response.sendRedirect("error1.jsp");
+      return;
+}
 %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>

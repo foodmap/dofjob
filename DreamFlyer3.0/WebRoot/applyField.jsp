@@ -3,7 +3,13 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
- 
+<%
+if(request.getSession().getAttribute("current_user") == null)
+{
+      response.sendRedirect("error1.jsp");
+      return;
+}
+ %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- DW6 -->
@@ -173,7 +179,7 @@ function WriteYearOptions(YearsAhead)
 	   <div id="apply_field">
 			    <h3>申请场地</h3>
 
-<html:form action="/applyField?mode=apply">
+<html:form action="/applyField">
 <p class="date"><label class="two">选择场地:</label>
 		<html:select property="field_id">
         <html:optionsCollection name="flist" label="address" value="id"/>
