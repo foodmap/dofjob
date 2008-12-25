@@ -4,24 +4,17 @@
  */
 package com.dreamflyer.struts.action.users;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-import com.dreamflyer.hibernate.HibernateSessionFactory;
+import com.dreamflyer.loginsystem.loginstrategy.CompanyLogin;
+import com.dreamflyer.loginsystem.loginstrategy.StudentLogin;
 import com.dreamflyer.struts.form.users.LoginForm;
-import com.dreamflyer.user.Company;
-import com.dreamflyer.user.Student;
 
 /** 
  * MyEclipse Struts
@@ -58,78 +51,16 @@ public class LoginAction extends Action {
 			}
 			
 			if(usertype.equals("student")){
-					Session ses = HibernateSessionFactory.getSession();
-					Transaction tx = ses.beginTransaction();
-				
-					String sqlquery = "from Student a where a.id = '" +
-							username +"'";
-				
-					Query  requery = ses.createQuery(sqlquery);
-					ArrayList studentlist = (ArrayList)requery.list();
-				
-					tx.commit();
-					ses.close();
-				
-					Student student = new Student();
-						
-					if(studentlist == null || studentlist.size() == 0){
-						System.out.println("User name not exist!");
-						return mapping.findForward("login_fail");
-					}
-					student = (Student)studentlist.get(0);
-					
-					if(!password.equals(student.getPassword()))
-					{
-						System.out.println("Wrong Password!");
-						return mapping.findForward("login_fail");
-					}
-					
-					HttpSession session = request.getSession();
-					Object cur_user = (Object)session.getAttribute("current_user");
-					
-					if(cur_user != null){
-						session.removeAttribute("current_user");
-					}
-					session.setAttribute("current_user", student);
-					
-					return mapping.findForward("login_success");
+					StudentLogin sl = new StudentLogin();
+					boolean success = sl.login(username, password, request);
+					if(success) return mapping.findForward("login_success");
+					else return mapping.findForward("login_fail");
 					
 				}else{
-					Session ses = HibernateSessionFactory.getSession();
-					Transaction tx = ses.beginTransaction();
-				
-					String sqlquery = "from Company a where a.username = '" +
-							username +"'";
-				
-					Query  requery = ses.createQuery(sqlquery);
-					ArrayList companylist = (ArrayList)requery.list();
-				
-					tx.commit();
-					ses.close();
-				
-					Company company = new Company();
-						
-					if(companylist == null || companylist.size() == 0){
-						System.out.println("User name not exist!");
-						return mapping.findForward("login_fail");
-					}
-					company = (Company)companylist.get(0);
-					
-					if(!password.equals(company.getPassword()))
-					{
-						System.out.println("Wrong Password!");
-						return mapping.findForward("login_fail");
-					}
-					
-					HttpSession session = request.getSession();
-					Object cur_user = (Object)session.getAttribute("current_user");
-					
-					if(cur_user != null){
-						session.removeAttribute("current_user");
-					}
-					session.setAttribute("current_user", company);
-					
-					return mapping.findForward("com_login_success");
+					CompanyLogin cl = new CompanyLogin();
+					boolean success = cl.login(username, password, request);
+					if(success) return mapping.findForward("com_login_success");
+					else return mapping.findForward("login_fail");
 				}
 				
 			}catch(Exception e){
