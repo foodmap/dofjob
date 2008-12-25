@@ -1,8 +1,8 @@
 <%@ page language="java" import="java.util.*,com.dreamflyer.user.Company" pageEncoding="gb2312"%>
-<%@   taglib   prefix= "html "   uri= "http://struts.apache.org/tags-html"   %> 
-<%@   taglib   prefix= "bean "   uri= "http://struts.apache.org/tags-bean"   %> 
-<%@   taglib   prefix= "logic "  uri= "http://struts.apache.org/tags-logic" %> 
-<%@   taglib   prefix="tiles"    uri="http://struts.apache.org/tags-tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
