@@ -268,7 +268,7 @@ public class JobManager implements iApplyJob, iManageJob {
 		**/
 		sqlcmd = "select st from Student as st where st.id in ";
 		sqlcmd += "(";
-		sqlcmd += "select sj.id.student.id where sj.id.job.id ="+jobid;
+		sqlcmd += "select sj.id.student.id from Studentjob as sj where sj.id.job.id ="+jobid;
 		sqlcmd += ")";
 		List sjs  =  session.createQuery(sqlcmd).list(); 
 		List jobinfo = new ArrayList();
