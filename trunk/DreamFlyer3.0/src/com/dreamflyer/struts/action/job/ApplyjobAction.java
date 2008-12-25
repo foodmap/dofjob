@@ -48,9 +48,9 @@ public class ApplyjobAction extends Action {
 		iJobApplyerFactory f = JobSystemFactory.getApplyer();
 		iApplyJob applyer = f.getApplyer();
 		HttpSession session = request.getSession();
-		Student stu = (Student) session.getAttribute("currentstu");
+		Student stu = (Student) session.getAttribute("current_user");
 		String studentid;
-		
+		studentid = "5000";
 		if(stu==null){
 			return mapping.findForward("login");
 		}
@@ -59,7 +59,7 @@ public class ApplyjobAction extends Action {
 			studentid = stu.getId();
 		}
 		
-		studentid = "5060379044";
+		
 		boolean result = applyer.addApplyment(studentid, jobid);
 		if(result==false){
 			return mapping.findForward("failure");
