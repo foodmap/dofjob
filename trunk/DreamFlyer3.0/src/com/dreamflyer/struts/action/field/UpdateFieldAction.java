@@ -49,7 +49,7 @@ public class UpdateFieldAction extends Action {
 	    	saveErrors(request,errors);
 	    	return mapping.getInputForward();
 		}
-		boolean exception = Singleton.getInstance()
+		boolean exception = Singleton.getInstance("FieldManagerCreator")
 		                    .getManager()
 		                    .updApplyment(uff.getField_id(), _company_id, start, end);
 	    if(exception)	    	

@@ -19,7 +19,7 @@ public class DeleteAction extends Action {
 		String _company_id = Utility.isLogin(request);
 		if(_company_id == null)
 			return mapping.findForward("error1");
-		List list = Singleton.getInstance()
+		List list = Singleton.getInstance("FieldManagerCreator")
 		            .getManager()
 		            .getApplyment(_company_id);
 		if(list == null){			

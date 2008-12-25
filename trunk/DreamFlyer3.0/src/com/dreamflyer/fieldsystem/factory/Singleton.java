@@ -9,9 +9,17 @@ public class Singleton {
 	
 	private Singleton(){}
 
-	public static iManagerCreator getInstance()
+	public static iManagerCreator getInstance(String className)
 	{
-		return creator;
+		Class c;
+		try {
+			c = Class.forName(className);
+			if(creator == null)
+				creator = (iManagerCreator)c.newInstance();
+		} catch (ClassNotFoundException e) {} 
+		catch (InstantiationException e) {} 
+		catch (IllegalAccessException e) {}
+		return creator;		
 	}
 	private static iManagerCreator creator = null; 
 }

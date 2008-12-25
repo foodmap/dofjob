@@ -76,7 +76,7 @@ public class ApplyFieldAction extends Action {
 	    	return mapping.getInputForward();
 	    }
 	    
-	    boolean exception = Singleton.getInstance()
+	    boolean exception = Singleton.getInstance("FieldManagerCreator")
 	                        .getManager()
 	                        .addApplyment(_fid, _company_id, start, end);
 	    
@@ -84,7 +84,7 @@ public class ApplyFieldAction extends Action {
 	    if(exception){	    	
 	    	return mapping.findForward("error");
 	    }
-	    List list = Singleton.getInstance()
+	    List list = Singleton.getInstance("FieldManagerCreator")
 	               .getManager()
 	               .getApplyment( _company_id);
 	    if(list != null)
