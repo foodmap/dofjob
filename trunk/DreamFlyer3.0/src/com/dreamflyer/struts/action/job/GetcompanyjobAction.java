@@ -59,7 +59,7 @@ public class GetcompanyjobAction extends Action {
 				return mapping.findForward("login");
 			}
 		}
-		
+		companyid = com.getId();
 		iJobManagerFactory f = JobSystemFactory.getManager();
 		iManageJob manager = f.getManager();
 		List result = manager.getJob(companyid);

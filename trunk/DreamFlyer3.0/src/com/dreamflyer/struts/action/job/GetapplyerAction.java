@@ -58,6 +58,7 @@ public class GetapplyerAction extends Action {
 				return mapping.findForward("login");
 			}
 		}
+		companyid = com.getId();
 		GetapplyerForm myform = (GetapplyerForm) form;
 		iJobManagerFactory f = JobSystemFactory.getManager();
 		iManageJob manager = f.getManager();
