@@ -118,13 +118,22 @@ if(request.getSession().getAttribute("current_user") == null)
                  <html:link page="/field_ad.jsp"><img class="fieldimg" src="img/succ.jpg"/>查询成功，点击返回管理页面</html:link>
                 </p>
                 <p class="date">您已选的场地：</p>
-   <p class="field_iterator">
-    <logic:iterate id="result" name="result">
-    <bean:write name="result" property ="address"/>
-    <bean:write name="result" property ="startTime"/>
-    <bean:write name="result" property ="endTime"/>
-    </logic:iterate>
-   </p>
+   <div class="field_iterator">
+     <table width="200" border="0">
+                  <tr>
+                    <th scope="col">场地名称</th>
+                    <th scope="col">开始时间</th>
+                    <th scope="col">结束时间</th>
+                  </tr>           
+                     <logic:iterate id="result" name="result">
+				  <tr>
+    				   <td> <bean:write name="result" property ="address"/></td>
+   					   <td><bean:write name="result" property ="startTime"/></td>
+   				 	   <td><bean:write name="result" property ="endTime"/></td>
+	 			  </tr>
+                    </logic:iterate>
+	             </table>
+        </div>
 	    </div>
        </div>
 </div>
