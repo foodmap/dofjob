@@ -76,7 +76,7 @@ if(request.getSession().getAttribute("current_user") == null)
  
  <fieldset>
 
-  <p><strong>»¶Ó­Äú,<%=((Company)request.getSession().getAttribute("current_user")).getName()%>Ë¾ </strong></p>
+  <p><strong>»¶Ó­Äú,<%=((Company)request.getSession().getAttribute("current_user")).getName()%> </strong></p>
   <p>       
      <input type="submit" name="Submit" value="×¢ÏúµÇÂ½" onclick="logout();"/>
   </p>
