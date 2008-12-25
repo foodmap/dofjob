@@ -15,7 +15,7 @@ public class SjtuStudent  implements java.io.Serializable {
 
      private String studentId;
      private String password;
-     private Short sex;
+     private String sex;
      private String telephone;
      private Date birthday;
      private String birthplace;
@@ -37,11 +37,11 @@ public class SjtuStudent  implements java.io.Serializable {
     }
 
 	/** minimal constructor */
-    public SjtuStudent(String studentId, Short sex, Date birthday, String birthplace, String political, String address, String major, String grade, String college, String nation, String marriage) {
+    public SjtuStudent(String studentId, String password, String sex, Date birthday, String political, String address, String major, String grade, String college, String nation, String marriage, String name) {
         this.studentId = studentId;
+        this.password = password;
         this.sex = sex;
         this.birthday = birthday;
-        this.birthplace = birthplace;
         this.political = political;
         this.address = address;
         this.major = major;
@@ -49,10 +49,11 @@ public class SjtuStudent  implements java.io.Serializable {
         this.college = college;
         this.nation = nation;
         this.marriage = marriage;
+        this.name = name;
     }
     
     /** full constructor */
-    public SjtuStudent(String studentId, String password, Short sex, String telephone, Date birthday, String birthplace, String email, String political, String address, String major, String grade, String college, String nation, String marriage, String name) {
+    public SjtuStudent(String studentId, String password, String sex, String telephone, Date birthday, String birthplace, String email, String political, String address, String major, String grade, String college, String nation, String marriage, String name) {
         this.studentId = studentId;
         this.password = password;
         this.sex = sex;
@@ -89,11 +90,11 @@ public class SjtuStudent  implements java.io.Serializable {
         this.password = password;
     }
 
-    public Short getSex() {
+    public String getSex() {
         return this.sex;
     }
     
-    public void setSex(Short sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
