@@ -9,7 +9,7 @@ public class Singleton {
 	{
 		Class c;
 		try {
-			c = Class.forName(className);
+			c = Class.forName("com.dreamflyer.fieldsystem.factory."+className);
 			if(creator == null)
 				creator = (iManagerCreator)c.newInstance();
 		} catch (ClassNotFoundException e) {
