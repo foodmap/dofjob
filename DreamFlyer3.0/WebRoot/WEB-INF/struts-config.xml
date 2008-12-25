@@ -160,6 +160,9 @@
     </action>
     <action path="/getmyapplyment" type="com.dreamflyer.struts.action.job.GetmyapplymentAction">
       <forward name="getmyjob" path="/getMyjob.jsp" />
+    </action>
+    <action path="/lookup" type="com.dreamflyer.struts.action.field.LookupAction">
+      <forward name="result" path="/result.jsp" />
     </action>   
 
 
