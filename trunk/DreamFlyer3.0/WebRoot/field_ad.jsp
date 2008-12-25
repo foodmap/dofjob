@@ -117,6 +117,9 @@ if(request.getSession().getAttribute("current_user") == null)
 				<p class="date">
                  <html:link action="/update"><img class="fieldimg" src="img/updatefield.jpg"/>更改场地</html:link>
                 </p>
+                <p class="date">
+                 <html:link action="/lookup"><img class="fieldimg" src="img/updatefield.jpg"/>查看场地</html:link>
+                </p>
 	    </div>
        </div>
 </div>
