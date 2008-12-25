@@ -20,7 +20,7 @@ public class SjtuStudentLogin implements iLogin {
 		Session ses = SHibernateSessionFactory.getSession();
 		Transaction tx = ses.beginTransaction();
 
-		String sqlquery = "from SjtuStudent a where a.studentId = '" + username + "'";
+		String sqlquery = "from SjtuStudent a where a.studentId = " + username;
 
 		Query requery = ses.createQuery(sqlquery);
 		ArrayList studentlist = (ArrayList) requery.list();

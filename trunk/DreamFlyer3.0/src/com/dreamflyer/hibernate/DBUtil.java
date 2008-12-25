@@ -14,7 +14,7 @@ import com.dreamflyer.jobsystem.Function;
 import com.dreamflyer.jobsystem.Industry;
 
 public class DBUtil {
-	private static String url = "jdbc:mysql://192.168.0.69:3307/dreamflyer";
+	private static String url = "jdbc:mysql://59.78.37.28:3307/dreamflyer";
 	private static String username = "dreamflyer";
 	private static String password = "dreamflyer";
 	private static String driver = "com.mysql.jdbc.Driver";
