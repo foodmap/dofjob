@@ -4,11 +4,10 @@ import com.dreamflyer.fieldsystem.interfaces.iManagerCreator;
 
 public class Singleton {	
 	private Singleton(){}
-
 	public static iManagerCreator getInstance(String className)
 	{
 		Class c;
-		try {
+		try { 
 			c = Class.forName("com.dreamflyer.fieldsystem.factory."+className);
 			if(creator == null)
 				creator = (iManagerCreator)c.newInstance();
