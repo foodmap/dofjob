@@ -13,5 +13,5 @@ public class Singleton {
 	{
 		return creator;
 	}
-	private static iManagerCreator creator; 
+	private static iManagerCreator creator = null; 
 }

@@ -10,9 +10,7 @@
 		<property name="dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
-		<property name="connection.url">
-			jdbc:mysql://59.78.37.168:3306/sjtu_student
-		</property>
+		<property name="connection.url">jdbc:mysql://59.78.37.28:3307/sjtu_student</property>
 		<property name="connection.username">dreamflyer</property>
 		<property name="connection.password">dreamflyer</property>
 		<property name="connection.driver_class">
