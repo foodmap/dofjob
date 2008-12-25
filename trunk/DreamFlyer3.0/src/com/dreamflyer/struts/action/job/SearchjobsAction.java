@@ -70,7 +70,7 @@ public class SearchjobsAction extends Action {
 		
 		List result = applyer.getJob(grade, industryid, functionid, workyears, sex, city,province);
 		request.setAttribute("jobresult", result);
-		
+		System.out.println("11");
 		return mapping.findForward("jobresult");
 	}
 }

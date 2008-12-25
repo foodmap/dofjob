@@ -4,24 +4,16 @@
  */
 package com.dreamflyer.struts.action.users;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-import com.dreamflyer.hibernate.HibernateSessionFactory;
-import com.dreamflyer.hibernate.SHibernateSessionFactory;
+import com.dreamflyer.loginsystem.loginstrategy.SjtuStudentLogin;
 import com.dreamflyer.struts.form.users.ReloginForm;
-import com.dreamflyer.user.SjtuStudent;
 
 /** 
  * MyEclipse Struts
@@ -50,7 +42,7 @@ public class ReloginAction extends Action {
 		String password = reloginForm.getPassword();
 		try{
 				
-			Session ses = SHibernateSessionFactory.getSession();
+			/*Session ses = SHibernateSessionFactory.getSession();
 			Transaction tx = ses.beginTransaction();
 				
 			String sqlquery = "from SjtuStudent a where a.id = '" +
@@ -84,7 +76,11 @@ public class ReloginAction extends Action {
 			}
 			session.setAttribute("current_user", student);
 					
-			return mapping.findForward("student_registry");
+			return mapping.findForward("student_registry");*/
+			SjtuStudentLogin sl = new SjtuStudentLogin();
+			boolean success = sl.login(username, password, request);
+			if(success) return mapping.findForward("student_registry");
+			else return mapping.findForward("login_fail");
 					
 			}catch(Exception e){
 				e.printStackTrace();
