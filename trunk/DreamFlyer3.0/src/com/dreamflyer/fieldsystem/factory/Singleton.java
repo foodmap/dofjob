@@ -2,11 +2,7 @@ package com.dreamflyer.fieldsystem.factory;
 
 import com.dreamflyer.fieldsystem.interfaces.iManagerCreator;
 
-public class Singleton {
-	static{
-		creator = new FieldManagerCreator();
-	}
-	
+public class Singleton {	
 	private Singleton(){}
 
 	public static iManagerCreator getInstance(String className)
@@ -16,9 +12,17 @@ public class Singleton {
 			c = Class.forName(className);
 			if(creator == null)
 				creator = (iManagerCreator)c.newInstance();
-		} catch (ClassNotFoundException e) {} 
-		catch (InstantiationException e) {} 
-		catch (IllegalAccessException e) {}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} 
+		catch (InstantiationException e) {
+			e.printStackTrace();
+		} 
+		catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} finally {
+			
+		}
 		return creator;		
 	}
 	private static iManagerCreator creator = null; 
