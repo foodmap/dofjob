@@ -188,6 +188,12 @@ function logout(){
 <p class="date"><label class="two">选择日期:年</label>
     <html:select property="start_year">
     <html:option value="2008">2008</html:option>
+    <html:option value="2009">2009</html:option>
+    <html:option value="2010">2010</html:option>
+    <html:option value="2011">2011</html:option>
+    <html:option value="2012">2012</html:option>
+    <html:option value="2013">2013</html:option>
+    <html:option value="2014">2014</html:option>
     </html:select><html:errors property = "start_year"/>
 </p>
 <p class="date"><label class="two">月</label>
