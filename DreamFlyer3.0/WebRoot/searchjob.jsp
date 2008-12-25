@@ -10,7 +10,7 @@
 <head>
 <!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<title>SJTU JOB HUNTING HOMEPAGE</title>
+<title>searchjob.jsp</title>
 <script type="text/javascript">
  var xmlHttp;
  var provinces=new Array();
@@ -215,10 +215,13 @@ addLoadEvent(function() {
 	  }
 	  function applyJob(jobid){
 	      var id=jobid;
-	      alert(id);
+	      alert("您申请的职位id="+id);
           window.location='applyjob.do?jobid='+id+'&ts='+new Date().getTime();
 	  }
-
+      function logout(){
+       alert("欢迎您的再次光临");
+       window.location='logout.do?&ts='+new Date().getTime(); 
+      }
   </script>
 <link rel="stylesheet" href="index.css" type="text/css" />
 <link rel="stylesheet" href="menu.css" type="text/css" />
@@ -263,16 +266,16 @@ addLoadEvent(function() {
   <div id="login">
  <fieldset>
 <p><strong>欢迎您, <bean:write name="current_user" property="name" scope="session"/>同学 </strong></p>
-<table width="195" height="204" border="1">
+<table width="195" height="204" border="0">
   <tr>
     <td width="23" height="198">&nbsp;</td>
-    <td width="128"><img src="photo/<bean:write name="current_user" property="id" scope="session"/>.jpg" width="128" height="200" /></td>
+    <td width="128"><img src="photo/<bean:write name="current_user" property="photo" scope="session"/>.jpg" width="128" height="200" /></td>
     <td width="22">&nbsp;</td>
   </tr>
 </table>
 <p>&nbsp;</p>
 <p>       
-    <input type="submit" name="Submit" value="注销登陆" />
+    <input type="submit" name="Submit" value="注销登陆" onclick="logout();"/>
   </p>
   <div  id="leftnav"> 
 		<div class="do">找工作</div>

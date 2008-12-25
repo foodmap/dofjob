@@ -19,7 +19,12 @@ if(request.getSession().getAttribute("current_user") == null)
 
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
  <title>updatefield.jsp</title>
-
+<script type="text/javascript">
+function logout(){
+       alert("欢迎您的再次光临");
+       window.location='logout.do?&ts='+new Date().getTime(); 
+      }
+  </script>
 <link rel="stylesheet" href="index.css" type="text/css" />
 <link rel="stylesheet" href="menu.css" type="text/css" />
 <link rel="stylesheet" href="login.css" type="text/css" />
@@ -66,7 +71,7 @@ if(request.getSession().getAttribute("current_user") == null)
 
   <p><strong>欢迎您,<%=((Company)request.getSession().getAttribute("current_user")).getName()%> </strong></p>
   <p>       
-    <input type="submit" name="Submit" value="注销登陆" />
+    <input type="submit" name="Submit" value="注销登陆" onclick="logout();"/>
   </p>
   <div id="leftnav"> 
 		<div class="undo"><a href="#">职位管理</a></div>

@@ -16,7 +16,6 @@ if(request.getSession().getAttribute("current_user") == null)
 <!-- DW6 -->
 <head>
 <!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
-
  <title>ad.jsp</title>
     <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 	<meta http-equiv="pragma" content="no-cache" />
@@ -24,7 +23,12 @@ if(request.getSession().getAttribute("current_user") == null)
 	<meta http-equiv="expires" content="0" />    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
 	<meta http-equiv="description" content="This is my page" />
-
+<script type="text/javascript">
+function logout(){
+       alert("欢迎您的再次光临");
+       window.location='logout.do?&ts='+new Date().getTime(); 
+      }
+  </script>
 <link rel="stylesheet" href="index.css" type="text/css" />
 <link rel="stylesheet" href="menu.css" type="text/css" />
 <link rel="stylesheet" href="login.css" type="text/css" />
@@ -71,7 +75,7 @@ if(request.getSession().getAttribute("current_user") == null)
 
   <p><strong>欢迎您,<%=((Company)request.getSession().getAttribute("current_user")).getName()%></strong></p>
   <p>       
-    <input type="submit" name="Submit" value="注销登陆" />
+    <input type="submit" name="Submit" value="注销登陆" onclick="logout();"/>
   </p>
   <div id="leftnav"> 
 		<div class="undo"><a href="#">职位管理</a></div>
