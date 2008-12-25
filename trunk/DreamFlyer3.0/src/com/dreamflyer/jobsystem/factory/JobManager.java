@@ -16,6 +16,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.dreamflyer.hibernate.HibernateSessionFactory;
+import com.dreamflyer.hibernate.DBUtil;
 import com.dreamflyer.jobsystem.*;
 import com.dreamflyer.user.*;
 import com.dreamflyer.jobsystem.interfaces.iApplyJob;
@@ -88,62 +89,13 @@ public class JobManager implements iApplyJob, iManageJob {
 	} 
 
 	public List getFunction(int industry) {
-		String sqlInd="";
-		Session ses = HibernateSessionFactory.getSession();
-
-		String sqlcmd=null;
 		
-		sqlcmd = "select fun from Industryfunc as inf,Function as fun ";
-		sqlcmd += "where inf.id.functionId=fun.id ";
-		sqlcmd += "and inf.id.industryId="+industry;
-		//System.out.println(sqlcmd);
-		//sqlcmd= "from Function f";
-		//System.out.println("hahaha");
-		Query  requery = ses.createQuery(sqlcmd);
-		//System.out.println("hahaha");
-		ArrayList funs = (ArrayList)requery.list(); 
-		 
-		List funinfo = new ArrayList<String>();
-		//System.out.println("hahaha");
-		Iterator it = funs.iterator();
-		while(it.hasNext()){
-			Function fun = (Function)it.next();
-			funinfo.add(fun.getId());
-			funinfo.add(fun.getName());
-			//System.out.println(fun.getName());
-		}
-		ses.close();
-		//factory.close();
-		return funinfo;
+		return DBUtil.getFunction(industry);
 	}
 
 	public List getIndustry() {
-		Session session = null;
-		Transaction tran = null;
-		//System.out.println("here1");
-		Session ses = HibernateSessionFactory.getSession();
-		String sqlcmd=null;
-		sqlcmd = "from Industry a";
-		//System.out.println("here1");
-		Query  requery = ses.createQuery(sqlcmd);
-		ArrayList inds = (ArrayList)requery.list(); 
-		//System.out.println("here1");
-		if(inds.size()==0){
-			System.out.println("zero");
-		}
-		List indinfo = new ArrayList();
-		Iterator it = inds.iterator();
-		while(it.hasNext()){
-			Industry ind = (Industry)it.next();
-			indinfo.add(ind.getId());
-			indinfo.add(ind.getName());
-			//System.out.println(ind.getId());
-			//System.out.println(ind.getName());
-		}
-		ses.close();
-		//session.close();
-		//factory.close();
-		return indinfo;
+		
+		return DBUtil.getIndustry();
 	}
 
 	public List getJob(String grade, int industry, int function,
