@@ -62,7 +62,7 @@ public class AddjobAction extends Action {
 				return mapping.findForward("login");
 			}
 		}
-		
+		companyid = com.getId();
 		iJobManagerFactory f = JobSystemFactory.getManager();
 		iManageJob manager = f.getManager();
 		String sex,grade,subdate,other_requirements,description;
