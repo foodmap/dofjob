@@ -48,7 +48,7 @@ public class GetmyapplymentAction extends Action {
 		HttpSession session = request.getSession();
 		Student stu = (Student) session.getAttribute("current_user");
 		String studentid;
-		
+		studentid = "5060379044";
 		if(stu==null){
 			return mapping.findForward("login");
 		}
@@ -57,7 +57,7 @@ public class GetmyapplymentAction extends Action {
 			studentid = stu.getId();
 		}
 		
-		studentid = "5060379044";
+		
 		List result = applyer.getMyApplyment(studentid);
 		request.setAttribute("myjob", result);
 		return mapping.findForward("getmyjob");
