@@ -41,7 +41,7 @@ public class ApplyAction extends Action {
 			HttpServletRequest request, HttpServletResponse response) {
 		if((Utility.isLogin(request)) == null )
 			return mapping.findForward("error1");
-		iManagerCreator factory = Singleton.getInstance();
+		iManagerCreator factory = Singleton.getInstance("FieldManagerCreator");
 		List list = factory.getManager().getFields();
 		if(list == null )
 			return mapping.findForward("error");

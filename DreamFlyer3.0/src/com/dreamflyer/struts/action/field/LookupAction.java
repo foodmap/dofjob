@@ -45,7 +45,7 @@ public class LookupAction extends Action {
 		String _company_id = Utility.isLogin(request);
 		if(_company_id == null)
 			return mapping.findForward("error1");
-		iManagerCreator factory = Singleton.getInstance();
+		iManagerCreator factory = Singleton.getInstance("FieldManagerCreator");
 		AbstractManagers manager = factory.getManager();
 		List list = manager.getApplyment(_company_id);
 		if(list == null)

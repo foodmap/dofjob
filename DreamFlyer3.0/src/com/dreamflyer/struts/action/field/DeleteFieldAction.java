@@ -19,7 +19,7 @@ public class DeleteFieldAction extends Action {
 		String _company_id = Utility.isLogin(request);		
 		if(_company_id == null)
 			return mapping.findForward("error1");
-		boolean exception = Singleton.getInstance()
+		boolean exception = Singleton.getInstance("FieldManagerCreator")
 		                    .getManager()
 		                    .delApplyment(dfid, _company_id);
 		  
