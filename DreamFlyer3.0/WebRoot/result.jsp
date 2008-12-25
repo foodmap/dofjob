@@ -119,17 +119,17 @@ if(request.getSession().getAttribute("current_user") == null)
                 </p>
                 <p class="date">您已选的场地：</p>
    <div class="field_iterator">
-     <table width="200" border="0">
+     <table width="435" border="0">
                   <tr>
-                    <th scope="col">场地名称</th>
-                    <th scope="col">开始时间</th>
-                    <th scope="col">结束时间</th>
+                    <th width="163" scope="col">场地名称</th>
+                    <th width="163" scope="col">开始时间</th>
+                    <th width="163" scope="col">结束时间</th>
                   </tr>           
                      <logic:iterate id="result" name="result">
 				  <tr>
-    				   <td> <bean:write name="result" property ="address"/></td>
-   					   <td><bean:write name="result" property ="startTime"/></td>
-   				 	   <td><bean:write name="result" property ="endTime"/></td>
+    				   <td width="163"><bean:write name="result" property ="address"/></td>
+   					   <td width="163"><bean:write name="result" property ="startTime"/></td>
+   				 	   <td width="163"><bean:write name="result" property ="endTime"/></td>
 	 			  </tr>
                     </logic:iterate>
 	             </table>
