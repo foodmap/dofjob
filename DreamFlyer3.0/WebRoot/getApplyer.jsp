@@ -154,8 +154,8 @@ addLoadEvent(function() {
      <input type="submit" name="Submit" value="注销登陆" onclick="logout();"/>
   </p>
     <div id="leftnav"> 
-		<div class="undo"><a href="#">职位管理</a></div>
-		<div class="undo"><a href="#">场地管理</a></div>
+		<div class="undo"><html:link page="/addjob.jsp">职位管理</html:link></div>
+		<div class="undo"><html:link page="/field_ad.jsp">场地管理</html:link></div>
 		<div class="do">察看学生列表</div>
 </div> 
 
