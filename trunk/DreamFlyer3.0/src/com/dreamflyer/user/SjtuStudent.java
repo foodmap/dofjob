@@ -3,12 +3,14 @@ package com.dreamflyer.user;
 
 import java.util.Date;
 
+import JAccountSystem.iSjtuStudent;
+
 
 /**
  * SjtuStudent entity. @author MyEclipse Persistence Tools
  */
 
-public class SjtuStudent  implements java.io.Serializable {
+public class SjtuStudent  implements java.io.Serializable,iSjtuStudent {
 
 
     // Fields    
