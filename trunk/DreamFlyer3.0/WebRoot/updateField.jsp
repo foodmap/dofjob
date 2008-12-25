@@ -74,9 +74,9 @@ function logout(){
     <input type="submit" name="Submit" value="注销登陆" onclick="logout();"/>
   </p>
   <div id="leftnav"> 
-		<div class="undo"><a href="#">职位管理</a></div>
+		<div class="undo"><html:link page="/addjob.jsp">职位管理</html:link></div>
 		<div class="do">场地管理</div>
-		<div class="undo"><a href="#">察看学生列表</a></div>
+		<div class="undo"><html:link page="/getApplyer.jsp">察看学生列表</html:link></div>
 </div> 
 
   <p>&nbsp;</p>

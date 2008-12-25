@@ -75,7 +75,7 @@ function logout(){
   </p>
   <div  id="leftnav"> 
 		<div class="do">找工作</div>
-		<div class="undo"><a href="#">工作收藏夹</a></div>
+		<div class="undo"><html:link action="getmyapplyment.do">工作收藏夹</html:link></div>
 </div> 
 
 

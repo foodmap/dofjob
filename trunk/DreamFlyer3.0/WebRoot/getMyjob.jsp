@@ -72,8 +72,8 @@ function logout(){
     <input type="submit" name="Submit" value="注销登陆" onclick="logout();"/>
   </p>
    <div  id="leftnav"> 
-		<div class="do">找工作</div>
-		<div class="undo"><a href="#">工作收藏夹</a></div>
+		<div class="undo"><html:link page="/searchjob.jsp">找工作</html:link></div>
+		<div class="do">工作收藏夹</div>
 </div> 
 
 
