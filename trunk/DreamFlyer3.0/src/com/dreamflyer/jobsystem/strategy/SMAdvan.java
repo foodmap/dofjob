@@ -14,6 +14,7 @@ public class SMAdvan implements SearchMethod {
 	@Override
 	public List getJob(String grade, int industry, int function, int workyears,
 			String sex, String city, String province) {
+		System.out.println("use advan method");
 		String sqlGra,sqlInd,sqlFun,sqlWor,sqlSex,sqlSub,sqlCit,sqlPro;
 		if(grade!=null&&grade!=""){
 		    sqlGra=" and job.grade='"+grade+"'";
