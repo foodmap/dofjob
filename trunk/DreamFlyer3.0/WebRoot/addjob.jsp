@@ -1,8 +1,17 @@
-<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage="" %>
+<%@ page language="java" import="java.util.*,com.dreamflyer.user.Company" pageEncoding="gb2312"%>
 <%@   taglib   prefix= "html "   uri= "http://struts.apache.org/tags-html"   %> 
 <%@   taglib   prefix= "bean "   uri= "http://struts.apache.org/tags-bean"   %> 
 <%@   taglib   prefix= "logic "  uri= "http://struts.apache.org/tags-logic" %> 
 <%@   taglib   prefix="tiles"    uri="http://struts.apache.org/tags-tiles" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+if(request.getSession().getAttribute("current_user") == null)
+{
+      response.sendRedirect("error1.jsp");
+      return;
+}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- DW6 -->
@@ -230,7 +239,10 @@ addLoadEvent(function() {
 	  function updateJob(jobid){
 	     alert("not implement");
 	  }
-
+      function logout(){
+       alert("欢迎您的再次光临");
+       window.location='logout.do?&ts='+new Date().getTime(); 
+      }
   </script>
 <link rel="stylesheet" href="index.css" type="text/css" />
 <link rel="stylesheet" href="menu.css" type="text/css" />
@@ -277,9 +289,9 @@ addLoadEvent(function() {
  
  <fieldset>
 
-  <p><strong>欢迎您,思科公司 </strong></p>
+  <p><strong>欢迎您,<%=((Company)request.getSession().getAttribute("current_user")).getName()%>司 </strong></p>
   <p>       
-    <input type="submit" name="Submit" value="注销登陆" />
+     <input type="submit" name="Submit" value="注销登陆" onclick="logout();"/>
   </p>
   <div  id="leftnav"> 
 		<div class="do">职位管理</div>
