@@ -1,0 +1,1 @@
+This project is about all kinds of patterns' application.
